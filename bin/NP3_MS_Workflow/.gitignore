@@ -1,0 +1,39 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# NP3_MSCluster and others #
+############
+
+*.Rhistory
+*.RData
+*.idea
+*.metadata
+*NP3_MSCluster_bin
+*mllib
+node_modules/*
+test/L754_bacs/L754_bacs_*
+test/L754_bacs/mzxml/processed_data*
+src/__pycache__/*
+package-lock.json
+package.json
+src/ISDB_tremolo_NP3/Data/dbs/UNPD_DB.csv
+
+# Dev Templates Bootstrap#
+##########################
+
+src/spectra_viewer/temp_data/*
+src/spectra_viewer/src/__pycache__/*
+src/spectra_viewer/src/__pycache__/
+src/spectra_viewer/src/pages/__pycache__/*
+src/spectra_viewer/src/pages/__pycache__/
+src/spectra_viewer/src/untitled0.py
+
+# spec2vec model tables #
+#########################
+src/spec2vec_models/*.npy

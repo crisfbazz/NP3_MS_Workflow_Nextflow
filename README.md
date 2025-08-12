@@ -1,10 +1,4 @@
-# Nextflow Template
-Make sure to have the NextflowModule updated if you plan on using it:
-
-```
-git submodule update --init --remote --recursive
-```
-
+#  NP³ MS Workflow Nextflow 
 
 To run the workflow to test simply do
 
@@ -12,80 +6,48 @@ To run the workflow to test simply do
 make run
 ```
 
+The NP3 testing dataset is used by default.
+
+To learn more about the NP3 pipeline, please checkout the [repository](https://github.com/danielatrivella/NP3_MS_Workflow).
+
+
 To learn NextFlow checkout this documentation:
 
 https://www.nextflow.io/docs/latest/index.html
 
-## Installation
 
-You will need to have conda, mamba, and nextflow installed to run things locally. 
+## Installation NP³ MS Workflow with Nextflow
 
-## GNPS2 Workflow Input information
+You will need to have conda and mamba installed to run things locally. 
 
-Check the definition for the workflow input and display parameters:
-https://wang-bioinformatics-lab.github.io/GNPS2_Documentation/workflowdev/
+Create the np3_nextflow environment stored in: bin/environment_np3_nextflow_unix.yml
+
+```
+mamba env create -f bin/environment_np3_nextflow_unix.yml 
+```
+
+And activate the np3_nextflow environment:
+
+```
+mamba activate np3_nextflow 
+```
+
+Then, install some additional nodejs packages: 
+
+```
+npm install shelljs@0.8.4 commander@5.1.0 
+```
+
+Finally, go to the 'bin/NP3_MS_Workflow' directory and run the NP³ MS Workflow setup (check installed packages, compile some code, aggregate some data from UNPD and download large data from spec2vec):
+
+```
+node np3_workflow.js setup 
+```
+
+You are good to go!
 
 
 ## Deployment to GNPS2
 
-In order to deploy, we have a set of deployment tools that will enable deployment to the various gnps2 systems. To run the deployment, you will need the following setup steps completed:
-
-1. Checked out of the deployment submodules
-1. Conda environment and dependencies
-1. SSH configuration updated
-
-### Checking out the deployment submodules
-
-use the following commands from the deploy_gnps2 folder. 
-
-You might need to checkout the module, do this by running
-
-```
-git submodule init
-git submodule update
-```
-
-You will also need to specify the user on the server that you've been given that your public key has been associated with. If you want to not enter this every time you do a deployment, you can create a Makefile.credentials file in the deploy_gnps2 folder with the following contents
-
-```
-USERNAME=<enter the username>
-```
-
-### Deployment Dependencies
-
-You will need to install the dependencies in GNPS2_DeploymentTooling/requirements.txt on your own local machine. 
-
-You can find this [here](https://github.com/Wang-Bioinformatics-Lab/GNPS2_DeploymentTooling).
-
-One way to do this is to use conda to create an environment, for example:
-
-```
-conda create -n deploy python=3.8
-pip install -r GNPS2_DeploymentTooling/requirements.txt
-```
-
-### SSH Configuration
-
-Also update your ssh config file to include the following ssh target:
-
-```
-Host ucr-gnps2-dev
-    Hostname ucr-lemon.duckdns.org
-```
-
-### Deploying to Dev Server
-
-To deploy to development, use the following command, if you don't have your ssh public key installed onto the server, you will not be able to deploy.
-
-```
-make deploy-dev
-```
-
-### Deploying to Production Server
-
-To deploy to production, use the following command, if you don't have your ssh public key installed onto the server, you will not be able to deploy.
-
-```
-make deploy-prod
-```
+Check [Nexftlow template instructions from Mingxun Wang](https://github.com/Wang-Bioinformatics-Lab/Nextflow_Workflow_Template).
 

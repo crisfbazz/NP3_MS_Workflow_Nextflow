@@ -1,23 +1,33 @@
-name: template_nextflow_workflow
-displayname: STUFF
+name: NP3_MS_Workflow_nextflow
+displayname: NP3 Results
 Views:
--   name: Summary List
-    displayname: Summary List
-    viewname: summarylist
-    displaytype: datatable
-    parameters:
-        filename: nf_output/python_output.tsv
-        columns:
-            -   title: "View LCMS"
-                data: filename
-            -   title: "filename"
-                data: filename
-            -   title: "OUTPUT"
-                data: OUTPUT
-            -   title: "OUTPUT2"
-                data: OUTPUT2
-        columnDefs: '[ {"targets": 0,"data": null,"render": function ( data, type, row, meta ) {
-            return `
-            <a target="_blank" href="/dashboards/lcms?usi=mzspec:GNPS2-${task}:${encodeURIComponent(row["filename"])}">View LCMS - mzspec:GNPS2-${task}:${row["filename"]}</a>
-            `;}}]'
+-   name: section
+    displayname: NP3 Pre Process Results
+    viewname: section
+    displaytype: section
             
+-   name: Download NP3 Pre Processed Results zip
+    displayname: Download NP3 Pre Processed Results zip
+    viewname: download_np3_pre_processed_zip
+    displaytype: download
+    parameters:
+        filename: nf_output/np3_results/pre_processed/@[params.pre_processed_data_name].zip
+
+-   name: Download Pre Processed Statistics Log
+    displayname: Download Pre Processed Statistics Log
+    viewname: download_pre_processed_stats_log
+    displaytype: download
+    parameters:
+        filename: nf_output/np3_results/pre_processed/@[params.pre_processed_data_name]/logPreProcessStatistics
+
+-   name: section
+    displayname: NP3 Run Results
+    viewname: section
+    displaytype: section
+
+-   name: Download NP3 Run Results zip
+    displayname: Download NP3 Run Results zip
+    viewname: download_np3_run_zip
+    displaytype: download
+    parameters:
+        filename: nf_output/np3_results/run/@[params.output_name].zip

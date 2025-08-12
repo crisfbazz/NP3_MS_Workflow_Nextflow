@@ -1,21 +1,177 @@
-workflowname: template_nextflow_workflow
-workflowdescription: template_nextflow_workflow
-workflowlongdescription: This is a template nextflow workflow for GNPS2
-workflowversion: "2025.06.20"
+workflowname: NP3_MS_Workflow_nextflow
+workflowdescription: This is the NP3 MS Workflow for GNPS2 using nextflow.
+workflowlongdescription: The NP3 MS Workflow is a pipeline for LC-MS/MS metabolomics data process and analysis. The NP3 *run* command is implemented here, which executes Steps 2 to 10. The Pre Process (Step 2) is executed separated with optimized parameters (user provided) for processing a new LC-MS/MS dataset. The NP3 workflow enriches the MS2 ions with chromatographic information (MS1 peaks dimension) and then reduce the redundancy of the pre processed MS2 ions by clustering concurrent spectra into clean consensus spectra (separates isomers and selects the putative [M+H]+ ions). \nCheckout the NP³ repository for details about this command and the pipeline steps - https://github.com/danielatrivella/NP3_MS_Workflow.
+workflowversion: "2025.08.11"
 workflowfile: nf_workflow.nf
 workflowautohide: false
-adminonly: false
+adminonly: true
 #This maps the parameters from an input form to those that will appear in nextflow
 parameterlist:
-    - displayname: File Selection
+    - displayname: Mandatory Parameters - Files Selection
       paramtype: section
 
-    - displayname: Input Data Folder
-      paramtype: fileselector
-      nf_paramname: input_spectra
-      formplaceholder: Enter the path to data
+    # mandatory parms for *run*
+    - displayname: Output name
+      paramtype: text
+      nf_paramname: output_name
+      formplaceholder: Enter the name of job and output result, without spaces.
       formvalue: ""
-      targettaskfolder: input_spectra
+      optional: false
+      tooltip: "the job name without spaces. It will be used to name the output directory of the NP3 pipeline and the final results. It must have less than 80 characters without spaces."
+
+
+    - displayname: Input Metadata Table
+      paramtype: fileselector
+      nf_paramname: metadata
+      formplaceholder: Enter the path to the metadata table CSV file.
+      formvalue: ""
+      targettaskfolder: metadata
+      optional: false
+      selectsinglefile: true
+      tooltip: "the path to the metadata table following the format expected by the NP3"
+
+    - displayname: Input Raw Data Folder
+      paramtype: fileselector
+      nf_paramname: raw_data_path
+      formplaceholder: Enter the path to the raw_data_path.
+      formvalue: ""
+      targettaskfolder: raw_data_path
       optional: false
       selectsinglefile: false
       folderunroll: true
+      tooltip: "the path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended). The pre_process (Step 2) output will be stored here. To use a previous pre processed result, this path should point to the directory storing the pre_processed result folder (the 'np3_results/pre_processed_results/' folder of a previous workflow result)."
+
+    - displayname: Pre Processed Data Output Name
+      paramtype: text
+      nf_paramname: pre_processed_data_name
+      formplaceholder: The name of the pre_process output directory
+      formvalue: "dataset_processed_data"
+      tooltip: "Enter the name without spaces of the output directory that will be created inside the raw_data_path to store the pre processed data (Step 2 results). If this subfolder already exists, its result will be reused here (skips Step 2). We recommend to use the data collection name (for reference) without spaces and a suffix equals to 'processed_data'. To use a previous pre processed result, this directory name must match the previous result name present inside the raw_data_path."
+
+    - displayname: Critical Parameters - LC-MS/MS
+      paramtype: section
+
+    # critical parms for *run*
+    - displayname: Precursor m/z tolerance
+      paramtype: text
+      nf_paramname: mz_tolerance
+      formplaceholder: Enter the m/z tolerance for MS2 precursor
+      formvalue: "0.025"
+      tooltip: "the tolerance in Daltons for the m/z of the precursor that determines if two spectra will be compared and possibly joined. Used in the clustering jobs (Step 3), in the cleaning (Step 5), in the library identifications (Step 6) and in the annotation of ionization variants (Step 7 - also used for the fragment tolerance of the annotations) (default to 0.025)."
+
+    - displayname: Fragment tolerance for MS2 peaks
+      paramtype: text
+      nf_paramname: fragment_tolerance
+      formplaceholder: Enter the tolerance in Daltons for MS2 peaks
+      formvalue: "0.05"
+      tooltip: "The tolerance in Daltons for fragment peaks. Peaks in the original MS/MS spectra that are closer than this get merged in the clustering jobs (Step 3). Also used in the pre process (Step 2), in the spectra similarity comparisons and in cleaning (Step 5) (default to 0.05)."
+
+    - displayname: Ion Mode
+      paramtype: text
+      nf_paramname: ion_mode
+      formplaceholder: Enter '1' for positive or '2' for negative ion mode
+      formvalue: "1"
+      tooltip: "the precursor ion mode. One of the following numeric values corresponding to an ion adduct type = '1' for positive [M+H]+; or '2' for negative [M-H]- ion mode (default to '1')."
+
+    # critical parms for *pre_process*
+    - displayname: Critical Parameters - Pre_process
+      paramtype: section
+
+    - displayname: Expected peak width of MS1 - minimum and maximum
+      paramtype: text
+      nf_paramname: peak_width
+      formplaceholder: Enter the expected minimum,maximum peak width
+      formvalue: "2,10"
+      tooltip: "two numeric values separated by comma without spaces and using decimal point equals dot, containing the expected approximate peak width in chromatographic space. Given as a range (min,max) in seconds. The mean value will be used to simulate the width of the fake MS1 peaks (see documentation, default to '2,10')."
+
+    - displayname: MS1 and MS2 retention time deviation
+      paramtype: text
+      nf_paramname: rt_tolerance_deviation
+      formplaceholder: Enter the retention time deviation between MS1 and MS2
+      formvalue: "3.0"
+      tooltip: "The retention time tolerance in seconds used to enlarge the MS1 peak boundaries and accept as a match all MS2 ions that have a retention time value within the enlarged MS1 peak range. This tolerance is applied to both sides of the MS1 peaks (RTmin - rt_tolerance and RTmax + rt_tolerance). Tries to overcome bad MS1 peak integrations (default to 3s)."
+
+    - displayname: MS1 and MS2 m/z deviation
+      paramtype: text
+      nf_paramname: mz_tolerance_deviation
+      formplaceholder: Enter the m/z deviation between MS1 and MS2
+      formvalue: "0.05"
+      tooltip: "The tolerance in Daltons for matching a MS1 peak m/z with a MS2 spectrum precursor m/z (default to 0.05)."
+
+    - displayname: PPM tolerance for MS1
+      paramtype: text
+      nf_paramname: ppm_tolerance
+      formplaceholder: Enter the PPM tolerance for MS1
+      formvalue: "15"
+      tooltip: "the maximal tolerated m/z deviation in consecutive MS1 scans in parts per million (ppm) for the initial ROI definition of the R::xcms::centWave algorithm (Step 2). Typically set to a generous multiple of the mass accuracy of the mass spectrometer (default to 15)."
+
+    # other parms for *run*
+    - displayname: Clustering Parameters
+      paramtype: section
+
+    - displayname: Retention time tolerances
+      paramtype: text
+      nf_paramname: rt_tolerance
+      formplaceholder: Enter x,y retention time tolerances in seconds
+      formvalue: "1,2"
+      tooltip: "x,y retention time tolerances in seconds for the retention time width of the precursor that determines if two spectra will be compared and possibly joined. It is directly applied to the retention time minimum (subtracted) and maximum (added) of the spectra. It enlarges the peak boundaries to deal with misaligned samples or ionization variant spectra. The first tolerance [x] is used in Step 3 (first clustering) and Step 7 (ionization variants annotation); and the second tolerance [y] is used in Step 3 (final clustering) and Step 5 (Clean) (default to '1,2')."
+
+    - displayname: Similarity Function for Clean and MN
+      paramtype: select
+      nf_paramname: similarity_function
+      formvalue: np3_shifted_cosine
+      tooltip: "the similarity function to be used in the spectra comparison to create the pairwise similarity tables for clean (Step 5) and molecular networking (Step 10). One of 'np3_shifted_cosine' or 'spec2vec'. If 'spec2vec' is selected, the model trained on UniqueInchikey subset (12,797 spectra) is used by spec2vec in the spectra comparison; otherwise, the NP3 shifted cosine function is used (default to 'np3_shifted_cosine')."
+      options:
+        - value: np3_shifted_cosine
+          display: np3_shifted_cosine
+        - value: spec2vec
+          display: spec2vec
+
+    - displayname: Trim Precursor m/z
+      paramtype: select
+      nf_paramname: trim_mz
+      formvalue: TRUE
+      tooltip: "A logical 'True' or 'False' indicating if the spectra fragmented peaks around the precursor m/z +-20 Da should be deleted before the pairwise comparisons. If 'True' this removes the residual precursor ion, which is frequently observed in MS/MS spectra acquired on qTOFs (default to 'True')."
+      options:
+        - value: TRUE
+          display: True
+        - value: FALSE
+          display: False
+
+    - displayname: Noise cutoff
+      paramtype: text
+      nf_paramname: noise_cutoff
+      formplaceholder: Enter the noise cutoff value
+      formvalue: "FALSE"
+      tooltip: "A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering Step 3 result and to remove the spectra with a basePeakInt value below this distribution median plus IQR*noise_cutoff after the clean Step 5. Or FALSE to disable it. When no blank sample is present in the metadata, the full distribution is used. This cutoff will affect the spectra with a low basePeakInt value that probably are noise features."
+
+    - displayname: Molecular Networking Parameters
+      paramtype: section
+
+    - displayname: Minimum Similarity
+      paramtype: text
+      nf_paramname: similarity_mn
+      formplaceholder: Enter the minimum similarity score for molecular networking
+      formvalue: "0.6"
+      tooltip: "the minimum similarity score that must occur between a pair of consensus spectra to connect them with a link in the molecular network of similarity. Lower values will increase the components sizes by inducing the connection of less related spectra; and higher values will limit the components sizes to the opposite."
+
+    - displayname: Network Top K
+      paramtype: text
+      nf_paramname: net_top_k
+      formplaceholder: Enter the maximum top K for molecular networking
+      formvalue: "15"
+      tooltip: "the maximum number of connections for one single node in the molecular network of similarity. A link between two nodes is kept only if both nodes are within each other's [x] most similar nodes. Keeping this value low makes very large networks (many nodes) much easier to visualize (default to 15)."
+
+    - displayname: Maximum Component Size
+      paramtype: text
+      nf_paramname: max_component_size
+      formplaceholder: Enter the maximum number of nodes for the network components
+      formvalue: "200"
+      tooltip: "the maximum number of nodes that each component of the molecular network of similarity must have (Step 10). The links of this network will be removed using an increasing cosine threshold until each component has at most X nodes. Keeping this value low makes very large networks (many nodes and links) much easier to visualize (default to 200)."
+
+    - displayname: Minimum Number of Matched Peaks
+      paramtype: text
+      nf_paramname: min_matched_peaks
+      formplaceholder: Enter the minimum number of matched peaks to connect spectra
+      formvalue: "6"
+      tooltip: "The minimum number of common peaks that two spectra must share to be connected by an edge in the filtered SSMN. Connections between spectra with less common peaks than this cutoff will be removed when filtering the SSMN. Except for when one of the spectra have a number of fragment peaks smaller than the given min_matched_peaks value, in this case the spectra must share at least 2 peaks. The fragment peaks count is performed after the spectra are normalized and cleaned (default to 6)."
