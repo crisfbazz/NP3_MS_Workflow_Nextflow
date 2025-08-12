@@ -1,7 +1,8 @@
 [submodule "GNPS2_DeploymentTooling"]
 	path = GNPS2_DeploymentTooling
 	url = https://github.com/Wang-Bioinformatics-Lab/GNPS2_DeploymentTooling.git
-[submodule "bin/NextflowModules"]
-	path = bin/NextflowModules
-	url = git@github.com:Wang-Bioinformatics-Lab/NextflowModules.git
 	branch = main
+[submodule "bin/NP3_MS_Workflow"]
+	path = bin/NP3_MS_Workflow
+	url = https://github.com/danielatrivella/NP3_MS_Workflow.git
+    branch = main
