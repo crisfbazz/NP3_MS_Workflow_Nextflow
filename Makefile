@@ -12,3 +12,6 @@ run:
 
 init_modules:
 	git submodule update --init --recursive
+
+update_np3:
+	cd bin/NP3_MS_Workflow && git pull origin master &&	node np3_workflow.js setup && cd -

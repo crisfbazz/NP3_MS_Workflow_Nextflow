@@ -10,6 +10,11 @@ The NP3 testing dataset is used by default.
 
 To learn more about the NP3 pipeline, please checkout the [repository](https://github.com/danielatrivella/NP3_MS_Workflow).
 
+To update the NP³ code with the latest commit and setup do
+
+```
+make update_np3
+```
 
 To learn NextFlow checkout this documentation:
 
