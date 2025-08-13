@@ -5,4 +5,3 @@
 [submodule "bin/NP3_MS_Workflow"]
 	path = bin/NP3_MS_Workflow
 	url = https://github.com/danielatrivella/NP3_MS_Workflow.git
-    branch = main
