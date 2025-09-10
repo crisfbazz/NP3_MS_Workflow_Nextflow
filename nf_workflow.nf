@@ -47,6 +47,25 @@ TOOL_FOLDER = "$moduleDir/bin"
 // Augmenting with nf_output
 _publishdir = "${params.publishdir}/nf_output"
 
+process np3InstallDeps {
+    /*
+    This process installs the np3 dependencies using the provided install_setup.sh script
+    */
+
+    conda "$TOOL_FOLDER/environment_np3_nextflow_unix.yml"
+
+    input:
+    path np3_folder
+
+    output:
+    val 3
+
+    script:
+    """
+    bash $moduleDir/bin/install_setup.sh
+    """
+}
+
 process np3PreProcess {
     /* This process executes the *pre_process* command from np3*/
 
@@ -55,6 +74,7 @@ process np3PreProcess {
     conda "$TOOL_FOLDER/environment_np3_nextflow_unix.yml"
 
     input:
+    val fake_dep_from_setup
     val output_name
     val pre_processed_output_path
     val metadata
@@ -165,11 +185,16 @@ workflow  {
     input_metadata = Channel.fromPath(params.metadata)
     input_raw_data_path = Channel.fromPath(params.raw_data_path)
     input_rules_ionization = Channel.fromPath(params.rules_ionization)
+
+    np3_path = Channel.fromPath(NP3_TOOL_FOLDER)
+    fake_dep_from_setup = np3InstallDeps(np3_path)
+
     // call the *pre_process* nf process here, then call the *run* nf process
-    np3PreProcess(params.output_name, params.pre_processed_output_path, input_metadata, \
+    np3PreProcess(fake_dep_from_setup, params.output_name, params.pre_processed_output_path, input_metadata, \
     input_raw_data_path, params.pre_processed_data_name, \
     params.mz_tolerance_deviation, params.rt_tolerance_deviation, params.ppm_tolerance, \
     params.peak_width, params.ion_mode)
+
     // call *run* nf process using the *pre_process* result - sequential calls
     // passing np3PreProcess.out.output_pre_process (which is equal to  params.pre_processed_output_path/params.pre_processed_data_name) instead of params.raw_data_path
     // passing "." instead of params.pre_processed_data_name because the pre_processed_data_name is already included in the output_pre_processed path and was copied to the given output in the np3PreProcess script
@@ -178,6 +203,7 @@ workflow  {
     params.fragment_tolerance, params.ion_mode, params.rt_tolerance, params.similarity_function, \
     params.trim_mz, params.noise_cutoff, params.similarity_mn, params.net_top_k, \
     params.max_component_size, params.min_matched_peaks, input_rules_ionization)
+    
     // TODO call library search here and then call gnps_result join
     //input_np3_count_table = Channel.fromPath(params.np3_count_table)
     //input_result_library_search_path = Channel.fromPath(params.result_library_search_path)
