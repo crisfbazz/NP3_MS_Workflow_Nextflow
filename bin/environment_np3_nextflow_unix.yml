@@ -42,6 +42,7 @@ dependencies:
   - tqdm=4.67.1
   - spec2vec=0.8.0
   - nextflow
+  - tzdata
   - pip
   - pip:
       - termplotlib==0.3.8
