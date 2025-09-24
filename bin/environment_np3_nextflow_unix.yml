@@ -43,6 +43,8 @@ dependencies:
   - spec2vec=0.8.0
   - nextflow
   - tzdata
+  - tzcode
+  - backports.zoneinfo	
   - pip
   - pip:
       - termplotlib==0.3.8
