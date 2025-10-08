@@ -139,7 +139,7 @@ process np3Run {
 
     script:
     """
-    node $NP3_TOOL_FOLDER/np3_workflow.js run \
+    export TZ="America/Los_Angeles" && node $NP3_TOOL_FOLDER/np3_workflow.js run \
     --metadata $metadata --output_name $output_name \
     --output_path $output_path --raw_data_path $raw_data_path \
     --processed_data_name $pre_processed_data_name --mz_tolerance $mz_tolerance \
@@ -168,7 +168,7 @@ process np3GNPSResult {
 
     script:
     """
-    node $NP3_TOOL_FOLDER/np3_workflow.js gnps_result \
+    export TZ="America/Los_Angeles" && node $NP3_TOOL_FOLDER/np3_workflow.js gnps_result \
     --result_specnets_DB_path $result_library_search_path \
     --count_file_path $np3_count_table
     mkdir -p '$gnps_result_output_path/'
