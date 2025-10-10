@@ -175,3 +175,18 @@ parameterlist:
       formplaceholder: Enter the minimum number of matched peaks to connect spectra
       formvalue: "6"
       tooltip: "The minimum number of common peaks that two spectra must share to be connected by an edge in the filtered SSMN. Connections between spectra with less common peaks than this cutoff will be removed when filtering the SSMN. Except for when one of the spectra have a number of fragment peaks smaller than the given min_matched_peaks value, in this case the spectra must share at least 2 peaks. The fragment peaks count is performed after the spectra are normalized and cleaned (default to 6)."
+
+
+    - displayname: Optional Parameters - admins
+      paramtype: section
+
+    # install_dependencies
+    - displayname: Install Dependencies
+      paramtype: select
+      nf_paramname: install_dependencies
+      formvalue: "No"
+      options:
+        - value: "Yes"
+          display: "Yes"
+        - value: "No"
+          display: "No"

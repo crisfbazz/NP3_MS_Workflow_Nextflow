@@ -40,6 +40,9 @@ params.rules_ionization = "$NP3_TOOL_FOLDER/rules/np3_modifications.csv"
 params.pre_processed_output_path = "./np3_results/pre_processed/"
 params.gnps_result_output_path = "./np3_results/gnps_result_join/"
 
+// admin
+params.install_dependencies = "No"
+
 //This publish dir is mostly  useful when we want to import modules in other workflows, keep it here usually don't change it
 params.publishdir = "$launchDir"
 TOOL_FOLDER = "$moduleDir/bin"
@@ -187,7 +190,12 @@ workflow  {
     input_rules_ionization = Channel.fromPath(params.rules_ionization)
 
     np3_path = Channel.fromPath(NP3_TOOL_FOLDER)
-    fake_dep_from_setup = np3InstallDeps(np3_path)
+
+    if (params.install_dependencies == "Yes") {
+        fake_dep_from_setup = np3InstallDeps(np3_path)
+    } else {
+        fake_dep_from_setup = Channel.value(3)
+    }
 
     // call the *pre_process* nf process here, then call the *run* nf process
     np3PreProcess(fake_dep_from_setup, params.output_name, params.pre_processed_output_path, input_metadata, \
