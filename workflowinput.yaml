@@ -10,16 +10,6 @@ parameterlist:
     - displayname: Mandatory Parameters - Files Selection
       paramtype: section
 
-    # mandatory parms for *run*
-    - displayname: Output name
-      paramtype: text
-      nf_paramname: output_name
-      formplaceholder: Enter the name of job and output result, without spaces.
-      formvalue: ""
-      optional: false
-      tooltip: "the job name without spaces. It will be used to name the output directory of the NP3 pipeline and the final results. It must have less than 80 characters without spaces."
-
-
     - displayname: Input Metadata Table
       paramtype: fileselector
       nf_paramname: metadata
