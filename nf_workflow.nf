@@ -154,6 +154,26 @@ process np3Run {
     """
 }
 
+process np3TestRun {
+    /* This process executes a test run of the *run* command from np3*/
+
+    publishDir "$_publishdir", mode: 'copy', overwrite: false
+
+    conda "$TOOL_FOLDER/environment_np3_nextflow_unix.yml"
+
+    input:
+    val x
+
+    output:
+    
+    script:
+    """
+    export TZ="America/Los_Angeles" && Rscript $TOOL_FOLDER/test_createTable_tzdata.R
+    zip datetimes.csv.zip datetimes.csv
+    unzip -o datetimes.csv.zip
+    """
+}
+
 process np3GNPSResult {
     /* This process executes the *gnps_result* command from np3*/
 
@@ -196,6 +216,10 @@ workflow  {
     } else {
         fake_dep_from_setup = Channel.value(3)
     }
+
+    // Test for dependency
+    np3TestRun(3)
+
 
     // call the *pre_process* nf process here, then call the *run* nf process
     np3PreProcess(fake_dep_from_setup, params.output_name, params.pre_processed_output_path, input_metadata, \
