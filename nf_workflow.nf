@@ -8,9 +8,11 @@ NP3_TOOL_FOLDER = "$moduleDir/bin/NP3_MS_Workflow/"
 params.np3_command = "run"
 
 // mandatory parms
+params.output_name = "output_results" // This shoudl be hard coded and never changed for GNPS2
 params.metadata = "$NP3_TOOL_FOLDER/test/L754_bacs/marine_bacteria_library_L754_metadata.csv"
 params.raw_data_path = "$NP3_TOOL_FOLDER/test/L754_bacs/mzxml/"
-params.pre_processed_data_name = "processed_data_test"
+params.pre_processed_data_name = "processed_data" // This shoudl be hard coded and never changed for GNPS2
+
 // critical parms run
 params.mz_tolerance = "0.025"
 params.fragment_tolerance = "0.05"
@@ -78,6 +80,7 @@ process np3PreProcess {
 
     input:
     val fake_dep_from_setup
+    val output_name
     val pre_processed_output_path
     val metadata
     val raw_data_path
@@ -95,7 +98,7 @@ process np3PreProcess {
     script:
     """
     node $NP3_TOOL_FOLDER/np3_workflow.js pre_process \
-    --metadata $metadata --data_name output_results --raw_data_path $raw_data_path \
+    --metadata $metadata --data_name $output_name --raw_data_path $raw_data_path \
     --processed_data_name $pre_processed_data_name --mz_tolerance $mz_tolerance_deviation \
     --ion_mode $ion_mode --rt_tolerance $rt_tolerance_deviation \
     --ppm_tolerance $ppm_tolerance --peak_width $peak_width --processed_data_overwrite FALSE \
@@ -117,6 +120,7 @@ process np3Run {
     conda "$TOOL_FOLDER/environment_np3_nextflow_unix.yml"
 
     input:
+    val output_name
     val output_path
     val metadata
     val raw_data_path
@@ -135,13 +139,13 @@ process np3Run {
     val rules_ionization
 
     output:
-    path "$output_path/output_results/"
-    file "$output_path/output_results.zip"
+    path "$output_path/${output_name}/"
+    file "$output_path/${output_name}.zip"
 
     script:
     """
     export TZ="America/Los_Angeles" && node $NP3_TOOL_FOLDER/np3_workflow.js run \
-    --metadata $metadata --output_name output_results \
+    --metadata $metadata --output_name $output_name \
     --output_path $output_path --raw_data_path $raw_data_path \
     --processed_data_name $pre_processed_data_name --mz_tolerance $mz_tolerance \
     --fragment_tolerance $fragment_tolerance --ion_mode $ion_mode --rt_tolerance $rt_tolerance \
@@ -220,7 +224,7 @@ workflow  {
 
 
     // call the *pre_process* nf process here, then call the *run* nf process
-    np3PreProcess(fake_dep_from_setup, params.pre_processed_output_path, input_metadata, \
+    np3PreProcess(fake_dep_from_setup, params.output_name, params.pre_processed_output_path, input_metadata, \
     input_raw_data_path, params.pre_processed_data_name, \
     params.mz_tolerance_deviation, params.rt_tolerance_deviation, params.ppm_tolerance, \
     params.peak_width, params.ion_mode)
@@ -228,7 +232,7 @@ workflow  {
     // call *run* nf process using the *pre_process* result - sequential calls
     // passing np3PreProcess.out.output_pre_process (which is equal to  params.pre_processed_output_path/params.pre_processed_data_name) instead of params.raw_data_path
     // passing "." instead of params.pre_processed_data_name because the pre_processed_data_name is already included in the output_pre_processed path and was copied to the given output in the np3PreProcess script
-    np3Run(params.output_path, input_metadata, \
+    np3Run(params.output_name, params.output_path, input_metadata, \
     np3PreProcess.out.output_pre_process, ".", params.mz_tolerance, \
     params.fragment_tolerance, params.ion_mode, params.rt_tolerance, params.similarity_function, \
     params.trim_mz, params.noise_cutoff, params.similarity_mn, params.net_top_k, \

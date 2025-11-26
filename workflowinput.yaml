@@ -31,13 +31,6 @@ parameterlist:
       folderunroll: true
       tooltip: "the path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended). The pre_process (Step 2) output will be stored here. To use a previous pre processed result, this path should point to the directory storing the pre_processed result folder (the 'np3_results/pre_processed_results/' folder of a previous workflow result)."
 
-    - displayname: Pre Processed Data Output Name
-      paramtype: text
-      nf_paramname: pre_processed_data_name
-      formplaceholder: The name of the pre_process output directory
-      formvalue: "dataset_processed_data"
-      tooltip: "Enter the name without spaces of the output directory that will be created inside the raw_data_path to store the pre processed data (Step 2 results). If this subfolder already exists, its result will be reused here (skips Step 2). We recommend to use the data collection name (for reference) without spaces and a suffix equals to 'processed_data'. To use a previous pre processed result, this directory name must match the previous result name present inside the raw_data_path."
-
     - displayname: Critical Parameters - LC-MS/MS
       paramtype: section
 
