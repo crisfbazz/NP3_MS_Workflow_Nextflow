@@ -11,14 +11,14 @@ Views:
     viewname: download_np3_pre_processed_zip
     displaytype: download
     parameters:
-        filename: nf_output/np3_results/pre_processed/output_results.zip
+        filename: nf_output/np3_results/pre_processed/processed_data.zip
 
 -   name: Download Pre Processed Statistics Log
     displayname: Download Pre Processed Statistics Log
     viewname: download_pre_processed_stats_log
     displaytype: download
     parameters:
-        filename: nf_output/np3_results/pre_processed/output_results/logPreProcessStatistics
+        filename: nf_output/np3_results/pre_processed/processed_data/logPreProcessStatistics
 
 -   name: section
     displayname: NP3 Run Results
