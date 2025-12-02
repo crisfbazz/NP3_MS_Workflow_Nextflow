@@ -25,6 +25,12 @@ https://www.nextflow.io/docs/latest/index.html
 
 You will need to have conda and mamba installed to run things locally. 
 
+First initialize the submodules, run:
+
+```
+make init_modules 
+```
+
 Create the np3_nextflow conda environment stored in: bin/environment_np3_nextflow_unix.yml
 
 ```
@@ -51,7 +57,6 @@ Then, install some additional nodejs packages and audit the installation:
 
 ```
 npm install shelljs@0.8.4 commander@5.1.0
-npm audit fix
 ```
 
 Finally, go to the 'bin/NP3_MS_Workflow' directory and run the NP³ MS Workflow setup (check installed packages, compile some code, aggregate some data from UNPD-ISDB and download large data from spec2vec):
