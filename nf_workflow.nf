@@ -24,7 +24,7 @@ params.mz_tolerance_deviation = "0.05"
 params.ppm_tolerance = "15"
 // Other parms for run
 params.rt_tolerance = "1,2"
-params.similarity_function = "np3_shifted_cosine"
+params.similarity_function = "np3_shifted_cosine" // hard coded for now - spec2vec was not working
 params.trim_mz = "TRUE"
 params.noise_cutoff = "FALSE"
 // MN parms
