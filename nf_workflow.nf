@@ -220,7 +220,7 @@ workflow  {
     }
 
     // Test for dependency
-    np3TestRun(3)
+    np3TestRun(fake_dep_from_setup)
 
 
     // call the *pre_process* nf process here, then call the *run* nf process
