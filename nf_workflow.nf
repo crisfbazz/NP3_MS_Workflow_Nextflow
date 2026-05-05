@@ -35,6 +35,11 @@ params.min_matched_peaks = "6"
 // command gnps_result parms
 params.result_library_search_path = "$NP3_TOOL_FOLDER/test/L754_bacs/ProteoSAFe-MOLECULAR-LIBRARYSEARCH-V2-da67f38d-download_all_identifications/MOLECULAR-LIBRARYSEARCH-V2-da67f38d-download_all_identifications-main.tsv"
 params.np3_count_table = "$moduleDir/nf_output/np3_results/run/L754_test_nf/outs/L754_test_nf/count_tables/clean/L754_test_nf_spectra_clean_ann_corr_spearman.csv"
+// GNPS2 library search parms
+params.library_searchtool = "gnps_indexed"
+params.library_min_cosine = "0.7"
+params.library_min_matched_peaks = "6"
+params.library_analog_search = "FALSE"
 
 // np3 fixed params
 params.output_path = "./np3_results/run/"
@@ -137,6 +142,10 @@ process np3Run {
     val max_component_size
     val min_matched_peaks
     val rules_ionization
+    val gnps_search_tool
+    val gnps_min_cosine
+    val gnps_min_matched_peaks
+    val gnps_analog_search
 
     output:
     path "$output_path/${output_name}/"
@@ -151,7 +160,9 @@ process np3Run {
     --fragment_tolerance $fragment_tolerance --ion_mode $ion_mode --rt_tolerance $rt_tolerance \
     --similarity_function $similarity_function --trim_mz $trim_mz --noise_cutoff $noise_cutoff \
     --similarity_mn $similarity_mn --net_top_k $net_top_k --max_component_size $max_component_size \
-    --min_matched_peaks $min_matched_peaks --rules $rules_ionization --verbose 1
+    --min_matched_peaks $min_matched_peaks --rules $rules_ionization --gnps_search_tool $gnps_search_tool \
+    --gnps_min_cosine $gnps_min_cosine --gnps_min_matched_peaks $gnps_min_matched_peaks \
+    --gnps_analog_search $gnps_analog_search --verbose 1
     cd $output_path && zip -r ${output_name}.zip ${output_name}/ && cd -
     """
 }
@@ -176,30 +187,6 @@ process np3TestRun {
     """
 }
 
-process np3GNPSResult {
-    /* This process executes the *gnps_result* command from np3*/
-
-    publishDir "$_publishdir", mode: 'copy', overwrite: false
-
-    conda "$TOOL_FOLDER/environment_np3_nextflow_unix.yml"
-
-    input:
-    path np3_count_table
-    val result_library_search_path
-    val gnps_result_output_path
-
-    output:
-    path "$gnps_result_output_path/$np3_count_table.name"
-
-    script:
-    """
-    export TZ="America/Los_Angeles" && node $NP3_TOOL_FOLDER/np3_workflow.js gnps_result \
-    --result_specnets_DB_path $result_library_search_path \
-    --count_file_path $np3_count_table
-    mkdir -p '$gnps_result_output_path/'
-    cp $np3_count_table $gnps_result_output_path/
-    """
-}
 
 workflow  {
     /*
@@ -222,7 +209,6 @@ workflow  {
     // Test for dependency
     np3TestRun(fake_dep_from_setup)
 
-
     // call the *pre_process* nf process here, then call the *run* nf process
     np3PreProcess(fake_dep_from_setup, params.output_name, params.pre_processed_output_path, input_metadata, \
     input_raw_data_path, params.pre_processed_data_name, \
@@ -232,15 +218,11 @@ workflow  {
     // call *run* nf process using the *pre_process* result - sequential calls
     // passing np3PreProcess.out.output_pre_process (which is equal to  params.pre_processed_output_path/params.pre_processed_data_name) instead of params.raw_data_path
     // passing "." instead of params.pre_processed_data_name because the pre_processed_data_name is already included in the output_pre_processed path and was copied to the given output in the np3PreProcess script
+    // the GNPS2 library search is integrated in the np3 pipeline and will execute locally.
     np3Run(params.output_name, params.output_path, input_metadata, \
     np3PreProcess.out.output_pre_process, ".", params.mz_tolerance, \
     params.fragment_tolerance, params.ion_mode, params.rt_tolerance, params.similarity_function, \
     params.trim_mz, params.noise_cutoff, params.similarity_mn, params.net_top_k, \
-    params.max_component_size, params.min_matched_peaks, input_rules_ionization)
-    
-    // TODO call library search here and then call gnps_result join
-    //input_np3_count_table = Channel.fromPath(params.np3_count_table)
-    //input_result_library_search_path = Channel.fromPath(params.result_library_search_path)
-    // TODO call *gnps_result* process and update the resulting run zip file
-    //np3GNPSResult(input_np3_count_table, input_result_library_search_path, params.gnps_result_output_path)
+    params.max_component_size, params.min_matched_peaks, input_rules_ionization, params.library_searchtool, \
+    params.library_min_cosine, params.library_min_matched_peaks, params.library_analog_search)
 }
