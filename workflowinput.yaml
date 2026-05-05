@@ -193,7 +193,7 @@ parameterlist:
     - displayname: Library Analog Search
       paramtype: select
       nf_paramname: library_analog_search
-      formvalue: "TRUE"
+      formvalue: "FALSE"
       options:
         - value: "FALSE"
           display: "No"
