@@ -108,6 +108,8 @@ process np3PreProcess {
     --ion_mode $ion_mode --rt_tolerance $rt_tolerance_deviation \
     --ppm_tolerance $ppm_tolerance --peak_width $peak_width --processed_data_overwrite FALSE \
     --verbose 1
+    # check if the pre process statistics resulted in a warning, if yes copy it to the expected display output
+    [ -f '$raw_data_path/$pre_processed_data_name/logPreProcessStatisticsWarning' ] && cp '$raw_data_path/$pre_processed_data_name/logPreProcessStatisticsWarning' '$raw_data_path/$pre_processed_data_name/logPreProcessStatistics'
     # check if the pre process result exists and if yes create the pre_processed_output_path and then
     # copy the pre process result to the current work space in the pre_processed_output_path
     [ -d '$raw_data_path/$pre_processed_data_name' ] && mkdir -p '$pre_processed_output_path/' && \
