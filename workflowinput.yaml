@@ -1,7 +1,7 @@
 workflowname: NP3_MS_Workflow_nextflow
-workflowdescription: This is the NP3 MS Workflow v1.4.0 for GNPS2 using Nextflow.
+workflowdescription: This is the NP3 MS Workflow v1.6.0 for GNPS2 using Nextflow.
 workflowlongdescription: The NP3 MS Workflow is a pipeline for LC-MS/MS metabolomics data process and analysis focused on untargeted data. The NP3 *run* command is implemented here, which executes Steps 2 to 10. The Pre Process command (Step 2) is executed separated with provided parameters. The GNPS2 Library Search is integrated automatically to the results. ** Checkout the NP³ repository for more details - https://github.com/danielatrivella/NP3_MS_Workflow **
-workflowversion: "2026.05.04"
+workflowversion: "2026.09.14"
 workflowfile: nf_workflow.nf
 workflowautohide: false
 adminonly: false
@@ -212,6 +212,7 @@ parameterlist:
     - displayname: Install Dependencies
       paramtype: select
       nf_paramname: install_dependencies
+      tooltip: "If Yes, executes the NP3 setup command. For admin use only."
       formvalue: "No"
       options:
         - value: "Yes"
