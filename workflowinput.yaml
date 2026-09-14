@@ -49,12 +49,17 @@ parameterlist:
       formvalue: "0.05"
       tooltip: "The tolerance in Daltons for fragment peaks. Peaks in the original MS/MS spectra that are closer than this get merged in the clustering jobs (Step 3). Also used in the pre process (Step 2), in the spectra similarity comparisons and in cleaning (Step 5) (default to 0.05)."
 
+
     - displayname: Ion Mode
-      paramtype: text
+      paramtype: select
       nf_paramname: ion_mode
-      formplaceholder: Enter '1' for positive or '2' for negative ion mode
-      formvalue: "1"
-      tooltip: "the precursor ion mode. One of the following numeric values corresponding to an ion adduct type = '1' for positive [M+H]+; or '2' for negative [M-H]- ion mode (default to '1')."
+      formvalue: 1
+      tooltip: "the precursor ion mode. Set to 'Positive' for an ion adduct type equals [M+H]+; or 'Negative' for [M-H]- (default to 'Positive')."
+      options:
+        - value: 1
+          display: Positive
+        - value: 2
+          display: Negative
 
     # critical parms for *pre_process*
     - displayname: Critical Parameters - Pre_process
@@ -126,8 +131,8 @@ parameterlist:
       paramtype: text
       nf_paramname: noise_cutoff
       formplaceholder: Enter the noise cutoff value
-      formvalue: "FALSE"
-      tooltip: "A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering Step 3 result and to remove the spectra with a basePeakInt value below this distribution median plus IQR*noise_cutoff after the clean Step 5. Or FALSE to disable it. When no blank sample is present in the metadata, the full distribution is used. This cutoff will affect the spectra with a low basePeakInt value that probably are noise features."
+      formvalue: "0"
+      tooltip: "A positive numeric value defining the minimum base peak intensity absolute value that a MS2 spectra must have to be kept after the clustering of Step 3. The MS2 spectra with a basePeakInt smaller than this value will be removed before clean Step 5. The default value is zero (disabled). Large values in this parameter may result in the loss of minority compounds together with noise spectra. (default to 0)"
 
     - displayname: Molecular Networking Parameters
       paramtype: section
