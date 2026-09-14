@@ -26,7 +26,7 @@ params.ppm_tolerance = "15"
 params.rt_tolerance = "1,2"
 params.similarity_function = "np3_shifted_cosine" // hard coded for now - spec2vec was not working
 params.trim_mz = "TRUE"
-params.noise_cutoff = "FALSE"
+params.noise_cutoff = "0"
 // MN parms
 params.similarity_mn = "0.6"
 params.net_top_k = "15"
