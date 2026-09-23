@@ -1,0 +1,64 @@
+site_name: Manual NP3 MS Workflow
+site_description: Documentação do fluxo de trabalho de espectrometria de massas do NP3.
+site_author: Cristina F Bazzano
+
+# Repository
+repo_url: https://github.com/danielatrivella/NP3_MS_Workflow
+repo_name: NP3_MS_Workflow
+#edit_uri: edit/master/docs/
+
+# Copyright
+copyright: Copyright &copy; 2022 - 2022 CNPEM LNBIO
+
+# Configuração do Tema Material
+theme:
+  name: material
+  language: en               # Traduz elementos da interface para ingles
+  logo: assets/logo_np3ms.png
+  favicon: assets/logo_np3ms.png
+  features:
+    - navigation.tabs        # Menu superior para grandes seções (opcional)
+    - navigation.sections    # Agrupa tópicos no menu lateral
+    - navigation.expand      # Deixa os menus lateral abertos por padrão
+    - search.suggest         # Sugestões de busca ao digitar
+    - search.highlight       # Destaca o texto buscado nas páginas
+    - header.autohide
+  palette:
+    # Configuração de cor (Modo Claro)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: blue-gray
+      toggle:
+        icon: material/weather-sunny
+        name: Mudar para modo escuro
+    # Configuração de cor (Modo Escuro)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: blue-gray
+      toggle:
+        icon: material/weather-night
+        name: Mudar para modo claro
+  icon:
+    repo: fontawesome/brands/git-alt
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+# ---- ADICIONE OS LINKS no rodape ----
+extra:
+  social:
+    - icon: material/web             # Ícone de Website mundial
+      link: https://lnbio.cnpem.br/divisoes-cientificas/descoberta-de-farmacos/  # Substitua pelo link real do NP3
+      name: Visit CNPEM-LNBio Drug Discovery Division
+
+# Menu de Navegação (Mapeamento dos seus tópicos)
+nav:
+  - Home: index.md
+  - Pré-Processamento:
+      - Introdução: 01_pre_process/description.md
+  - Run MS:
+      - Description: 02_run/description.md
+      - Details: 02_run/details.md
+
