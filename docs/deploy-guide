@@ -1,0 +1,4 @@
+# to execute the docs locale:
+mkdocs serve --livereload
+# to deploy the code automatically to the github:
+mkdocs gh-deploy
