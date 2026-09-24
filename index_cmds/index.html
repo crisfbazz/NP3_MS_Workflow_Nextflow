@@ -866,9 +866,15 @@
   <h1>Commands</h1>
 
 <h2 id="workflow-main-commands">Workflow Main Commands</h2>
-<p>The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow, except for the first step. It can also execute each step of the workflow separately, plus the visualization commands and the command to include the GNPS library identification results in the results. </p>
-<p>The Steps 2 to 10 can be automatically executed with the NP³ MS Workflow command <strong>run</strong>. And different results from the NP³ MS Workflow may be joined using the command <strong>join_jobs</strong>, which automatically execute Steps 3 to 10 with adaptations for joining previous results in an incremental clustering approach.</p>
-<p><strong>Final reports</strong> are created at the end of the <strong>run</strong>, <strong>join_jobs</strong> and <strong>clean</strong> commands. These reports are separated in quantification, chemical and network statistics and analysis of the results. Detailed in the run command <a href="../cmd_run/final_reports.md">Final Reports</a> section. The PCA plotting can be executed separated using the <strong>pca_plot</strong> command.</p>
+<p>The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow, 
+except for the first step. It can also execute each step of the workflow separately, plus the visualization commands 
+and the command to include the GNPS library identification results in the results. </p>
+<p>The Steps 2 to 10 can be automatically executed with the NP³ MS Workflow command <strong>run</strong>. And different results from 
+the NP³ MS Workflow may be joined using the command <strong>join_jobs</strong>, which automatically execute Steps 3 to 10 with 
+adaptations for joining previous results in an incremental clustering approach.</p>
+<p><strong>Final reports</strong> are created at the end of the <strong>run</strong>, <strong>join_jobs</strong> and <strong>clean</strong> commands. These reports are 
+separated in quantification, chemical and network statistics and analysis of the results. Detailed in the run 
+command <a href="../pages/cmd_run/final_reports/">Final Reports</a> section. The PCA plotting can be executed separated using the <strong>pca_plot</strong> command.</p>
 <p>This workflow also contains two interactive commands for data visualization:</p>
 <ul>
 <li><strong>chr</strong>: The first extracts chromatogram from raw MS1 data files and save the images to PNG files. Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or an extracted ion chromatogram (XIC), extracted from each sample/file with customized groups, and m/z and retention time windows. </li>
