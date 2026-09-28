@@ -18,7 +18,7 @@ constructs molecular networks to improve the analysis and visualization of the r
 
 The NP³ MS Workflow consists of ten major steps exemplified in the following image and described below:
 
-![NP³ MS workflow pipeline infographic](../../img/NP3_MS_workflow_infographic.jpg)
+![NP³ MS workflow pipeline infographic](img/NP3_MS_workflow_infographic.jpg)
 
 * *Step 1*: Metadata table construction describing the input LC-MS/MS samples, bioactivity scores and groups. This is the only step that requires user intervention.
 * *Step 2*: Raw data pre-process, that enriches the MS2 spectra with MS1 chromatographic peak dimensions.
@@ -30,6 +30,20 @@ The NP³ MS Workflow consists of ten major steps exemplified in the following im
 * *Step 8*: Merge of clean consensus spectra quantifications based on the annotated variants and the [M+H]+ representatives (for positive ion mode only).
 * *Step 9*: Correlation between the consensus spectra quantifications and the samples bioactivity scores to rank the candidates responsible for the observed hits in bioactivity experiments. It also computes the quantification grouping.
 * *Step 10*: Creation of a spectra similarity molecular network (SSMN) based on the clean consensus spectra similarity and creation of the protonated networks IVAMN [M+H]+ and SSMN [M+H]+ filtered.
+
+The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow, 
+except for the first step. It can also execute each step of the workflow separately, plus the visualization commands 
+and the command to include the GNPS library identification results in the results. 
+
+## NP³ Online in GNPS2 Workflows
+
+The NP³ MS workflow is included in the GNPS2 Workflows and may be executed online using their web interface - [check it out](https://gnps2.org/workflowinput?workflowname=NP3_MS_Workflow_nextflow)! 
+This interface includes the **pre_process**+**run** commands features (Steps 2 to 10) and 
+the most important parameters. Using the desired parameters and one click, your job is submitted!
+
+Search for "np3" in the [GNPS2 workflows list](https://gnps2.org/workflows).
+
+For a more personalized use, the full installation is required and the CLI must be used.
 
 ## References
 [^1]: C.F. Bazzano, et al. (2024). *NP³ MS Workflow*. Analytical Chemistry 96 DOI: 10.1021/acs.analchem.3c05829

@@ -75,7 +75,7 @@ It is expected that the first file of each data collection batch number is the m
 different data collection batches, e.g., 
 those that have the same polarity or other characteristic that provides them bigger chances of having more MS1 peaks in common. 
 Files from extracts are a good choice to go first. This will only influence in the proposed suggestion for 
-the retention time tolerance value, it will **not modify the data** (see Step 2 pre_process Details).
+the retention time tolerance value, **it will not modify the data** (see Step 2 pre_process Details).
  
 #### Clustering 
 
@@ -83,12 +83,12 @@ The **Step 3** clustering will be performed in batches using the DATA_COLLECTION
 SAMPLE_TYPE information to group the samples in the following criteria:
 
 1. First, all the samples, excluding blanks, (column "SAMPLE_TYPE" equal to "sample", "hit", "bed" or "control") 
-from the same batch (which have the same DATA_COLLECTION_BATCH number) are clustered in the *data clustering step*. 
+from the same batch (which have the same DATA_COLLECTION_BATCH number) are clustered in the **data clustering step**. 
 2. Next, all the blank samples (column "SAMPLE_TYPE" equal to "blank") from the same batch are clustered in the 
-*blank clustering step*, in which the retention time is not used to better deal with baseline blanks. 
+**blank clustering step**, in which the retention time is not used to better deal with baseline blanks. 
 3. Subsequently, all sub-batches (data and blank steps results) from the same data collection batch are clustered 
-together in the *data collection batch integration step*.
-4. Finally, all batches are clustered together in the *final integration step*. 
+together in the **data collection batch integration step**.
+4. Finally, all batches are clustered together in the **final integration step**. 
 
 This way, spectra that were detected in the same conditions, and thus tend to be more similar, 
 are enriched first before being clustered with the spectra from a different batch (less related samples). 
@@ -104,4 +104,5 @@ and again the data collection batch should group the related samples (e.g. same 
 from which it's expected and possible (physically or chemically) to find ionization variants.
 
 Thus, the DATA_COLLECTION_BATCH grouping will directly impact the number of possible ionization variants annotations and 
-this will indirectly impact the choice of the putative [M+H]+, which are selected based on the set of ionization variants annotations.
+this will indirectly **impact the choice of the putative [M+H]+**, which are selected based on the set of ionization variants 
+annotations.

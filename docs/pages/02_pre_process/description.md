@@ -1,4 +1,4 @@
-## Step 2: Command **pre\_process**
+## Step 2: Command **pre_process**
  
 Runs the pre-process of the LC-MS/MS raw data. 
 

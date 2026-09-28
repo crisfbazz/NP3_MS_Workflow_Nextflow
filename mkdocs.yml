@@ -69,9 +69,9 @@ extra:
 # Menu de Navegação (Mapeamento dos seus tópicos)
 nav:
   - Overview:
-      - Introduction: pages/overview/index.md
-      - Commands: pages/overview/index_cmds.md
-      - Data Input and Output: pages/overview/index_data.md
+      - Introduction: index.md
+      - Commands: index_cmds.md
+      - Data Input and Output: index_data.md
   - Installation and Setup:
       - Installation: pages/installation_setup/installation.md
       - Setup: pages/installation_setup/setup.md
@@ -80,11 +80,21 @@ nav:
   - Run:
       - Description: pages/cmd_run/description.md
       - Final Reports: pages/cmd_run/final_reports.md
-  - Pre_process:
+  - Pre-process:
       - Description: pages/02_pre_process/description.md
       - Details: pages/02_pre_process/details.md
       - Optimization: pages/02_pre_process/optimization.md
-  - Clustering:
+  - Clustering and Quantification:
       - Description: pages/03_clustering/description.md
-      - Details: pages/03_clustering/details.md
+      - Clustering Details: pages/03_clustering/details_clustering.md
+      - Quantification Details: pages/03_clustering/details_quantification.md
+  - Cleaning:
+      - Description: pages/05_clean/description.md
+      - Details: pages/05_clean/details.md
+  - Spectral Identification:
+      - Description: pages/06_spectral_identification/description.md
+      - ISDB-UNPD using Tremolo: pages/06_spectral_identification/tremolo.md
+      - GNPS2 Library Search: pages/06_spectral_identification/gnps_library_search.md
+      - Final Identification Curation: pages/06_spectral_identification/final_identification_curation.md
+      - GNPS external result: pages/06_spectral_identification/gnps_result.md
 

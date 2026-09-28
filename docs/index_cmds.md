@@ -1,17 +1,25 @@
 ## Workflow Main Commands
 
-The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow, except for the first step. It can also execute each step of the workflow separately, plus the visualization commands and the command to include the GNPS library identification results in the results. 
+The Steps 2 to 10 can be automatically executed with the NP³ MS Workflow[^1] command **run**. And different results from 
+the NP³ MS Workflow may be joined using the command **join_jobs**, which automatically execute Steps 3 to 10 with 
+adaptations for joining previous results in an incremental clustering approach.
 
-The Steps 2 to 10 can be automatically executed with the NP³ MS Workflow command **run**. And different results from the NP³ MS Workflow may be joined using the command **join_jobs**, which automatically execute Steps 3 to 10 with adaptations for joining previous results in an incremental clustering approach.
-
-**Final reports** are created at the end of the **run**, **join_jobs** and **clean** commands. These reports are separated in quantification, chemical and network statistics and analysis of the results. Detailed in the run command [Final Reports](../cmd_run/final_reports.md) section. The PCA plotting can be executed separated using the **pca_plot** command.
+**Final reports** are created at the end of the **run**, **join_jobs** and **clean** commands. These reports are 
+separated in quantification, chemical and network statistics and analysis of the results. Detailed in the run 
+command [Final Reports](pages/cmd_run/final_reports.md) section. The PCA plotting can be executed separated using the **pca_plot** command.
  
 This workflow also contains two interactive commands for data visualization:
  
-* **chr**: The first extracts chromatogram from raw MS1 data files and save the images to PNG files. Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or an extracted ion chromatogram (XIC), extracted from each sample/file with customized groups, and m/z and retention time windows. 
-* **spectra_viewer**: The second visualizes and compares MS2 data from MGF files or peak lists. It can also save the images to PNG or SVG files. Currently, it is only supported for Unix OS.
+* **chr**: The first extracts chromatogram from raw MS1 data files and save the images to PNG files. Depending on the 
+* chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or an extracted ion 
+* chromatogram (XIC), extracted from each sample/file with customized groups, and m/z and retention time windows. 
+* **spectra_viewer**: The second visualizes and compares MS2 data from MGF files or peak lists. 
+* It can also save the images to PNG or SVG files. Currently, it is only supported for Unix OS.
  
-Furthermore, the user may manually identify the resulting consensus spectra against the GNPS or GNPS2 [8] online spectral libraries and use another separated command of this workflow called **gnps_result** to join the GNPS identification results to the NP³ MS Workflow quantification tables. The GNPS2 Library Search Workflow may also be executed by this workflow offline using the command **gnps_library_search**, fully integrated with the NP³ results.
+Furthermore, the user may manually identify the resulting consensus spectra against the GNPS[^2] or GNPS2 online 
+spectral libraries and use another separated command of this workflow called **gnps_result** to join the GNPS 
+identification results to the NP³ MS Workflow quantification tables. The GNPS2 Library Search Workflow may also be 
+executed by this workflow offline using the command **gnps_library_search**, fully integrated with the NP³ results.
 
 ## Commands Overview
 
@@ -132,3 +140,4 @@ Also executes the setup of the libraries used for spectral searching (UNPD and G
 
 ## References
 [^1]: C.F. Bazzano, et al. (2024). *NP³ MS Workflow*. Analytical Chemistry 96 DOI: 10.1021/acs.analchem.3c05829
+[^2]: Wang, M., Carver, J., Phelan, V. et al. Sharing and community curation of mass spectrometry data with Global Natural Products Social Molecular Networking. Nat Biotechnol 34, 828–837 (2016). https://doi.org/10.1038/nbt.3597 (GNPS)

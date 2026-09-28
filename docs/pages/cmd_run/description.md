@@ -10,7 +10,7 @@ For the complete list of parameters run:
 node np3_workflow.js run --help
 ```
  
-Options for the command *run*:
+Parameters for the command *run*:
  
 - *\-n, \-\-output_name* <name\>      : the job name. It will be used to name the output directory and the results of the final clustering integration step. It must have less than 80 characters.
 - *\-m, \-\-metadata* <file\>          : path to the metadata table CSV file

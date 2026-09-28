@@ -1,6 +1,6 @@
 ## Input
  
-The main input for the NP³ MS Workflow (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML formats (mzData format could also be used, but was not vastly tested). 
+The main input for the NP³ MS Workflow[^1] (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML formats (mzData format could also be used, but was not vastly tested). 
 It fully supports the positive ([M+H]+) ion mode; and the negative ([M-H]-) ion mode may also be used, but the Steps 7 and 8 were not vastly tested for it and may lead to undesired results. 
 The rest of the pipeline results can be used for the negative ion mode.
 
