@@ -16,7 +16,7 @@
         <link rel="prev" href="../../02_pre_process/optimization/">
       
       
-        <link rel="next" href="../details/">
+        <link rel="next" href="../details_clustering/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pre-processamento-de-dados" class="md-skip">
+        <a href="#step-3-and-4-command-clustering" class="md-skip">
           Skip to content
         </a>
       
@@ -278,7 +278,7 @@
   
     <li class="md-tabs__item">
       <a href="../../02_pre_process/description/" class="md-tabs__link">
-        Pre_process
+        Pre-process
       </a>
     </li>
   
@@ -296,7 +296,39 @@
   
     <li class="md-tabs__item">
       <a href="./" class="md-tabs__link md-tabs__link--active">
-        Clustering
+        Clustering and Quantification
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../05_clean/description/" class="md-tabs__link">
+        Cleaning
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../06_spectral_identification/description/" class="md-tabs__link">
+        Spectral Identification
       </a>
     </li>
   
@@ -625,14 +657,14 @@
       
       
         <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-          Pre_process
+          Pre-process
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Pre_process
+          Pre-process
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -704,14 +736,14 @@
       
       
         <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-          Clustering
+          Clustering and Quantification
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
-          Clustering
+          Clustering and Quantification
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -726,8 +758,6 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -745,8 +775,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -755,8 +783,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requisitos-de-entrada" class="md-nav__link">
-    Requisitos de Entrada
+  <a href="#step-3-and-4-command-clustering" class="md-nav__link">
+    Step 3 and 4: Command clustering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -776,8 +825,194 @@
   
   
     <li class="md-nav__item">
-      <a href="../details/" class="md-nav__link">
+      <a href="../details_clustering/" class="md-nav__link">
+        Clustering Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details_quantification/" class="md-nav__link">
+        Quantification Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Cleaning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Cleaning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_clean/description/" class="md-nav__link">
+        Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_clean/details/" class="md-nav__link">
         Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Spectral Identification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Spectral Identification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_spectral_identification/description/" class="md-nav__link">
+        Description
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_spectral_identification/tremolo/" class="md-nav__link">
+        ISDB-UNPD using Tremolo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_spectral_identification/gnps_library_search/" class="md-nav__link">
+        GNPS2 Library Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_spectral_identification/final_identification_curation/" class="md-nav__link">
+        Final Identification Curation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_spectral_identification/gnps_result/" class="md-nav__link">
+        GNPS external result
       </a>
     </li>
   
@@ -807,8 +1042,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -817,8 +1050,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requisitos-de-entrada" class="md-nav__link">
-    Requisitos de Entrada
+  <a href="#step-3-and-4-command-clustering" class="md-nav__link">
+    Step 3 and 4: Command clustering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -841,12 +1095,75 @@
   
 
 
-<h1 id="pre-processamento-de-dados">Pré-processamento de Dados</h1>
-<p>Nesta seção, abordamos os passos iniciais para a preparação dos arquivos brutos de MS.</p>
-<h2 id="requisitos-de-entrada">Requisitos de Entrada</h2>
-<p>Os arquivos devem estar preferencialmente no formato <code>.mzXML</code> ou <code>.mzML</code>.</p>
-<p>!!! note "Dica Importante"
-    Certifique-se de que a calibração de massa foi aplicada antes de exportar os dados.</p>
+  <h1>Description</h1>
+
+<h2 id="step-3-and-4-command-clustering">Step 3 and 4: Command <strong>clustering</strong></h2>
+<p>Runs the NP3_MSCluster algorithm to perform the clustering of pre-processed MS/MS data into a collection of consensus 
+spectra. It relies on spectra similarity and chromatographic dimensions. </p>
+<p>Then, runs the consensus spectra quantification 
+(Step 4) to parse the clustering results and count the number of spectra and of peak area by sample. Finally, it computes 
+appropriate indicators based on the sample's types. This command can also run the library spectra identifications (Step 6), and if 
+necessary, it runs Step 2.</p>
+<h2 id="parameters">Parameters</h2>
+<p>Parameters for the command <em>clustering</em>:</p>
+<ul>
+<li><em>-n, --output_name</em> \&lt;name&gt;:       the job name. It will be used to name the output directory and the results from the final clustering integration step</li>
+<li><em>-m, --metadata</em> \&lt;file&gt;       :      path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> \&lt;path&gt;   :     path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
+<li><em>-o, --output_path</em> \&lt;path&gt;     :     path to where the output directory will be created</li>
+<li><em>-f, --fragment_tolerance</em> [x]  :    the tolerance in Daltons for fragment peaks. Peaks in the original spectra that are closer than this get merged by the NP3_MSCluster algorithm (default: 0.05)</li>
+<li><em>-z, --mz_tolerance</em> [x]         :   this is the tolerance in Daltons for the m/z of the precursor that determines if two spectra will be compared and possibly joined. Used in the clustering job and in the library identifications (Step 6) (default: 0.025)</li>
+<li><em>-p, --ppm_tolerance</em> [x]        :   the maximal tolerated m/z deviation in parts per million (ppm) to be used in the pre-processing step if needed (default: 5)</li>
+<li><em>-a, --ion_mode</em> [x]            :    the precursor ion mode. One of the following numeric values corresponding to a ion adduct type: '1' = Positive [M+H]+ or '2' = Negative [M-H]- (default: 1)</li>
+<li><em>-s, --similarity</em> [x]           :   the minimum similarity to be consider in the hierarchical clustering, starts in 0.70 and decrease to X in 15 rounds (default: 0.55)</li>
+<li><em>-g, --similarity_blank</em> [x]      :  the minimum similarity to be consider in the hierarchical clustering of the blank clustering steps, starts in 0.70 and decrease to X in 15 rounds. Only used in the clustering of blank samples (column SAMPLE_TYPE equals 'blank' in the metadata table) (default: 0.3)</li>
+<li><em>-t, --rt_tolerance</em> [x,y] :        tolerances in seconds for the retention time width of the precursor that determines if two spectra will be compared and possibly joined. The first tolerance [x] is used in the data, blank and batches integration clustering steps; and the second tolerance [y] is for the final integration step between all samples (default: 1,2)</li>
+<li><em>-y, --processed_data_name</em> [x]  :   the name of the folder inside the raw_data_path where the pre-processed data was stored. If the given folder does not exist it will be created and the pre-process will be run using the default values of the missing options. Otherwise, it will depend on the processed_data_overwrite parameter value (default: "processed_data")</li>
+<li><em>-q, --processed_data_overwrite</em> [x] :  A logical "TRUE" or "FALSE" indicating if the pre processed data present in the processed_data_name folder should be used (FALSE) and partially incremented if needed, in case it already exists, or overwritten and pre processed again (TRUE) with the default values of the missing Step 2 options (default: "FALSE")</li>
+<li><em>-c, --scale_factor</em> [x]          :  the scaling method to be used in the fragmented peak's intensities before any dot product comparison (Step 3). Valid values are: 0 for the natural logarithm (ln) of the intensities; 1 for no scaling; and other values greater than zero for raising the fragment peaks intensities to the power of x (e.g., x = 0.5 is the square root scaling). [x] &gt;= 0 (default: 0.5)</li>
+<li><em>-e, --method</em> [name]             :  a character string indicating which correlation coefficient is to be computed. One of "pearson", "kendall", or "spearman" (default: "spearman")</li>
+<li><em>-x, --min_peaks_output</em> [x]       : the minimum number of fragment peaks that a spectrum must have to be outputted after the final clustering step (Step 3). Spectra with less than X peaks will be discarded. x &gt;= 1 (default: 5)</li>
+</ul>
+<!-- - *\-i, \-\-metfrag_identification* [x]  : a logical "TRUE" or "FALSE" indicating if MetFrag tool should be used for identification search against the PubChem database of the top correlated spectra. (default: "FALSE") -->
+<ul>
+<li><em>-j, --tremolo_identification</em> [x]  : (not Windows OS's) A logical "TRUE" or "FALSE" indicating if the Tremolo tool should be used for the spectral matching against the ISDB from the UNPD (default: "TRUE")</li>
+<li><em>-b, --max_chunk_spectra</em> [x]      : Maximum number of spectra to be loaded and processed in a chunk at the same time. In case of memory issues this value should be decreased (default: 3000)</li>
+<li><em>-v, --verbose</em> [x]              :   for values X&gt;0 show the scripts output information (default: 0)</li>
+<li><em>-h, --help</em>                     :   output usage information</li>
+</ul>
+<h2 id="results">Results</h2>
+<p>A directory inside the <code>output_path</code> named with the <code>output_name</code> containing:</p>
+<ul>
+<li>A copy of the <em>metadata</em> file and the command line parameters values used in a file named 'logRunParms', for reproducibility</li>
+</ul>
+<!-- - a folder named 'spec_lists' containing the list of files used in each step run of the NP3_MSCluster algorithm;  -->
+<ul>
+<li>A folder named 'outs' with the clustering steps results in separate folders containing: <ul>
+<li>A subfolder named 'count_tables' with the Step 4 quantification's in CSV tables named as 
+  '<step_name>_(spectra|peak_area).csv'.</li>
+<li>A subfolder named 'clust' with the cluster's membership files (which SCANS or msclusterID were joined)</li>
+<li>A subfolder named 'mgf' with the resulting clusters consensus spectra in MGF files</li>
+<li>A text file named 'logClusteringOutput' with the NP3_MSCluster log output. </li>
+</ul>
+</li>
+</ul>
+<p>The clustering steps results folders are named as 'B_\&lt;DATA_COLLECTION_BATCH&gt;_\&lt;X&gt;' where <em>DATA_COLLECTION_BATCH* 
+is the data collection batch number in the metadata file of each group of samples and </em>X<em> is 0 if it is the result of a 
+</em>data clustering step<em> or 1 if it is the result of a </em>blank clustering step<em>. 
+The </em>data collection batch integration step* results are stored in folders named as 'B_\&lt;DATA_COLLECTION_BATCH&gt;'.</p>
+<p>The final integration step result is located inside the 'outs' directory in a folder named with the <code>output_name</code>. 
+This folder contains the final counts and is where the user will find the final results. It also contains the tremolo 
+identification results inside the 'identifications' folder.</p>
+<h2 id="examples">Examples</h2>
+<p>Fake examples to execute the Clustering command:</p>
+<div class="language-text copy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>node np3_workflow.js clustering --output_name &quot;test_np3&quot; --output_path &quot;/path/where/the/output/will/be/stored&quot; --metadata 
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&quot;/path/to/the/metadata/file/test_np3_metadata.csv&quot; --raw_data_path 
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&quot;/path/to/the/raw/data/dir&quot;
+</span></code></pre></div>
+<p>Same example with different retention time tolerances:</p>
+<div class="language-text copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>node np3_workflow.js clustering -n &quot;test_np3_rt_tol&quot; -o &quot;/path/where/the/output/will/be/stored&quot; -m 
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&quot;/path/to/the/metadata/file/test_np3_metadata.csv&quot; -d &quot;/path/to/the/raw/data/dir&quot; -t 3.5,5
+</span></code></pre></div>
 
 
 
