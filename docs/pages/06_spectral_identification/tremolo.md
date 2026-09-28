@@ -5,7 +5,7 @@ Natural Products Database[^1] (ISDB) for 170 602 Natural Products from the Unive
 (UNPD)  using the tremolo tool[^3] to retrieve library annotations. This tool can only be executed in Unix OS and for 
 data in positive ion mode. 
 
-The Step 6.1 corresponds to the GNPS2 Library Search and is described in the next [section]((gnps_library_search.md)).
+The Step 6.1 corresponds to the GNPS2 Library Search and is described in the next [section](gnps_library_search.md).
 
 The NPClassifier[^4], NPAtlas[^5] and ClassyFire[^6] solutions were used to add origin and class information to 
 the UNPD compounds. NP³ MS Workflow will retrieve this information together with the library annotations.
