@@ -1,4 +1,4 @@
-site_name: Manual NP³ MS Workflow
+site_name: NP³ MS Workflow Documentation
 site_description: The documentation of the NP³ MS Workflow commands and usage.
 site_author: Cristina F Bazzano
 
@@ -16,15 +16,18 @@ theme:
   language: en               # Traduz elementos da interface para ingles
   logo: img/logo_np3ms.png
   favicon: img/logo_np3ms.png
+  prev_next_buttons_location: both
   features:
-    - navigation.tabs        # Menu superior para grandes seções (opcional)
+    #- navigation.tabs        # Menu superior para grandes seções (opcional)
     - navigation.sections    # Agrupa tópicos no menu lateral
-    - navigation.expand      # Deixa os menus lateral abertos por padrão
+    #- navigation.expand      # Deixa os menus lateral abertos por padrão
     - search.suggest         # Sugestões de busca ao digitar
     - search.highlight       # Destaca o texto buscado nas páginas
     - header.autohide
     - content.footnote.tooltips
     - content.code.copy  # This enables the copy button globally
+    - content.action.edit
+    #- toc.integrate
   palette:
     # Configuração de cor (Modo Claro)
     - media: "(prefers-color-scheme: light)"
@@ -57,6 +60,7 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.superfences
+  - pymdownx.details
   - pymdownx.inlinehilite
 
 # ---- ADICIONE OS LINKS no rodape ----
@@ -69,32 +73,37 @@ extra:
 # Menu de Navegação (Mapeamento dos seus tópicos)
 nav:
   - Overview:
-      - Introduction: index.md
-      - Commands: index_cmds.md
-      - Data Input and Output: index_data.md
-  - Installation and Setup:
-      - Installation: pages/installation_setup/installation.md
-      - Setup: pages/installation_setup/setup.md
-  - Metadata:
+      - Introduction:
+          - About: index.md
+          - Commands List: index_cmds.md
+          - Data Input and Output: index_data.md
+      - Installation and Setup:
+          - Installation: pages/installation_setup/installation.md
+          - Setup: pages/installation_setup/setup.md
+  - Metadata Table:
       - Metadata Creation: pages/01_metadata/description.md
-  - Run:
-      - Description: pages/cmd_run/description.md
-      - Final Reports: pages/cmd_run/final_reports.md
-  - Pre-process:
-      - Description: pages/02_pre_process/description.md
-      - Details: pages/02_pre_process/details.md
-      - Optimization: pages/02_pre_process/optimization.md
-  - Clustering and Quantification:
-      - Description: pages/03_clustering/description.md
-      - Clustering Details: pages/03_clustering/details_clustering.md
-      - Quantification Details: pages/03_clustering/details_quantification.md
-  - Cleaning:
-      - Description: pages/05_clean/description.md
-      - Details: pages/05_clean/details.md
-  - Spectral Identification:
-      - Description: pages/06_spectral_identification/description.md
-      - ISDB-UNPD using Tremolo: pages/06_spectral_identification/tremolo.md
-      - GNPS2 Library Search: pages/06_spectral_identification/gnps_library_search.md
-      - Final Identification Curation: pages/06_spectral_identification/final_identification_curation.md
-      - GNPS external result: pages/06_spectral_identification/gnps_result.md
+  - Commands:
+      - Run:
+          - Description: pages/cmd_run/description.md
+          - Final Reports: pages/cmd_run/final_reports.md
+      - Pre-processing:
+          - Description: pages/02_pre_process/description.md
+          - Details: pages/02_pre_process/details.md
+          - Optimization: pages/02_pre_process/optimization.md
+      - Clustering and Quantification:
+          - Description: pages/03_clustering/description.md
+          - Clustering Details: pages/03_clustering/details_clustering.md
+          - Quantification Details: pages/03_clustering/details_quantification.md
+      - Cleaning:
+          - Description: pages/05_clean/description.md
+          - Details: pages/05_clean/details.md
+      - Spectral Identification:
+          - Description: pages/06_spectral_identification/description.md
+          - ISDB-UNPD using Tremolo: pages/06_spectral_identification/tremolo.md
+          - GNPS2 Library Search: pages/06_spectral_identification/gnps_library_search.md
+          - Final Identification Curation: pages/06_spectral_identification/final_identification_curation.md
+          - GNPS external result: pages/06_spectral_identification/gnps_result.md
+      - Annotation [M+H]+:
+          - Description: pages/07_annotate_protonated/description.md
+          - Details: pages/07_annotate_protonated/details.md
 
