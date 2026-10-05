@@ -1,6 +1,9 @@
 ## Steps 2 to 10: Command **run**
  
-This command runs the entire NP³ MS Workflow pipeline - Steps 2 to 10.
+This command runs the entire NP³ MS Workflow pipeline - Steps 2 to 10. 
+
+If a pre-process result already exists in the provided `raw_data_path`/`processed_data_name` folder, 
+it uses this result and skip Step 2.
 
 ## Parameters
 
@@ -63,15 +66,16 @@ Parameters for the command *run*:
  
 The **run** command result in a directory inside the `output_path` named with the `output_name` containing:
  
-- A copy of the *metadata* and the *rules* files and the command line parameters values used in a file named 'logRunParms', for reproducibility
+- A copy of the *metadata* and the *rules* files and the command line parameters values used in a file named 
+'logRunParms', for reproducibility
 <!-- - a folder named 'spec_lists' containing the list of files used in each step run of the NP3_MSCluster algorithm;  -->
 - A folder named 'outs' with the clustering steps results in separate folders containing: 
-    - A subfolder named 'count_tables' with the Step 4 quantifications in CSV tables named as '<step_name\>_(spectra|peak_area).csv'.
+    - A subfolder named 'count_tables' with the Step 4 quantification in CSV tables named as '<step_name\>_(spectra|peak_area).csv'.
     - Another subfolder named 'clust' with the clusters membership files (which SCANS or msclusterID were joined)
     - A third subfolder named 'mgf' with the resulting clusters consensus spectra in MGF files
     - A text file named 'logClusteringOutput' with the NP3_MSCluster log output. 
  
-The clustering steps results folders are named as 'B\_<DATA\_COLLECTION_BATCH\>\_<X\>' where *DATA\_COLLECTION\_BATCH* 
+The clustering steps results folders are named (*step_name*) as 'B\_<DATA\_COLLECTION_BATCH\>\_<X\>' where *DATA\_COLLECTION\_BATCH* 
 is the data collection batch number in the metadata file of each group of samples and *X* is 0 if it is the result of a 
 *data clustering step* or 1 if it is the result of a *blank clustering step*. 
 The *data collection batch integration step* results are stored in folders named as 'B\_<DATA\_COLLECTION\_BATCH\>'.
@@ -81,26 +85,30 @@ This folder contains the final quantification and is where the user will find th
 It also contains the following data:
  
 - Inside the 'count_tables' folder two subfolders named "clean" and "merge" containing CSV tables with the 
-quantification and annotations from Steps 4 to 9, and the base peak intensity distribution plot of the clustering counts in a PNG image file;
+quantification and annotations from Steps 4 to 9, and the base peak intensity distribution plot of the clustering 
+counts in a PNG image file;
 - The 'identifications' folder with the tremolo and gnps library identification results;
 - The 'molecular_networking' folder containing: 
     - One subfolder named "similarity_tables" with the pairwise similarity tables (Step 5);
     - Five molecular networks edge files (Steps 7 and 10): 
         - The ionization variant annoation molecular network named as: \newline
-          '<*output_name*\>\_ivamn.selfloops'
+          '`output_name`\_ivamn.selfloops'
         - The complete spectra similarity molecular network named as : \newline
-          '<*output_name*\>\_ssmn_w\_<*similarity_mn*\>.selfloops', which contains all links with a similarity value above the cut-off
+          '`output_name`\_ssmn_w\_`similarity_mn`.selfloops', which contains all links with a similarity value 
+      above the cut-off
         - The filtered spectra similarity molecular network named as \newline
-          '<*output_name*\>\_ssmn\_w\_<*similarity_mn*\>\_k\_<*net\_top\_k*\>\_x\_ \newline
-           <*max_component_size*\>.selfloops'
+          '`output_name`\_ssmn\_w\_`similarity_mn`\_k\_`net_top_k`\_x\_ \newline
+           `max_component_size`.selfloops'
         - The IVAMN [M+H]+ named as: \newline
-          '<*output_name*\>\_ivamn\_protonated.selfloops'
+          '`output_name`\_ivamn\_protonated.selfloops'
         - The SSMN [M+H]+ filtered named as: \newline
-          '<*output\_name*\>\_ssmn\_protonated\_w\_<*similarity_mn*\>\_k\_<*net_top_k*\>\_x\_ \newline 
-          <*max\_component\_size*\>.selfloops'
-    - One CSV table containing the molecular network of annotations attributes and the assigned [M+H]+ representatives, named as: \newline
-      '<*output\_name*\>\_ivamn\_attributes.csv' (Step 7)
-- The 'final_reports' folder containing statistics of the final result in separated subfolders for quantification, chemical and network analysis.
+          '`output_name`\_ssmn\_protonated\_w\_`similarity_mn`\_k\_`net_top_k`\_x\_ \newline 
+          `max\_component\_size`.selfloops'
+    - One CSV table containing the molecular network of annotations attributes and the assigned [M+H]+ representatives, 
+  named as: \newline
+      '`output_name`\_ivamn\_attributes.csv' (Step 7)
+- The 'final_reports' folder containing statistics of the final result in separated subfolders for quantification, 
+chemical and network analysis.
 
 ## Examples
  

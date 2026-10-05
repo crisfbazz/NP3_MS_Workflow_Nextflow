@@ -7,8 +7,16 @@ Library Search (download 'all identifications') workflows to the count tables of
 It computes the CDK top descriptors for the unique SMILES identified in GNPS and then make the curation of the 
 identifications to score and filter the more reliable results. At the end, it also performs the final identification 
 curation from UNPDxGNPS.
+
+## Parameters
+
+For the complete list of parameters run:
  
-Options for the command *gnps_result*:
+```{ .text .copy }
+node np3_workflow.js gnps_result --help
+```
+
+Parameters for the command *gnps_result*:
  
 - *\-i, \-\-cluster_info_path* <path\>       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")
 - *\-s, \-\-result_specnets_DB_path* <path\>       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder. When using GNPS2, this should be the top 1 results.

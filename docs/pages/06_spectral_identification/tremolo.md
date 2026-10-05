@@ -22,6 +22,12 @@ A binary version of the tremolo tool is freely available for download in the fol
  
 ## Parameters:
 
+For the complete list of parameters run:
+ 
+```{ .text .copy }
+node np3_workflow.js tremolo --help
+```
+
 Parameters for the command *tremolo*:
  
 - *\-o, \-\-output_path <path>* :     path to where the spectral library search results will be stored. This is usually the 'identifications' folder present in the final result.

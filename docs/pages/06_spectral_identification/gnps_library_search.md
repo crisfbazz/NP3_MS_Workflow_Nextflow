@@ -8,6 +8,12 @@ The GNPS identification curation is executed at the end to score and classify th
 
 ## Parameters
 
+For the complete list of parameters run:
+ 
+```{ .text .copy }
+node np3_workflow.js gnps_library_search --help
+```
+
 Parameters for the command *gnps_library_search*:
 
 - *\-g, \-\-input\_mgf\_file* <path\> : path to the input MGF file with the MS/MS spectra data

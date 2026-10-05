@@ -2,35 +2,24 @@
  
 Runs the pre-process of the LC-MS/MS raw data. 
 
-It extracts the list of MS1 peaks with their dimension information (retention time minimum and maximum, the peak area 
-and ID) in each sample, matches the MS2 spectra retention time and precursor m/z against this list and assign to each 
+The NP³ MS Workflow pre-processing extracts the list of MS1 peaks of each sample with their dimension information (retention time minimum and maximum, the peak area 
+and ID), matches the MS2 spectra retention time and precursor m/z against this list and assign to each 
 spectra a MS1 peak that encompasses it. Additionally, a table with the MS1 peaks without a MS2 spectrum m/z and retention 
-time match are stored in a count table to account for the not fragmented MS1 peaks. Finally, a diagnostic is performed 
-to evaluate the pre-process result followed by a suggestion for better *rt_tolerance* and *peak_width* parameters values, 
-based on the list of fragmented MS1 peaks.
- 
-If *max_samples_batch_align* > 0, compute a suggestion for the retention time misalignment between samples of the same 
-data collection batch and between all samples. 
-This does not modify the samples retention time, it's only used to suggest a retention time tolerance value for the 
-following commands (clustering, clean, annotate_protonated and merge).
- 
+time match are stored in a table with the list of not fragmented MS1 peaks. Finally, a diagnostic is performed 
+to evaluate the pre-process result followed by a suggestion for better `rt_tolerance` and `peak_width` parameters values, 
+based on the retrieved list of MS1 peaks with MS2.
+
 It generates one MGF by sample containing all the detected MS2 spectra (high sensitivity) enriched with their 
 respectively matched MS1 peak dimensions, e.g., retention time minimum, maximum, peak area and peak ID (given by the 
-peak detection algorithm). When using the same `raw_data_path` to pre-process the LC-MS/MS raw data files using 
-different metadata tables, a different *processed_data_name* must be used to avoid overwriting useful files and to 
-store the created MGFs in different folders. If the new job intersects with the result present in the same 
-`processed_data_name`, the user may choose to maintain this folder and the pre-processing will only process the missing 
-samples (partial pre-processing) and reuse and increment the previous result. 
-
-Running the pre-process step with a big data collection (number of samples above ~100) can be time consuming and 
-impracticable to repeat this step more than one time to try to improve the parameters values based on the final 
-diagnostic and suggestions. In this case, we recommend the user to build a metadata table with only a small selection 
-of the samples, choosing the ones that could be more representative of the data collection and all blank samples (to 
-correctly remove the blank m/zs). Then, iteratively pre-process these small selection of samples until better results 
-are obtained based on the final diagnostic and suggestions for the parameters values. Finally, the user can run the 
-pre-process for the complete data collection using the parameters that yielded the best result.
- 
+peak detection algorithm).
+  
 ## Parameters
+
+For the complete list of parameters run:
+ 
+```{ .text .copy }
+node np3_workflow.js pre_process --help
+```
 
 Parameters for the command *pre\_process*:
  
@@ -86,4 +75,25 @@ Pre-processing without computing the misalignment and with a different m/z toler
 node np3_workflow pre_process --data_name "data_UHPLC_qTOF" -m 
 "/path/to/the/metadata/file/test_np3_metadata.csv" -d "/path/to/the/raw/data/dir" -j 0 -z 0.01
 ```
+
+## More Info
+
+If `max_samples_batch_align` > 0, compute a suggestion for the retention time misalignment between samples of the same 
+data collection batch and between all samples. 
+This does not modify the samples retention time, it's only used to suggest a retention time tolerance value for the 
+following commands (clustering, clean, annotate_protonated and merge).
+ 
+When using the same `raw_data_path` to pre-process the LC-MS/MS raw data using 
+different metadata tables, a different `processed_data_name` must be used to avoid overwriting useful files and to 
+store the created MGFs in different folders. If the new job intersects with the result present in the same 
+`processed_data_name`, the user may choose to maintain this folder and the pre-processing will only process the missing 
+samples (partial pre-processing) and reuse and increment the previous result. 
+
+Running the pre-process step with a big data collection (number of samples above ~100) can be time consuming and 
+impracticable to repeat this step more than one time to try to improve the parameters values based on the final 
+diagnostic and suggestions. In this case, we recommend the user to build a metadata table with only a small selection 
+of the samples, choosing the ones that could be more representative of the data collection and all blank samples (to 
+correctly remove the blank m/zs). Then, iteratively pre-process these small selection of samples until better results 
+are obtained based on the final diagnostic and suggestions for the parameters values. Finally, the user can run the 
+pre-process for the complete data collection using the parameters that yielded the best result.
  

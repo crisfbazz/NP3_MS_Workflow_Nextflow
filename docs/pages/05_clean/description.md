@@ -8,6 +8,12 @@ At the end, the final report is (re)computed.
 
 ## Parameters
 
+For the complete list of parameters run:
+ 
+```{ .text .copy }
+node np3_workflow.js clean --help
+```
+
 Parameters for the command *clean*:
  
 - *\-m, \-\-metadata* <file\>          : path to the metadata table CSV file

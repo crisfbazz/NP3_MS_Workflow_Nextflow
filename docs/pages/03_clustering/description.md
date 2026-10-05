@@ -10,6 +10,12 @@ necessary, it runs Step 2.
 
 ## Parameters
 
+For the complete list of parameters run:
+ 
+```{ .text .copy }
+node np3_workflow.js clustering --help
+```
+
 Parameters for the command *clustering*:
  
 - *\-n, \-\-output_name* \<name\>:       the job name. It will be used to name the output directory and the results from the final clustering integration step

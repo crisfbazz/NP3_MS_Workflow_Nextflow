@@ -31,9 +31,9 @@ The NP³ MS Workflow consists of ten major steps exemplified in the following im
 * *Step 9*: Correlation between the consensus spectra quantifications and the samples bioactivity scores to rank the candidates responsible for the observed hits in bioactivity experiments. It also computes the quantification grouping.
 * *Step 10*: Creation of a spectra similarity molecular network (SSMN) based on the clean consensus spectra similarity and creation of the protonated networks IVAMN [M+H]+ and SSMN [M+H]+ filtered.
 
-The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow, 
-except for the first step. It can also execute each step of the workflow separately, plus the visualization commands 
-and the command to include the GNPS library identification results in the results. 
+The NP³ MS Workflow was developed in a Node.js CLI capable of automatically running the entire workflow with a single command, 
+except for the first step (manual config). It can also execute each step of the workflow separately and the additional commands.
+Check the complete list of [commands](index_cmds.md) available in the NP³ MS Workflow!
 
 ## NP³ Online in GNPS2 Workflows
 
