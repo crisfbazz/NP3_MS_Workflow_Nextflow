@@ -1,9 +1,10 @@
-## Step 5: Command **clean**
+# Step 5: Command **clean**
  
 Compute the pairwise comparisons of the consensus spectra (if not done yet) and then clean the clustering counts. 
+
 It also runs Step 7 to annotate possible ion variants using the new clean tables and to create the molecular network of 
 annotations, and runs Step 10 to overwrite any old computation of the molecular network of similarities. 
-It can also run the library spectra identifications (Step 6) for the collection of clean consensus spectra. 
+It can also run the library spectra identifications (Step 6) for the new collection of clean consensus spectra. 
 At the end, the final report is (re)computed.
 
 ## Parameters
@@ -28,7 +29,11 @@ Parameters for the command *clean*:
 - *\-w, \-\-similarity_mn* [x] :     the minimum similarity score that must occur between a pair of consensus spectra to connect them with an edge in the molecular networking. Lower values will increase the component size of the clusters by inducing the connection of less related spectra; and higher values will limit the components sizes to the opposite (default: 0.6)
 - *\-f, \-\-fragment_tolerance* [x]  : the tolerance in Daltons for fragment peaks. Peaks in a cluster spectrum that are closer than this are considered the same. (default: 0.05)
 - *\-\-bflag_cutoff* [x]  :  A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering result and to allow spectra with a basePeakInt value below this distribution median plus IQR*bflag_cutoff to be joined with a blank spectrum during the clean Step 5, without relying on the similarity value. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile) of the distribution. The spectra with a basePeakInt value <= median + IQR\*bflag_cutoff (from the blank spectra basePeakInt distribution) and BFLAG TRUE will be joined to a blank spectrum in the clean Step 5. This cutoff will affect the spectra with BFLAG TRUE that would not get joined to a blank spectra when relying only on the similarity cutoff. This is a turn around to the fact that blank spectra have low quality spectra and thus can not fully rely on the similarity values. (default: 1.5)
-- *\-\-noise_cutoff* [x] :  A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering Step 3 result and to remove the spectra with a basePeakInt value below this distribution median plus IQR*noise_cutoff after the clean Step 5. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile) of the distribution. When no blank sample is present in the metadata, the full distribution is used. This cutoff will affect the spectra with with a low basePeakInt value that probably are noise features. If the clustering Step 3 resulted in more than 25000 spectra, the noise cutoff will be applied before the clean Step 5 to prevent a long processing time (default: "FALSE")
+- *\-\-noise_cutoff* [x] :  A positive numeric value defining the minimum base peak intensity absolute value 
+  					that a MS2 spectra must have to be kept after the clustering of Step 3. 
+  					The MS2 spectra with a basePeakInt smaller than this value will be removed before clean Step 5.
+  					 The default value is zero (disabled). Large values in this parameter may result in the loss of minority 
+  					compounds together with noise spectra. (default: 0)
 - *\-u, \-\-rules* [x]              :   path to the CSV file with the accepted ionization modification rules for detecting adducts, multiple charge and dimers/trimers variants, and their combination with neutral losses (Step 7). (default: "rules/np3_modifications.csv")
 - *\-c, \-\-scale_factor* [x]          :  the scaling method to be used in the fragmented peak's intensities before any dot product comparison (Step 5). Valid values are: 0 for the natural logarithm (ln) of the intensities; 1 for no scaling; and other values greater than zero for raising the fragment peaks intensities to the power of x (e.g. x = 0.5 is the square root scaling). [x] >= 0 (default: 0.5)
 - *\-\-min_matched_peaks* [x]           :  The minimum number of common peaks that two spectra must share to be connected by an edge in the filtered SSMN. Connections between spectra with less common peaks than this cutoff will be removed when filtering the SSMN. Except for when one of the spectra have a number of fragment peaks smaller than the given min_matched_peaks value, in this case the spectra must share at least 2 peaks. The fragment peaks count is performed after the spectra are normalized and cleaned. (default: 6)

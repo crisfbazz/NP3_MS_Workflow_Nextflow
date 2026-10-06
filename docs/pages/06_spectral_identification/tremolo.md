@@ -1,4 +1,4 @@
-## Step 6: Command **tremolo** 
+# Step 6: Command **tremolo** 
  
 Runs the spectral identification of a collection of consensus spectra against the In-Silico predicted MS/MS spectrum of 
 Natural Products Database[^1] (ISDB) for 170 602 Natural Products from the Universal Natural Products Database[^2] 
@@ -130,6 +130,8 @@ and then extract its value for each  identification column, as follows:
     - Additionally, it is created the column 'tremolo_NPClassifier_superclass_clean_best' with only the superclass 
     - assigned by NPClassifier when the result from ClassyFire is also present and separated by a pipe '|' (only the 
     - best result before the pipe).
+
+#### UNPD Score Criteria
 
 After the best UNPD result were selected and their information extracted, the curation proceeds to a categorization 
 and scoring of the best result. Ten categories and scores were defined to group the best results according to the 

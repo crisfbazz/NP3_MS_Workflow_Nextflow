@@ -1,5 +1,7 @@
-## Step 5 Details
+# Step 5 Clean Details
  
+## Fragmented Clusters Problem
+
 The clustering (Step 3) identify multiple spectra of the same ion and replace them with a single representative 
 consensus spectrum. The MS-Cluster algorithm is not an optimal solution, so even though it drastically reduces the 
 data size keeping it's quality high, it is not able to remove all the repeated spectra of the same ion, leading to 
@@ -10,7 +12,9 @@ retention time tolerance.
 The clean step is a second clustering strategy that was developed to reduce the remaining redundancies from the 
 clustering result, and to overcome the fragmented clusters limitation. It is an optimal clustering with greedy 
 heuristics that was implemented in R code with auxiliary compiled functions (dlls) in C++. 
- 
+
+## Methodology
+
 The *clean* step starts by performing the pairwise comparisons of the consensus spectra. These comparisons result in 
 two symmetric and quadratic matrix (n + 1)x(n + 1), where n is the number of consensus spectra from Step 3 and the 
 remaining 1 row and column are the msclusterIDs (clusters IDs resulting from the clustering step). The upper triangular 
@@ -54,33 +58,33 @@ tolerance or if their peak boundaries deviation is less than 2 times the retenti
 If both of these conditions are not satisfied, the spectra are kept separated. By doing this, we try to prevent joining 
 adjacent isomers that have a high similarity value. 
 
+## Noise Removal
+
 Also in the Data cleaning step, a bflag cutoff was implemented to allow joining spectra from blank samples that do not 
 have a similarity value above the cutoff. This helps to reduce the fragmented clusters with bflag TRUE and a low base 
-peak intensity, that could not fully rely in the similarity values. The bflag cutoff is computed as the median value of 
+peak intensity, that could not fully rely on the similarity values. The bflag cutoff is computed as the median value of 
 the base peak intensity distribution of blank spectra plus the factor informed by the user times the interquartile 
 range (IQR) of this distribution. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile 
 (75th quantile) of a distribution. The consensus spectra with a basePeakInt value <= median + IQR*bflag_factor 
 (from the blank spectra basePeakInt distribution) and BFLAG TRUE will be joined to a blank spectrum independent of 
 their similarity values.
 
-At the end of the clean step a noise cutoff is applied to remove spectra with a low base peak intensity value. 
-The noise cutoff is computed as the the median value of the base peak intensity distribution of blank spectra plus 
-the factor informed by the user times the interquartile range (IQR) of this distribution. When no blank sample is 
-present in the metadata, the full distribution of the base peak intensity from the clustering counts is used. 
-This cutoff will affect the consensus spectra with a low basePeakInt value that probably are noise features. 
-If the clustering Step 3 resulted in more than 15000 consensus spectra, the noise cutoff will be applied before the 
-clean step to prevent a long processing time.
+At the begging of the clean step a noise cutoff is applied to remove spectra with a low MS2 base peak intensity value. 
+The noise cutoff is an absolute value informed by the used depending on its data. It is disabled by default. 
+This cutoff will affect the consensus spectra with a low **basePeakInt** value that probably are noise features. 
 
 The base peak intensity distribution plotted at the end of the clustering step helps the users to better define these 
-cutoffs' factors and to better understand its effect on their dataset.
+cutoffs' values and to better understand its effect on their dataset.
  
+## Clean Quantification
+
 The count tables, in terms of the number of spectra and of peak area, of the joined clusters are aggregated following 
 the same rules applied in Step 4 and the joined clusters peak information (m/z, retention time mean, minimum and maximum) 
 are computed as the average of the joining clusters values weighted by their intensities (sumInts).
  
 The following columns are added to the count tables in the *clean* step:
  
-**Table: Clean Count Tables New Columns from the Data Cleaning Step**
+#### Clean Count Tables New Columns from the Data Cleaning Step
 
 | Columns | Description | Value Type |
 | :--------------- | --------------------------------------- | :-------: |

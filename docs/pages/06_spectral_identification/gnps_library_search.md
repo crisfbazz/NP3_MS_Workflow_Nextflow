@@ -156,6 +156,8 @@ gnps_Smiles using Tanimoto, and stores the similarity scores in the 'tanimoto_un
 Next, it creates the column 'gnps_GoldCategory' and set it as 'GOLD' for the spectra that have gnps_MZErrorPPM <= 20 
 and gnps_MQScore >= 0.9, otherwise set it as 'out'. The spectra set as 'GOLD' contains a very reliable identification.
 
+#### GNPS Score Criteria
+
 Then, after the gold results were selected, the curation proceeds to a categorization and scoring of the GNPS result, 
 similarly to the UNPD Identification Curation. Ten categories and scores were defined to group the best results 
 according to the reliability of their matches or to put them out of the analysis, using the criteria presented below:

@@ -1,4 +1,4 @@
-## Step 4 Details
+## Step 4 Procedure Details
  
 The spectra and peak area counts are performed by scanning and parsing the information present in the .clust files 
 from the clustering output to compute the consensus spectra quantification by sample. It aggregates the information 
@@ -40,12 +40,12 @@ The same way as the other flag columns, the *HFLAG* serve as a warning for false
 spectrum that has a m/z very similar to a spectrum that appeared in a hit sample and is up to the user to check its 
 correctness.
  
+#### NP³ MS workflow Clustering Count Table Format
+
 The resulting clustering count table has *m* rows and at most 20 + *n* columns, where *m* equals the number of 
 consensus spectra in the end of the clustering job and *n* equals the number of processed samples present in the 
 metadata file. A description of each column is presented below (as described above the weighted mean values are 
 obtained using the cluster members MS2 summed intensities as weights).
-
-** Table: NP³ MS workflow Clustering Count Table Format **
 
 |           Columns           |                                                                                                       Description                                                                                                        | Value Type |
 |:---------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :-------: |
@@ -57,8 +57,8 @@ obtained using the cluster members MS2 summed intensities as weights).
 |            rtMax            |                                                                               weighted mean of the cluster members retention time maximum                                                                                | numeric |
 |           peakIds           |                                                                           the peak IDs of the cluster members concatenated without duplicates                                                                            | string |
 |            scans            |                                                               the MGF SCANS number with the sample of origin as suffix of the cluster members concatenated                                                               | string |
-|         basePeakInt         |                                                                               the maximum base peak intensity value of the cluster members                                                                               | numeric |
-|           sumInts           |                                                                                        sum of the cluster members MS2 intensities                                                                                        | numeric
+|         basePeakInt         |                                                                               the maximum base peak intensity value of the cluster members MS2                                                                              | numeric |
+|           sumInts           |                                                                                        sum of the cluster members MS2 intensities                                                                                        | numeric |
 | <X\_1\>\_<area\|spectra\> |            the count of area or spectra in the sample X_1, where 'spectra' is the number of spectra or 'area' is the unique sum of peak areas in the sample with SAMPLE_CODE equals X_1 in the metadata table            | numeric |
 |             ...             |                                                                                                                                                                                                                          | |
 |      <X\_*n*\>\_<area\|spectra\>      |                                                                                       the other samples counts for this mslusterID                                                                                       | numeric |
@@ -71,16 +71,20 @@ obtained using the cluster members MS2 summed intensities as weights).
 |           BEDFLAG           |                                                                  TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any bed sample                                                                   | boolean |
 |            HFLAG            | concatenation of all the hit samples codes that have a count greater than zero in any msclusterID with a mzConsensus within the given mass tolerance of the current cluster (contains the DESREPLICATION column results) | string |
 |          peaksList          |                                                                the concatenated list of the fragmented peaks m/z's of the msclusterID consensus spectrum                                                                 | string |
-|          peaksInt           |                                                             the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum                                                              | string ||
+|          peaksInt           |                                                             the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum                                                              | string |
 
- 
-At the end of the clustering step, the distribution of the base peak intensity values (column basePeakInt) is plotted 
+#### MS2 Base Peak Intensity Distribution 
+
+At the end of the clustering step, the distribution of the MS2 base peak intensity values (column basePeakInt) is plotted 
 and saved to a file named 'basePeakInt_distribution.png'. 
+
 A descriptive analysis of the basePeakInt distribution is also computed and saved to a file named 
 'basePeakInt_distribution_summary.txt'. 
+
 If there is at least one blank sample in the metadata table, the base peak distribution plot will be colored to 
 highlight the values from the consensus spectra that appear in blank samples and the descriptive analysis will be 
 computed only for these consensus spectra from blank samples. 
+
 The interquartile range (IQR) is also computed and printed at the end of the descriptive analysis file to help in 
 the setup of the noise cutoff and of the bflag cutoff parameters (to be used in the clean Step 5). 
 Also, vertical lines corresponding to different noise/bflag cutoff values are plotted in the base peak intensity 

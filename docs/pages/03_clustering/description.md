@@ -1,11 +1,13 @@
-## Step 3 and 4: Command **clustering**
+# Step 3 and 4: Command **clustering**
  
-Runs the NP3_MSCluster algorithm to perform the clustering of pre-processed MS/MS data into a collection of consensus 
+Runs the NP3_MSCluster algorithm to perform the **clustering** of pre-processed MS/MS data into a collection of consensus 
 spectra. It relies on spectra similarity and chromatographic dimensions. 
 
-Then, runs the consensus spectra quantification 
+And then, runs the consensus spectra **quantification**
 (Step 4) to parse the clustering results and count the number of spectra and of peak area by sample. Finally, it computes 
-appropriate indicators based on the sample's types. This command can also run the library spectra identifications (Step 6), and if 
+appropriate indicators based on the sample's types. 
+
+This command can also run the library spectra identifications (Step 6), and if 
 necessary, it runs Step 2.
 
 ## Parameters

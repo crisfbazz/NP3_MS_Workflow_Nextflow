@@ -1,4 +1,4 @@
-## Step 7: Command *annotate_protonated*
+# Step 7: Command *annotate_protonated*
  
 Annotate possible ionization variants in the clean count tables and creates the **Ionization Variant Annotation Molecular 
 Network (IVAMN)** - for positive ion mode only. It searches for adducts, neutral losses, multiple charge, dimers/trimers, 

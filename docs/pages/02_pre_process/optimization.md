@@ -1,29 +1,37 @@
-## *pre_process* Optimization Guide
+# *pre_process* Optimization Guide
 
-
-The Pre-processing step performs the LC-MS data processing (feature finding) with XCMS. It extracts the list of MS¹ 
-peaks for each sample, and then, directly impact in the isomers separation and resolution. The LC-MS processing is 
+The Pre-processing step performs the LC-MS data processing with XCMS (feature finding). It extracts the list of MS¹ 
+peaks for each sample, and thus, directly impact in the isomers separation and resolution. The LC-MS processing is 
 highly dependent on the parameters setup. The optimization of these parameters depends on the mass spectrometer equipment, 
 the chromatographic method used and the data quality. With that pointed out, a diagnostic of Pre-process result and a 
 suggestion of values for the **most critical parameters** were implemented to help the user in this optimization. 
-The diagnostic and suggestion are still in a **Beta version**, and should be used as a guide and not as a rule.
+The diagnostic and suggestion are still in a **Beta version**, and should be used as a **guide and not as a rule**.
  
-In order to optimize the Pre-processing step, the user could follow two strategies: (1) run pre-processing with the 
-default parameters and analyse the diagnostic result and suggestions; or (2) inspect the chromatograms of the dataset 
+## How-to Guides
+
+In order to optimize the Pre-processing step, the user could follow two strategies: 
+
+1. run pre-processing with the 
+default parameters and analyze the diagnostic result and suggestions; or 
+2. inspect the chromatograms of the dataset 
 first (using a target m/z or randomly pick one) and run the pre-processing with a pre setup of parameters values that 
-best represent what you observed in the real data. **The second option is more recommended**, because the suggestion of 
+best represent what you observed in the real data. 
+
+**The second option is more recommended**, because the suggestion of 
 values for the most critical parameters will be biased by the parameters values used. The user can also choose to run 
 the entire workflow with this first pre-processing result to examine the final clean quantification tables and decide if 
 they are good enough for its purpose.
  
-The critical parameters for the pre-processing step are: 
+#### Critical Parameters 
 
-1. `ppm_tolerance` - the maximal tolerated m/z deviation in consecutive MS1 scans in parts per million (ppm). 
+The critical parameters for the pre-process step are: 
+
+1. `ppm_tolerance` : the maximal tolerated m/z deviation in consecutive MS1 scans in parts per million (ppm). 
 Typically set to a generous multiple of the mass accuracy of the mass spectrometer; 
-2. `mz_tolerance` - the tolerance in Daltons for matching the m/z of a MS1 peak with the precursor m/z of a MS2 spectrum; 
-3. `rt_tolerance` - the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 
+2. `mz_tolerance`: the tolerance in Daltons for matching the m/z of a MS1 peak with the precursor m/z of a MS2 spectrum; 
+3. `rt_tolerance`: the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 
 ions that have a retention time value within a listed MS1 peak range;
-4. `peak_width` - the expected approximate peak width in chromatographic space (MS1 peaks). Given as a range (min, max) 
+4. `peak_width`: the expected approximate peak width in chromatographic space (MS1 peaks). Given as a range (min, max) 
 in seconds.
  
 The first two critical parameters are more related to the mass spectrometrer equipment accuracy and the data resolution, 
@@ -57,6 +65,8 @@ The user must take the following relations into account when choosing the critic
 As you can see by now, this optimization will be a balance between the amount of effort that the user is willing to 
 give and how good is the MS1 peaks definition across the different m/zs of a dataset. 
 
+#### Diagnostic and Statistics
+
 At the end of the pre-processing step a diagnostic of its results is performed and stored in a log file that will be 
 named 'logPreProcessStatisticsWarning' if a problem is detected in the diagnostic, or will be simple named 
 'logPreProcessStatistics' if no problem is detected. This log is saved to the directory named with the 
@@ -87,6 +97,8 @@ indicating that real peaks could have being split into multiple smaller peaks. T
 expected for the dataset being used, and then choose to increase the maximum peak_width value to prevent this anomaly. 
 The distribution of the number of m/zs by the number of MS1 peaks is stored in the file 'log_number_mzs_by_number_peaks.png' 
 for further examination.
+
+#### Parameters Suggestion - *BETA*
 
 Following the diagnostic, a Beta suggestion for the `peak_width` and the `rt_tolerance` parameters values will be 
 executed to help the user in this optimization. It starts by plotting the peak width distribution of the pre-process 

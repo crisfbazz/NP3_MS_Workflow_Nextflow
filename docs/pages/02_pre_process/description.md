@@ -1,18 +1,20 @@
-## Step 2: Command **pre_process**
+# Step 2: Command **pre_process**
  
 Runs the pre-process of the LC-MS/MS raw data. 
 
-The NP³ MS Workflow pre-processing extracts the list of MS1 peaks of each sample with their dimension information (retention time minimum and maximum, the peak area 
-and ID), matches the MS2 spectra retention time and precursor m/z against this list and assign to each 
-spectra a MS1 peak that encompasses it. Additionally, a table with the MS1 peaks without a MS2 spectrum m/z and retention 
-time match are stored in a table with the list of not fragmented MS1 peaks. Finally, a diagnostic is performed 
-to evaluate the pre-process result followed by a suggestion for better `rt_tolerance` and `peak_width` parameters values, 
-based on the retrieved list of MS1 peaks with MS2.
-
-It generates one MGF by sample containing all the detected MS2 spectra (high sensitivity) enriched with their 
+The NP³ MS Workflow pre-processing extracts the list of MS1 peaks of each sample and make the MS1 and MS2 correspondence
+to assign to each MS2 spectra a MS1 peak that encompasses it. It generates one MGF by sample containing all the 
+detected MS2 spectra (high sensitivity) enriched with their 
 respectively matched MS1 peak dimensions, e.g., retention time minimum, maximum, peak area and peak ID (given by the 
 peak detection algorithm).
-  
+
+Additionally, a table with the MS1 peaks without a MS2 spectrum m/z and retention 
+time match are stored in a table with the list of not fragmented MS1 peaks. 
+
+Finally, a diagnostic is performed 
+to evaluate the pre-process result followed by a suggestion of values for the critical parameters
+`rt_tolerance` and `peak_width`, based on the retrieved list of MS1 peaks with MS2 (detailed in next sections).
+ 
 ## Parameters
 
 For the complete list of parameters run:
