@@ -19,7 +19,7 @@
         <link rel="next" href="../final_identification_curation/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -909,6 +909,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#gnps-score-criteria" class="md-nav__link">
+    GNPS Score Criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unpdxgnps-chemical-statistics" class="md-nav__link">
     UNPDxGNPS Chemical Statistics
   </a>
@@ -1107,6 +1114,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#gnps-score-criteria" class="md-nav__link">
+    GNPS Score Criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unpdxgnps-chemical-statistics" class="md-nav__link">
     UNPDxGNPS Chemical Statistics
   </a>
@@ -1161,7 +1175,7 @@ ALL_GNPS_NO_PROPAGATED library (default for LC data). Library annotations data w
 </span></code></pre></div>
 <p>Parameters for the command <em>gnps_library_search</em>:</p>
 <ul>
-<li><em>-g, --input_mgf_file</em> &lt;path&gt; : path to the input MGF file with the MS/MS spectra data
+<li><em>-g, --input_mgf_file</em> &lt;path> : path to the input MGF file with the MS/MS spectra data
                                      to be searched and identified</li>
 <li><em>-o, --output_path</em> <path> : if the input is a NP3 result, the path to the final NP3
                                      output data folder, inside the outs directory of the
@@ -1229,7 +1243,7 @@ ALL_GNPS_NO_PROPAGATED library (default for LC data). Library annotations data w
 <p>Three tables will be stored in this directory: </p>
 <ol>
 <li>One containing all the <code>top_k</code> library matches with no annotations named with the <code>input_mgf_file</code> basename 
-concatenated with the library file name (ALL_GNPS_NO_PROPAGATED_IonMode_&lt;ion_mode&gt;.mgf) and the search tool used;</li>
+concatenated with the library file name (ALL_GNPS_NO_PROPAGATED_IonMode_&lt;ion_mode>.mgf) and the search tool used;</li>
 <li>Another containing table 1 enriched with GNPS2 annotations named with the <code>output_path</code> basename plus the tag 
 "library_search" and the search tool used;</li>
 <li>And the final result table with the top 1 result named with table 2 name plus a suffix equals "top1".</li>
@@ -1279,72 +1293,73 @@ is merged to the NP³ count tables.</p>
 gnps_Smiles using Tanimoto, and stores the similarity scores in the 'tanimoto_unpd_gnps' column.</p>
 <p>Next, it creates the column 'gnps_GoldCategory' and set it as 'GOLD' for the spectra that have gnps_MZErrorPPM &lt;= 20 
 and gnps_MQScore &gt;= 0.9, otherwise set it as 'out'. The spectra set as 'GOLD' contains a very reliable identification.</p>
+<h4 id="gnps-score-criteria">GNPS Score Criteria</h4>
 <p>Then, after the gold results were selected, the curation proceeds to a categorization and scoring of the GNPS result, 
 similarly to the UNPD Identification Curation. Ten categories and scores were defined to group the best results 
 according to the reliability of their matches or to put them out of the analysis, using the criteria presented below:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">GNPS Category</th>
-<th style="text-align: center;">Score</th>
-<th style="text-align: center;">Criteria</th>
+<th align="left">GNPS Category</th>
+<th align="center">Score</th>
+<th align="center">Criteria</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Top1|mqs&gt;=0.9</td>
-<td style="text-align: center;">100</td>
-<td style="text-align: center;">mzE &lt;= 20 and nsP &gt;= 6</td>
+<td align="left">Top1|mqs&gt;=0.9</td>
+<td align="center">100</td>
+<td align="center">mzE &lt;= 20 and nsP &gt;= 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Top2|0.8&lt;=mqs&lt;0.9</td>
-<td style="text-align: center;">80</td>
-<td style="text-align: center;">mzE &lt;= 20 and nsP &gt;= 6</td>
+<td align="left">Top2|0.8&lt;=mqs&lt;0.9</td>
+<td align="center">80</td>
+<td align="center">mzE &lt;= 20 and nsP &gt;= 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Top3|sp&lt;6 mqs&gt;=0.9</td>
-<td style="text-align: center;">60</td>
-<td style="text-align: center;">mzE &lt;= 20 and nsP &lt; 6</td>
+<td align="left">Top3|sp&lt;6 mqs&gt;=0.9</td>
+<td align="center">60</td>
+<td align="center">mzE &lt;= 20 and nsP &lt; 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Top4|sp&lt;6 0.8&lt;=mqs&lt;0.9</td>
-<td style="text-align: center;">50</td>
-<td style="text-align: center;">mzE &lt;= 20 and nsP &lt; 6</td>
+<td align="left">Top4|sp&lt;6 0.8&lt;=mqs&lt;0.9</td>
+<td align="center">50</td>
+<td align="center">mzE &lt;= 20 and nsP &lt; 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Top5|mqs&gt;=0.7</td>
-<td style="text-align: center;">45</td>
-<td style="text-align: center;">mzE &lt;= 20 and nsP &gt;= 6 and mqs&lt;0.8</td>
+<td align="left">Top5|mqs&gt;=0.7</td>
+<td align="center">45</td>
+<td align="center">mzE &lt;= 20 and nsP &gt;= 6 and mqs&lt;0.8</td>
 </tr>
 <tr>
-<td style="text-align: left;">Analog1|mqs&gt;=0.9</td>
-<td style="text-align: center;">40</td>
-<td style="text-align: center;">mzE &gt; 20  and nsP &gt;= 6</td>
+<td align="left">Analog1|mqs&gt;=0.9</td>
+<td align="center">40</td>
+<td align="center">mzE &gt; 20  and nsP &gt;= 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Analog2|0.8&lt;=mqs&lt;0.9</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">mzE &gt; 20 and nsP &gt;= 6</td>
+<td align="left">Analog2|0.8&lt;=mqs&lt;0.9</td>
+<td align="center">30</td>
+<td align="center">mzE &gt; 20 and nsP &gt;= 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Analog3|sp&lt;6 mqs&gt;=0.9</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">mzE &gt; 20 and nsP &lt; 6</td>
+<td align="left">Analog3|sp&lt;6 mqs&gt;=0.9</td>
+<td align="center">20</td>
+<td align="center">mzE &gt; 20 and nsP &lt; 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Analog4|sp&lt;6 0.8&lt;=mqs&lt;0.9</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">mzE &gt; 20 and nsP &lt; 6</td>
+<td align="left">Analog4|sp&lt;6 0.8&lt;=mqs&lt;0.9</td>
+<td align="center">10</td>
+<td align="center">mzE &gt; 20 and nsP &lt; 6</td>
 </tr>
 <tr>
-<td style="text-align: left;">Analog5|mqs&gt;=0.7</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">mzE &gt; 20 and nsP &gt;= 6 and mqs&lt;0.8</td>
+<td align="left">Analog5|mqs&gt;=0.7</td>
+<td align="center">5</td>
+<td align="center">mzE &gt; 20 and nsP &gt;= 6 and mqs&lt;0.8</td>
 </tr>
 <tr>
-<td style="text-align: left;">out</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">did not passed in any category - unreliable identification</td>
+<td align="left">out</td>
+<td align="center">0</td>
+<td align="center">did not passed in any category - unreliable identification</td>
 </tr>
 </tbody>
 </table>
@@ -1357,8 +1372,8 @@ is stored in the column 'gnps_score'.</p>
 pipe '|') and its stored in the column 'gnps_npclassifier_superclass_clean'. This clean result is used to create the 
 'gnps_curated_superclass' column, which receives the gnps_npclassifier_superclass_clean where gnps_score &gt; 0 (or 
 gnps_category != 'out'). Following, it is created the 'gnps_curated_superclass_grouping' column with the grouping of the 
-gnps_curated_superclass and the 'gnps_curated_superclass_GR_&lt;superclass group&gt;' columns checking the occurrence of the 
-spectra in each superclass group. The superclass grouping follow the table defined in the <a href="../tremolo/#superclass-grouping">Identification Curation of 
+gnps_curated_superclass and the 'gnps_curated_superclass_GR_&lt;superclass group>' columns checking the occurrence of the 
+spectra in each superclass group. The superclass grouping follow the table defined in the <a href="tremolo.md/#superclass-grouping">Identification Curation of 
 UNPD-Tremolo result of Step 6</a>.</p>
 <p>Finally, the final identification curation is performed following <a href="../final_identification_curation/">next section</a> 
 to select the best library annotation from UNPDxGNPS, if the UNPD identification result is present, 

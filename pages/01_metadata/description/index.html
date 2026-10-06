@@ -19,7 +19,7 @@
         <link rel="next" href="../../cmd_run/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -1160,14 +1160,14 @@ dereplicate m/z's that appear in hit samples (see Step 4 details).</li>
 </ul>
 <p>The metadata table may contain the following <strong>optional columns</strong>:</p>
 <ul>
-<li><em>BIOACTIVITY_&lt;NAME&gt;</em> - zero or more columns starting with the prefix "BIOACTIVITY_" followed by a unique name &lt;NAME&gt; defining different bioactivities values for each sample. <ul>
+<li><em>BIOACTIVITY_&lt;NAME></em> - zero or more columns starting with the prefix "BIOACTIVITY_" followed by a unique name &lt;NAME> defining different bioactivities values for each sample. <ul>
 <li>Set it to a positive number (greater or equal than zero) indicating the sample bioactivity score, it could be an inhibition or an activation of a target. </li>
 <li>These values should be normalized, e.g., from 0 to 100, to be used in the correlation computation.</li>
 </ul>
 </li>
-<li><em>COR_&lt;NAME&gt;</em> - zero or more columns starting with the prefix "COR_" followed by a unique name &lt;NAME&gt; defining the correlation group.
+<li><em>COR_&lt;NAME></em> - zero or more columns starting with the prefix "COR_" followed by a unique name &lt;NAME> defining the correlation group.
 Each one of these columns must have values 0 or 1. <ul>
-<li>If the sample spectra or peak area count is to be used in the COR_&lt;NAME&gt; correlation with each defined bioactivity scores (BIOACTIVITY_&lt;NAME&gt; columns), set it to 1. Otherwise, set it to 0. </li>
+<li>If the sample spectra or peak area count is to be used in the COR_&lt;NAME> correlation with each defined bioactivity scores (BIOACTIVITY_&lt;NAME> columns), set it to 1. Otherwise, set it to 0. </li>
 <li>In Step 9 each one of these columns will result in a new column for each available bioactivity score in the output count tables, 
 containing the bioactivity correlation scores computed with the respectively selected samples. </li>
 <li>For better correlation results the selected groups of samples should belong to the same bioactivity peak, e.g., a selection that contains very active, middle active and not active samples of a same bioactivity peak (a 'hit'). </li>
@@ -1176,10 +1176,10 @@ containing the bioactivity correlation scores computed with the respectively sel
   This will guarantee real correlations, especially if the samples and bioactivity data come from a screening of natural product samples.</li>
 </ul>
 </li>
-<li><em>GR_&lt;NAME&gt;</em> - zero or more columns starting with the prefix "GR_" followed by a unique name &lt;NAME&gt; defining a set of grouping for the spectra quantification. <ul>
+<li><em>GR_&lt;NAME></em> - zero or more columns starting with the prefix "GR_" followed by a unique name &lt;NAME> defining a set of grouping for the spectra quantification. <ul>
 <li>Each of those columns may have one or more tags to label a group of samples. </li>
-<li>A column "GR_&lt;NAME&gt;" with groups "&lt;g1&gt;", "&lt;g2&gt;" and "&lt;g3&gt;" will bind to the final count tables the columns "&lt;NAME_g1&gt;", 
-  "&lt;NAME_g2&gt;" and "&lt;NAME_g3&gt;" containing the sum of peak areas or number of spectra of the samples that belongs to each group for each m/z row. </li>
+<li>A column "GR_&lt;NAME>" with groups "&lt;g1>", "&lt;g2>" and "&lt;g3>" will bind to the final count tables the columns "&lt;NAME_g1>", 
+  "&lt;NAME_g2>" and "&lt;NAME_g3>" containing the sum of peak areas or number of spectra of the samples that belongs to each group for each m/z row. </li>
 <li>For example, to create a set called <em>colors</em> with the groups <em>red</em>, <em>green</em> and <em>blue</em>, add to the metadata the 
   column "GR_colors", tag the samples that belongs to the groups <em>red</em>, <em>green</em> and <em>blue</em> by filling the rows 
   (you may have empty observations if it is necessary) and it will bind the columns <em>colors_red</em>, <em>colors_green</em> and <em>colors_blue</em> to the final count tables.</li>

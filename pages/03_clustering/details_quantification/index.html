@@ -19,7 +19,7 @@
         <link rel="next" href="../../05_clean/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-4-details" class="md-skip">
+        <a href="#step-4-procedure-details" class="md-skip">
           Skip to content
         </a>
       
@@ -728,9 +728,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-4-details" class="md-nav__link">
-    Step 4 Details
+  <a href="#step-4-procedure-details" class="md-nav__link">
+    Step 4 Procedure Details
   </a>
+  
+    <nav class="md-nav" aria-label="Step 4 Procedure Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#np3-ms-workflow-clustering-count-table-format" class="md-nav__link">
+    NP³ MS workflow Clustering Count Table Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms2-base-peak-intensity-distribution" class="md-nav__link">
+    MS2 Base Peak Intensity Distribution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1009,9 +1029,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-4-details" class="md-nav__link">
-    Step 4 Details
+  <a href="#step-4-procedure-details" class="md-nav__link">
+    Step 4 Procedure Details
   </a>
+  
+    <nav class="md-nav" aria-label="Step 4 Procedure Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#np3-ms-workflow-clustering-count-table-format" class="md-nav__link">
+    NP³ MS workflow Clustering Count Table Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms2-base-peak-intensity-distribution" class="md-nav__link">
+    MS2 Base Peak Intensity Distribution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1040,7 +1080,7 @@
 
   <h1>Quantification Details</h1>
 
-<h2 id="step-4-details">Step 4 Details</h2>
+<h2 id="step-4-procedure-details">Step 4 Procedure Details</h2>
 <p>The spectra and peak area counts are performed by scanning and parsing the information present in the .clust files 
 from the clustering output to compute the consensus spectra quantification by sample. It aggregates the information 
 of the clusters members to obtain the total counts (number of spectra and peak area) by sample and the consensus peak 
@@ -1076,145 +1116,146 @@ a m/z within the given mass tolerance of each msclusterID m/z (this column conta
 The same way as the other flag columns, the <em>HFLAG</em> serve as a warning for false negative clusters, evidencing a 
 spectrum that has a m/z very similar to a spectrum that appeared in a hit sample and is up to the user to check its 
 correctness.</p>
+<h4 id="np3-ms-workflow-clustering-count-table-format">NP³ MS workflow Clustering Count Table Format</h4>
 <p>The resulting clustering count table has <em>m</em> rows and at most 20 + <em>n</em> columns, where <em>m</em> equals the number of 
 consensus spectra in the end of the clustering job and <em>n</em> equals the number of processed samples present in the 
 metadata file. A description of each column is presented below (as described above the weighted mean values are 
 obtained using the cluster members MS2 summed intensities as weights).</p>
-<p><strong> Table: NP³ MS workflow Clustering Count Table Format </strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Columns</th>
-<th style="text-align: center;">Description</th>
-<th style="text-align: center;">Value Type</th>
+<th align="center">Columns</th>
+<th align="center">Description</th>
+<th align="center">Value Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">msclusterID</td>
-<td style="text-align: center;">the consensus spectrum unique cluster ID</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">msclusterID</td>
+<td align="center">the consensus spectrum unique cluster ID</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">numSpectra</td>
-<td style="text-align: center;">total number of joined spectra (cluster members), cluster size</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numSpectra</td>
+<td align="center">total number of joined spectra (cluster members), cluster size</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">mzConsensus</td>
-<td style="text-align: center;">weighted mean of the cluster members m/z</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">mzConsensus</td>
+<td align="center">weighted mean of the cluster members m/z</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">rtMean</td>
-<td style="text-align: center;">weighted mean of the cluster members retention time center</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">rtMean</td>
+<td align="center">weighted mean of the cluster members retention time center</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">rtMin</td>
-<td style="text-align: center;">weighted mean of the cluster members retention time minimum</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">rtMin</td>
+<td align="center">weighted mean of the cluster members retention time minimum</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">rtMax</td>
-<td style="text-align: center;">weighted mean of the cluster members retention time maximum</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">rtMax</td>
+<td align="center">weighted mean of the cluster members retention time maximum</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">peakIds</td>
-<td style="text-align: center;">the peak IDs of the cluster members concatenated without duplicates</td>
-<td style="text-align: center;">string</td>
+<td align="center">peakIds</td>
+<td align="center">the peak IDs of the cluster members concatenated without duplicates</td>
+<td align="center">string</td>
 </tr>
 <tr>
-<td style="text-align: center;">scans</td>
-<td style="text-align: center;">the MGF SCANS number with the sample of origin as suffix of the cluster members concatenated</td>
-<td style="text-align: center;">string</td>
+<td align="center">scans</td>
+<td align="center">the MGF SCANS number with the sample of origin as suffix of the cluster members concatenated</td>
+<td align="center">string</td>
 </tr>
 <tr>
-<td style="text-align: center;">basePeakInt</td>
-<td style="text-align: center;">the maximum base peak intensity value of the cluster members</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">basePeakInt</td>
+<td align="center">the maximum base peak intensity value of the cluster members MS2</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">sumInts</td>
-<td style="text-align: center;">sum of the cluster members MS2 intensities</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">sumInts</td>
+<td align="center">sum of the cluster members MS2 intensities</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">&lt;X_1&gt;_&lt;area|spectra&gt;</td>
-<td style="text-align: center;">the count of area or spectra in the sample X_1, where 'spectra' is the number of spectra or 'area' is the unique sum of peak areas in the sample with SAMPLE_CODE equals X_1 in the metadata table</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">&lt;X_1>_&lt;area|spectra></td>
+<td align="center">the count of area or spectra in the sample X_1, where 'spectra' is the number of spectra or 'area' is the unique sum of peak areas in the sample with SAMPLE_CODE equals X_1 in the metadata table</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">...</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td align="center">...</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align: center;">&lt;X_<em>n</em>&gt;_&lt;area|spectra&gt;</td>
-<td style="text-align: center;">the other samples counts for this mslusterID</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">&lt;X_<em>n</em>>_&lt;area|spectra></td>
+<td align="center">the other samples counts for this mslusterID</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">BLANKS_TOTAL</td>
-<td style="text-align: center;">total number of spectra or peak area that appeared in blank samples</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">BLANKS_TOTAL</td>
+<td align="center">total number of spectra or peak area that appeared in blank samples</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">CONTROLS_TOTAL</td>
-<td style="text-align: center;">total number of spectra or peak area that appeared in control samples</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">CONTROLS_TOTAL</td>
+<td align="center">total number of spectra or peak area that appeared in control samples</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">BEDS_TOTAL</td>
-<td style="text-align: center;">total number of spectra or peak area that appeared in bed samples</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">BEDS_TOTAL</td>
+<td align="center">total number of spectra or peak area that appeared in bed samples</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: center;">DESREPLICATION</td>
-<td style="text-align: center;">concatenation of all the hit samples codes in which the spectra had a count greater than zero</td>
-<td style="text-align: center;">string</td>
+<td align="center">DESREPLICATION</td>
+<td align="center">concatenation of all the hit samples codes in which the spectra had a count greater than zero</td>
+<td align="center">string</td>
 </tr>
 <tr>
-<td style="text-align: center;">BFLAG</td>
-<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any blank sample</td>
-<td style="text-align: center;">boolean</td>
+<td align="center">BFLAG</td>
+<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any blank sample</td>
+<td align="center">boolean</td>
 </tr>
 <tr>
-<td style="text-align: center;">CFLAG</td>
-<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any control sample</td>
-<td style="text-align: center;">boolean</td>
+<td align="center">CFLAG</td>
+<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any control sample</td>
+<td align="center">boolean</td>
 </tr>
 <tr>
-<td style="text-align: center;">BEDFLAG</td>
-<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any bed sample</td>
-<td style="text-align: center;">boolean</td>
+<td align="center">BEDFLAG</td>
+<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any bed sample</td>
+<td align="center">boolean</td>
 </tr>
 <tr>
-<td style="text-align: center;">HFLAG</td>
-<td style="text-align: center;">concatenation of all the hit samples codes that have a count greater than zero in any msclusterID with a mzConsensus within the given mass tolerance of the current cluster (contains the DESREPLICATION column results)</td>
-<td style="text-align: center;">string</td>
+<td align="center">HFLAG</td>
+<td align="center">concatenation of all the hit samples codes that have a count greater than zero in any msclusterID with a mzConsensus within the given mass tolerance of the current cluster (contains the DESREPLICATION column results)</td>
+<td align="center">string</td>
 </tr>
 <tr>
-<td style="text-align: center;">peaksList</td>
-<td style="text-align: center;">the concatenated list of the fragmented peaks m/z's of the msclusterID consensus spectrum</td>
-<td style="text-align: center;">string</td>
+<td align="center">peaksList</td>
+<td align="center">the concatenated list of the fragmented peaks m/z's of the msclusterID consensus spectrum</td>
+<td align="center">string</td>
 </tr>
 <tr>
-<td style="text-align: center;">peaksInt</td>
-<td style="text-align: center;">the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum</td>
-<td style="text-align: center;">string</td>
+<td align="center">peaksInt</td>
+<td align="center">the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum</td>
+<td align="center">string</td>
 </tr>
 </tbody>
 </table>
-<p>At the end of the clustering step, the distribution of the base peak intensity values (column basePeakInt) is plotted 
-and saved to a file named 'basePeakInt_distribution.png'. 
-A descriptive analysis of the basePeakInt distribution is also computed and saved to a file named 
-'basePeakInt_distribution_summary.txt'. 
-If there is at least one blank sample in the metadata table, the base peak distribution plot will be colored to 
+<h4 id="ms2-base-peak-intensity-distribution">MS2 Base Peak Intensity Distribution</h4>
+<p>At the end of the clustering step, the distribution of the MS2 base peak intensity values (column basePeakInt) is plotted 
+and saved to a file named 'basePeakInt_distribution.png'. </p>
+<p>A descriptive analysis of the basePeakInt distribution is also computed and saved to a file named 
+'basePeakInt_distribution_summary.txt'. </p>
+<p>If there is at least one blank sample in the metadata table, the base peak distribution plot will be colored to 
 highlight the values from the consensus spectra that appear in blank samples and the descriptive analysis will be 
-computed only for these consensus spectra from blank samples. 
-The interquartile range (IQR) is also computed and printed at the end of the descriptive analysis file to help in 
+computed only for these consensus spectra from blank samples. </p>
+<p>The interquartile range (IQR) is also computed and printed at the end of the descriptive analysis file to help in 
 the setup of the noise cutoff and of the bflag cutoff parameters (to be used in the clean Step 5). 
 Also, vertical lines corresponding to different noise/bflag cutoff values are plotted in the base peak intensity 
 distribution.</p>

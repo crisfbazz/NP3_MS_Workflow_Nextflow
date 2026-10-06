@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -600,6 +600,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Description
@@ -616,19 +618,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-command-pre_process" class="md-nav__link">
-    Step 2: Command pre_process
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1029,19 +1026,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-command-pre_process" class="md-nav__link">
-    Step 2: Command pre_process
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1094,28 +1086,27 @@
   
 
 
-  <h1>Description</h1>
-
-<h2 id="step-2-command-pre_process">Step 2: Command <strong>pre_process</strong></h2>
+<h1 id="step-2-command-pre_process">Step 2: Command <strong>pre_process</strong></h1>
 <p>Runs the pre-process of the LC-MS/MS raw data. </p>
-<p>The NP³ MS Workflow pre-processing extracts the list of MS1 peaks of each sample with their dimension information (retention time minimum and maximum, the peak area 
-and ID), matches the MS2 spectra retention time and precursor m/z against this list and assign to each 
-spectra a MS1 peak that encompasses it. Additionally, a table with the MS1 peaks without a MS2 spectrum m/z and retention 
-time match are stored in a table with the list of not fragmented MS1 peaks. Finally, a diagnostic is performed 
-to evaluate the pre-process result followed by a suggestion for better <code>rt_tolerance</code> and <code>peak_width</code> parameters values, 
-based on the retrieved list of MS1 peaks with MS2.</p>
-<p>It generates one MGF by sample containing all the detected MS2 spectra (high sensitivity) enriched with their 
+<p>The NP³ MS Workflow pre-processing extracts the list of MS1 peaks of each sample and make the MS1 and MS2 correspondence
+to assign to each MS2 spectra a MS1 peak that encompasses it. It generates one MGF by sample containing all the 
+detected MS2 spectra (high sensitivity) enriched with their 
 respectively matched MS1 peak dimensions, e.g., retention time minimum, maximum, peak area and peak ID (given by the 
 peak detection algorithm).</p>
+<p>Additionally, a table with the MS1 peaks without a MS2 spectrum m/z and retention 
+time match are stored in a table with the list of not fragmented MS1 peaks. </p>
+<p>Finally, a diagnostic is performed 
+to evaluate the pre-process result followed by a suggestion of values for the critical parameters
+<code>rt_tolerance</code> and <code>peak_width</code>, based on the retrieved list of MS1 peaks with MS2 (detailed in next sections).</p>
 <h2 id="parameters">Parameters</h2>
 <p>For the complete list of parameters run:</p>
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>node np3_workflow.js pre_process --help
 </span></code></pre></div>
 <p>Parameters for the command <em>pre_process</em>:</p>
 <ul>
-<li><em>-n, --data_name</em> \&lt;name&gt;  <x>      :   the data collection name for verbosity</li>
-<li><em>-m, --metadata</em> \&lt;file&gt; <x>         :    path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> \&lt;path&gt; <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
+<li><em>-n, --data_name</em> \&lt;name>  <x>      :   the data collection name for verbosity</li>
+<li><em>-m, --metadata</em> \&lt;file> <x>         :    path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> \&lt;path> <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
 <li><em>-y, --processed_data_name</em> [x]       :       The name of the output directory that should be created inside the <code>raw_data_path</code> to store the processed data. When not using the default directory, this value should be informed in the following <em>run</em> or <em>clustering</em> commands. (default: processed_data)</li>
 <li><em>-t, --rt_tolerance</em> [x]       :       the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 ions that have a retention time value that is within a MS1 peak range. This value is applied to both sides of the MS1 peaks (RTmin - rt_tolerance and RTmax + rt_tolerance). Tries to overcome bad MS1 peak integrations. (default: 3)</li>
 <li><em>-z, --mz_tolerance</em> [x]       :      the tolerance in Daltons for matching a MS1 peak m/z with a MS2 spectrum precursor m/z. (default: 0.05)</li>
@@ -1144,7 +1135,7 @@ peak detection algorithm).</p>
 <h2 id="results">Results</h2>
 <p>A folder named <code>processed_data_name</code> inside the <code>raw_data_path</code> containing:</p>
 <ul>
-<li>One MGF per sample of the metadata table with the MS2 spectra enriched with their matched MS1 peak chromatographic dimensions. Each pre-processed file is named as "\&lt;SAMPLE_CODE&gt;_peak_info.mgf", where \&lt;SAMPLE_CODE&gt; is as defined in the metadata file located in the <em>metadata_path</em>.</li>
+<li>One MGF per sample of the metadata table with the MS2 spectra enriched with their matched MS1 peak chromatographic dimensions. Each pre-processed file is named as "\&lt;SAMPLE_CODE>_peak_info.mgf", where \&lt;SAMPLE_CODE> is as defined in the metadata file located in the <em>metadata_path</em>.</li>
 <li>A count file named "MS1_list_with_MS2.csv" with the quantification by sample of all the MS1 peaks that were assigned to a MS2 ion.</li>
 <li>A count file named "MS1_list_no_MS2.csv" with the quantification by sample of all the MS1 peaks that were not assigned to a MS2 ion, e.g. probably not fragmented MS1 peaks, and thus these peaks will be missing in the final clustering counts. It will help to search for the ion's isotopic distributions.</li>
 <li>A log file named "logPreProcessStatisticsWarning" or "logPreProcessStatistics" with the statistics of the rate of MS2 spectra without a MS1 peak correspondence and guidelines to improve this step result.</li>

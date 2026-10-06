@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -918,6 +918,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Description
@@ -934,19 +936,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-7-command-annotate_protonated" class="md-nav__link">
-    Step 7: Command annotate_protonated
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1022,19 +1019,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-7-command-annotate_protonated" class="md-nav__link">
-    Step 7: Command annotate_protonated
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1080,9 +1072,7 @@
   
 
 
-  <h1>Description</h1>
-
-<h2 id="step-7-command-annotate_protonated">Step 7: Command <em>annotate_protonated</em></h2>
+<h1 id="step-7-command-annotate_protonated">Step 7: Command <em>annotate_protonated</em></h1>
 <p>Annotate possible ionization variants in the clean count tables and creates the <strong>Ionization Variant Annotation Molecular 
 Network (IVAMN)</strong> - for positive ion mode only. It searches for adducts, neutral losses, multiple charge, dimers/trimers, 
 isotopes and in-source fragments based on numerical equivalences and chemical rules. Finally, it runs a link analysis 
@@ -1098,8 +1088,8 @@ an ion variant to the consensus spectra considered as a putative [M+H]+ candidat
 </span></code></pre></div>
 <p>Parameters for the command <em>annotate_protonated</em>:</p>
 <ul>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The job name will be extracted from here</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The job name will be extracted from here</li>
 <li><em>-z, --mz_tolerance</em> [x]              : the tolerance in Daltons for matching the numerical rules of detecting adducts, neutral losses, multiple charge, dimers/trimers and isotopes variants (default: 0.025)</li>
 <li><em>-f, --fragment_tolerance</em> [x]  : the tolerance in Daltons for matching the numerical rules of in-source fragments and multiple charge isotopic patterns. (default: 0.025)</li>
 <li><em>-t, --rt_tolerance</em> [x]        : tolerance in seconds to enlarge the peak boundaries for detecting concurrent variant spectra. (default: "2")</li>
@@ -1108,7 +1098,7 @@ an ion variant to the consensus spectra considered as a putative [M+H]+ candidat
 <li><em>-u, --rules</em> [x]              :   path to the CSV file with the accepted ionization modification rules for detecting adducts, multiple charge and dimers/trimers variants, and their combination with neutral losses. (default: "rules/np3_modifications.csv")</li>
 <li><em>-c, --scale_factor</em> [x]          :  the scaling method to be used in the fragmented peak's intensities before any dot product comparison (Step 5). Valid values are: 0 for the natural logarithm (ln) of the intensities; 1 for no scaling; and other values greater than zero for raising the fragment peaks intensities to the power of x (e.g. x = 0.5 is the square root scaling). [x] &gt;= 0 (default: 0.5)</li>
 <li><em>-b, --max_chunk_spectra</em> [x]      :   Maximum number of spectra (rows) to be loaded and processed in a chunk at the same time. In case of memory issues this value should be decreased (default: 3000)</li>
-<li><em>-v, --verbose</em> [x]             : for values X&gt;0 show the scripts output information. (default: 0)</li>
+<li><em>-v, --verbose</em> [x]             : for values X>0 show the scripts output information. (default: 0)</li>
 <li><em>-h, --help</em>                    : output usage information</li>
 </ul>
 <h2 id="results">Results</h2>

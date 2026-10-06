@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -752,6 +752,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Description
@@ -768,19 +770,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-command-clean" class="md-nav__link">
-    Step 5: Command clean
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1022,19 +1019,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-command-clean" class="md-nav__link">
-    Step 5: Command clean
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1080,13 +1072,11 @@
   
 
 
-  <h1>Description</h1>
-
-<h2 id="step-5-command-clean">Step 5: Command <strong>clean</strong></h2>
-<p>Compute the pairwise comparisons of the consensus spectra (if not done yet) and then clean the clustering counts. 
-It also runs Step 7 to annotate possible ion variants using the new clean tables and to create the molecular network of 
+<h1 id="step-5-command-clean">Step 5: Command <strong>clean</strong></h1>
+<p>Compute the pairwise comparisons of the consensus spectra (if not done yet) and then clean the clustering counts. </p>
+<p>It also runs Step 7 to annotate possible ion variants using the new clean tables and to create the molecular network of 
 annotations, and runs Step 10 to overwrite any old computation of the molecular network of similarities. 
-It can also run the library spectra identifications (Step 6) for the collection of clean consensus spectra. 
+It can also run the library spectra identifications (Step 6) for the new collection of clean consensus spectra. 
 At the end, the final report is (re)computed.</p>
 <h2 id="parameters">Parameters</h2>
 <p>For the complete list of parameters run:</p>
@@ -1094,9 +1084,9 @@ At the end, the final report is (re)computed.</p>
 </span></code></pre></div>
 <p>Parameters for the command <em>clean</em>:</p>
 <ul>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the final output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'mgf' folder and the 'count_tables' folder with the peak area and spectra count tables in CSV files. The job name will be extracted from here</li>
-<li><em>-y, --processed_data_dir</em> &lt;path&gt;  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the final output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'mgf' folder and the 'count_tables' folder with the peak area and spectra count tables in CSV files. The job name will be extracted from here</li>
+<li><em>-y, --processed_data_dir</em> &lt;path>  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
 <li><em>-z, --mz_tolerance</em> [x]              : the tolerance in Daltons that determines if two spectra will be compared and possibly joined. It is also used in Step 7 to detect possible ion variants (default: 0.025)</li>
 <li><em>-t, --rt_tolerance</em> [x,y]        : tolerances in seconds for the retention time width of the precursor that determines if two spectra will be compared and possibly joined. It is directly applied to the retention time minimum (subtracted) and maximum (added) of the spectra. It enlarges the peak boundaries to deal with disaligned samples or ionization variant spectra. The first tolerance [x] is used in the annotation Step 7; and the tolerance [y] is used in the clean Step 5 (default: 1,2)</li>
 <li><em>-a, --ion_mode</em> [x]             :  the precursor ion mode. One of the following numeric values corresponding to an ion adduct type: '1' = Positive [M+H]+ or '2' = Negative [M-H]- (default: 1)</li>
@@ -1106,7 +1096,11 @@ At the end, the final report is (re)computed.</p>
 <li><em>-w, --similarity_mn</em> [x] :     the minimum similarity score that must occur between a pair of consensus spectra to connect them with an edge in the molecular networking. Lower values will increase the component size of the clusters by inducing the connection of less related spectra; and higher values will limit the components sizes to the opposite (default: 0.6)</li>
 <li><em>-f, --fragment_tolerance</em> [x]  : the tolerance in Daltons for fragment peaks. Peaks in a cluster spectrum that are closer than this are considered the same. (default: 0.05)</li>
 <li><em>--bflag_cutoff</em> [x]  :  A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering result and to allow spectra with a basePeakInt value below this distribution median plus IQR*bflag_cutoff to be joined with a blank spectrum during the clean Step 5, without relying on the similarity value. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile) of the distribution. The spectra with a basePeakInt value &lt;= median + IQR*bflag_cutoff (from the blank spectra basePeakInt distribution) and BFLAG TRUE will be joined to a blank spectrum in the clean Step 5. This cutoff will affect the spectra with BFLAG TRUE that would not get joined to a blank spectra when relying only on the similarity cutoff. This is a turn around to the fact that blank spectra have low quality spectra and thus can not fully rely on the similarity values. (default: 1.5)</li>
-<li><em>--noise_cutoff</em> [x] :  A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering Step 3 result and to remove the spectra with a basePeakInt value below this distribution median plus IQR*noise_cutoff after the clean Step 5. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile) of the distribution. When no blank sample is present in the metadata, the full distribution is used. This cutoff will affect the spectra with with a low basePeakInt value that probably are noise features. If the clustering Step 3 resulted in more than 25000 spectra, the noise cutoff will be applied before the clean Step 5 to prevent a long processing time (default: "FALSE")</li>
+<li><em>--noise_cutoff</em> [x] :  A positive numeric value defining the minimum base peak intensity absolute value 
+                    that a MS2 spectra must have to be kept after the clustering of Step 3. 
+                    The MS2 spectra with a basePeakInt smaller than this value will be removed before clean Step 5.
+                     The default value is zero (disabled). Large values in this parameter may result in the loss of minority 
+                    compounds together with noise spectra. (default: 0)</li>
 <li><em>-u, --rules</em> [x]              :   path to the CSV file with the accepted ionization modification rules for detecting adducts, multiple charge and dimers/trimers variants, and their combination with neutral losses (Step 7). (default: "rules/np3_modifications.csv")</li>
 <li><em>-c, --scale_factor</em> [x]          :  the scaling method to be used in the fragmented peak's intensities before any dot product comparison (Step 5). Valid values are: 0 for the natural logarithm (ln) of the intensities; 1 for no scaling; and other values greater than zero for raising the fragment peaks intensities to the power of x (e.g. x = 0.5 is the square root scaling). [x] &gt;= 0 (default: 0.5)</li>
 <li><em>--min_matched_peaks</em> [x]           :  The minimum number of common peaks that two spectra must share to be connected by an edge in the filtered SSMN. Connections between spectra with less common peaks than this cutoff will be removed when filtering the SSMN. Except for when one of the spectra have a number of fragment peaks smaller than the given min_matched_peaks value, in this case the spectra must share at least 2 peaks. The fragment peaks count is performed after the spectra are normalized and cleaned. (default: 6)</li>
@@ -1131,7 +1125,7 @@ At the end, the final report is (re)computed.</p>
 <ul>
 <li><em>-j, --tremolo_identification</em> [x]  : (not Windows OS's) A logical "TRUE" or "FALSE" indicating if the Tremolo tool should be used for the spectral matching against the ISDB from the UNPD (default: "TRUE")</li>
 <li><em>-b, --max_chunk_spectra</em> [x]      :   Maximum number of spectra (rows) to be loaded and processed in a chunk at the same time. In case of memory issues this value should be decreased (default: 3000)</li>
-<li><em>-v, --verbose</em> [x]             : for values X&gt;0 show the scripts output information. (default: 0)</li>
+<li><em>-v, --verbose</em> [x]             : for values X>0 show the scripts output information. (default: 0)</li>
 <li><em>-h, --help</em>                    : output usage information</li>
 </ul>
 <h2 id="results">Results</h2>

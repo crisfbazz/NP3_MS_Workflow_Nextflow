@@ -19,7 +19,7 @@
         <link rel="next" href="../../06_spectral_identification/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-5-details" class="md-skip">
+        <a href="#step-5-clean-details" class="md-skip">
           Skip to content
         </a>
       
@@ -766,6 +766,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Details
@@ -782,6 +784,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -790,9 +794,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-5-details" class="md-nav__link">
-    Step 5 Details
+  <a href="#fragmented-clusters-problem" class="md-nav__link">
+    Fragmented Clusters Problem
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise-removal" class="md-nav__link">
+    Noise Removal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-quantification" class="md-nav__link">
+    Clean Quantification
+  </a>
+  
+    <nav class="md-nav" aria-label="Clean Quantification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean-count-tables-new-columns-from-the-data-cleaning-step" class="md-nav__link">
+    Clean Count Tables New Columns from the Data Cleaning Step
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1001,6 +1039,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1009,9 +1049,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-5-details" class="md-nav__link">
-    Step 5 Details
+  <a href="#fragmented-clusters-problem" class="md-nav__link">
+    Fragmented Clusters Problem
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise-removal" class="md-nav__link">
+    Noise Removal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-quantification" class="md-nav__link">
+    Clean Quantification
+  </a>
+  
+    <nav class="md-nav" aria-label="Clean Quantification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean-count-tables-new-columns-from-the-data-cleaning-step" class="md-nav__link">
+    Clean Count Tables New Columns from the Data Cleaning Step
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1038,9 +1112,8 @@
   
 
 
-  <h1>Details</h1>
-
-<h2 id="step-5-details">Step 5 Details</h2>
+<h1 id="step-5-clean-details">Step 5 Clean Details</h1>
+<h2 id="fragmented-clusters-problem">Fragmented Clusters Problem</h2>
 <p>The clustering (Step 3) identify multiple spectra of the same ion and replace them with a single representative 
 consensus spectrum. The MS-Cluster algorithm is not an optimal solution, so even though it drastically reduces the 
 data size keeping it's quality high, it is not able to remove all the repeated spectra of the same ion, leading to 
@@ -1050,6 +1123,7 @@ retention time tolerance.</p>
 <p>The clean step is a second clustering strategy that was developed to reduce the remaining redundancies from the 
 clustering result, and to overcome the fragmented clusters limitation. It is an optimal clustering with greedy 
 heuristics that was implemented in R code with auxiliary compiled functions (dlls) in C++. </p>
+<h2 id="methodology">Methodology</h2>
 <p>The <em>clean</em> step starts by performing the pairwise comparisons of the consensus spectra. These comparisons result in 
 two symmetric and quadratic matrix (n + 1)x(n + 1), where n is the number of consensus spectra from Step 3 and the 
 remaining 1 row and column are the msclusterIDs (clusters IDs resulting from the clustering step). The upper triangular 
@@ -1090,56 +1164,54 @@ join two spectra. It checks if the peak center deviation between the spectra is 
 tolerance or if their peak boundaries deviation is less than 2 times the retention time tolerance. 
 If both of these conditions are not satisfied, the spectra are kept separated. By doing this, we try to prevent joining 
 adjacent isomers that have a high similarity value. </p>
+<h2 id="noise-removal">Noise Removal</h2>
 <p>Also in the Data cleaning step, a bflag cutoff was implemented to allow joining spectra from blank samples that do not 
 have a similarity value above the cutoff. This helps to reduce the fragmented clusters with bflag TRUE and a low base 
-peak intensity, that could not fully rely in the similarity values. The bflag cutoff is computed as the median value of 
+peak intensity, that could not fully rely on the similarity values. The bflag cutoff is computed as the median value of 
 the base peak intensity distribution of blank spectra plus the factor informed by the user times the interquartile 
 range (IQR) of this distribution. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile 
 (75th quantile) of a distribution. The consensus spectra with a basePeakInt value &lt;= median + IQR*bflag_factor 
 (from the blank spectra basePeakInt distribution) and BFLAG TRUE will be joined to a blank spectrum independent of 
 their similarity values.</p>
-<p>At the end of the clean step a noise cutoff is applied to remove spectra with a low base peak intensity value. 
-The noise cutoff is computed as the the median value of the base peak intensity distribution of blank spectra plus 
-the factor informed by the user times the interquartile range (IQR) of this distribution. When no blank sample is 
-present in the metadata, the full distribution of the base peak intensity from the clustering counts is used. 
-This cutoff will affect the consensus spectra with a low basePeakInt value that probably are noise features. 
-If the clustering Step 3 resulted in more than 15000 consensus spectra, the noise cutoff will be applied before the 
-clean step to prevent a long processing time.</p>
+<p>At the begging of the clean step a noise cutoff is applied to remove spectra with a low MS2 base peak intensity value. 
+The noise cutoff is an absolute value informed by the used depending on its data. It is disabled by default. 
+This cutoff will affect the consensus spectra with a low <strong>basePeakInt</strong> value that probably are noise features. </p>
 <p>The base peak intensity distribution plotted at the end of the clustering step helps the users to better define these 
-cutoffs' factors and to better understand its effect on their dataset.</p>
+cutoffs' values and to better understand its effect on their dataset.</p>
+<h2 id="clean-quantification">Clean Quantification</h2>
 <p>The count tables, in terms of the number of spectra and of peak area, of the joined clusters are aggregated following 
 the same rules applied in Step 4 and the joined clusters peak information (m/z, retention time mean, minimum and maximum) 
 are computed as the average of the joining clusters values weighted by their intensities (sumInts).</p>
 <p>The following columns are added to the count tables in the <em>clean</em> step:</p>
-<p><strong>Table: Clean Count Tables New Columns from the Data Cleaning Step</strong></p>
+<h4 id="clean-count-tables-new-columns-from-the-data-cleaning-step">Clean Count Tables New Columns from the Data Cleaning Step</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Columns</th>
+<th align="left">Columns</th>
 <th>Description</th>
-<th style="text-align: center;">Value Type</th>
+<th align="center">Value Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">joinedIDs</td>
+<td align="left">joinedIDs</td>
 <td>the msclusterIDs of the joined spectra in the cleaning step, separated by a ';'</td>
-<td style="text-align: center;">character with concatenated numbers</td>
+<td align="center">character with concatenated numbers</td>
 </tr>
 <tr>
-<td style="text-align: left;">numJoins</td>
+<td align="left">numJoins</td>
 <td>the number of spectra that were joined in the cleaning step</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: left;">BLANK_DIST</td>
+<td align="left">BLANK_DIST</td>
 <td>the distance in the molecular network of similarity from the current spectra to a spectrum of a blank sample. This distance ranges from 0 (if the current spectra appear in a blank sample) to 3 (if there are at least 3 links between the current spectra and a spectrum of a blank sample in the molecular network of similarity). If this value is NA it means that this distance is at least greater than 3, and thus was not computed.</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: left;">fragmented_cluster</td>
+<td align="left">fragmented_cluster</td>
 <td>the number of clean consensus spectra identified as a fragmented cluster of the current spectrum or -1 to indicate that the current spectrum is a fragmented cluster of another more intense spectrum. The clean consensus spectrum that receives a positive value greater or equal than one in this column is the candidate with the highest basePeakInt among the other spectra signalized as fragmented clusters within the same m/z and retention time interval, which receives a -1 value. The spectrum without fragmented clusters receives a value equals to 0.</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 </tbody>
 </table>

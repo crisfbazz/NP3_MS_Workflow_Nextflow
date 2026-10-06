@@ -19,7 +19,7 @@
         <link rel="next" href="../final_reports/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -538,6 +538,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Description
@@ -554,19 +556,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps-2-to-10-command-run" class="md-nav__link">
-    Steps 2 to 10: Command run
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1022,19 +1019,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps-2-to-10-command-run" class="md-nav__link">
-    Steps 2 to 10: Command run
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1080,9 +1072,7 @@
   
 
 
-  <h1>Description</h1>
-
-<h2 id="steps-2-to-10-command-run">Steps 2 to 10: Command <strong>run</strong></h2>
+<h1 id="steps-2-to-10-command-run">Steps 2 to 10: Command <strong>run</strong></h1>
 <p>This command runs the entire NP³ MS Workflow pipeline - Steps 2 to 10. </p>
 <p>If a pre-process result already exists in the provided <code>raw_data_path</code>/<code>processed_data_name</code> folder, 
 it uses this result and skip Step 2.</p>
@@ -1092,10 +1082,10 @@ it uses this result and skip Step 2.</p>
 </span></code></pre></div>
 <p>Parameters for the command <em>run</em>:</p>
 <ul>
-<li><em>-n, --output_name</em> &lt;name&gt;      : the job name. It will be used to name the output directory and the results of the final clustering integration step. It must have less than 80 characters.</li>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> &lt;path&gt;     : path to the folder containing the input LC-MS/MS raw spectra data files </li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path of the output directory</li>
+<li><em>-n, --output_name</em> &lt;name>      : the job name. It will be used to name the output directory and the results of the final clustering integration step. It must have less than 80 characters.</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> &lt;path>     : path to the folder containing the input LC-MS/MS raw spectra data files </li>
+<li><em>-o, --output_path</em> &lt;path>       : path of the output directory</li>
 <li><em>-f, --fragment_tolerance</em> [x]  : the tolerance in Daltons for fragment peaks. Peaks in the original MS/MS spectra that are closer than this tolerance are merged in the clustering steps (Step 3). It is also used in the pre-processing (Step 2), in the spectra similarity comparisons and in the cleanning Step 5 (default: 0.05)</li>
 <li><em>-z, --mz_tolerance</em> [x]              : this is the tolerance in Daltons for the m/z of the precursor that determines if two spectra will be compared and possibly joined. It is used in the clustering steps (Step 3), in the cleaning (Step 5), in the library identifications (Step 6) and in the annotation of ionization variants (Step 7) (default: 0.025)</li>
 <li><em>-p, --ppm_tolerance</em> [x]        : the maximum tolerated m/z deviation in parts per million (ppm) to be used in the pre-processing (Step 2). Typically set to a generous multiple of the mass accuracy of the mass spectrometer. (default: 15)</li>
@@ -1123,7 +1113,11 @@ it uses this result and skip Step 2.</p>
 <li><em>-y, --processed_data_name</em> [x]  : the name of the folder inside the <em>raw_data_path</em> where the pre-processed data will be stored. If the given folder does not exist it will be created and the pre-process will be run using the default values of the missing options. Otherwise, it will depend on the <em>processed_data_overwrite</em> parameter value (default: "processed_data")</li>
 <li><em>-q, --processed_data_overwrite</em> [x]  : A logical "TRUE" or "FALSE" indicating if the pre processed data present in the processed_data_name folder should be used (FALSE) and partially incremented if needed, in case it already exists, or overwritten and pre processed again (TRUE) with the default values of the missing Step 2 options (default: "FALSE")</li>
 <li><em>--bflag_cutoff</em> [x]            :      A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution and allow spectra with a basePeakInt value below this distribution median plus IQR*bflag_cutoff to be joined with a blank spectrum without relying on the similarity value. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile). The spectra with a basePeakInt value &lt;= median + IQR*bflag_cutoff of the blank spectra basePeakInt distribution and BFLAG TRUE will be joined to a blank spectrum in the clean step. This cutoff will affect the spectra with BFLAG TRUE that would not get joined to a blank spectra when relying only on the similarity cutoff. This is a turn around to the fact that blank spectra have low quality spectra and thus can not fully rely on the similarity values. (default: 1.5)</li>
-<li><em>--noise_cutoff</em> [x]            :      A positive numeric value to scale the interquartile range (IQR) of the blank spectra basePeakInt distribution from the clustering Step 3 result and to remove the spectra with a basePeakInt value below this distribution median plus IQR*noise_cutoff after the clean Step 5. Or FALSE to disable it. The IQR is the range between the 1st quartile (25th quantile) and the 3rd quartile (75th quantile) of the distribution. When no blank sample is present in the metadata, the full distribution is used. This cutoff will affect the spectra with with a low basePeakInt value that probably are noise features.  If the clustering Step 3 results in more than 25000 spectra, the noise cutoff will be applied before the clean Step 5 to prevent a long processing time (default: "FALSE")</li>
+<li><em>--noise_cutoff</em> [x]            :      A positive numeric value defining the minimum base peak intensity absolute value 
+                    that a MS2 spectra must have to be kept after the clustering of Step 3. 
+                    The MS2 spectra with a basePeakInt smaller than this value will be removed before clean Step 5.
+                     The default value is zero (disabled). Large values in this parameter may result in the loss of minority 
+                    compounds together with noise spectra. (default: 0)</li>
 <li><em>-u, --rules</em> [x]              :   path to the CSV file following the NP³ rules table format with the accepted ionization modification rules for detecting adducts, multiple charge and dimers/trimers variants, and their combination with neutral losses. To be used by the annotation algorithm (Step 7) (default: "rules/np3_modifications.csv")</li>
 <li><em>-r, --trim_mz</em> [x]                : A logical "TRUE" or "FALSE" indicating if the spectra fragmented peaks around the precursor m/z +-20 Da should be deleted before the pairwise comparisons. If "TRUE" this removes the residual precursor ion, which is frequently observed in MS/MS spectra acquired on qTOFs. (default: "TRUE")</li>
 <li><em>--max_shift</em> [x]                   :  Maximum difference between precursor m/zs that will be used in the search of shifted m/z fragment ions in the NP³ shifted cosine function. Shifts greater than this value will be ignored and not used in the cosine computation. It can be useful to deal with local modifications of the same compound. (default: 200)</li>
@@ -1140,7 +1134,7 @@ it uses this result and skip Step 2.</p>
 <li><em>--gnps_analog_search</em> [x]      :      If "TRUE", also search for analog spectra in GNPS2 library search. This allows as a match the spectra with different precursor mass and similar fragmentation pattern.  (default: "FALSE")</li>
 <li><em>--gnps_analog_max_shift</em> [x]    :     Maximum difference between precursor m/zs that will be used in the GNPS2 library search when analog_search is enabled. Only used when search_tool is "gnps_new". (default: 400)</li>
 <li><em>--gnps_parallel_threads</em> [x]     :    the number of threads to be used for parallel processing in the search when search_tool is gnps_indexed. For parallelization set x &gt;= 1 (default: 4)</li>
-<li><em>-v, --verbose</em> [x]             : for values X&gt;0 show the scripts output information. For values greater or equal to 10 a consistency test of the results is also performed. (default: 0)</li>
+<li><em>-v, --verbose</em> [x]             : for values X>0 show the scripts output information. For values greater or equal to 10 a consistency test of the results is also performed. (default: 0)</li>
 <li><em>-h, --help</em>                    : output usage information</li>
 </ul>
 <h2 id="results">Results</h2>
@@ -1152,17 +1146,17 @@ it uses this result and skip Step 2.</p>
 <!-- - a folder named 'spec_lists' containing the list of files used in each step run of the NP3_MSCluster algorithm;  -->
 <ul>
 <li>A folder named 'outs' with the clustering steps results in separate folders containing: <ul>
-<li>A subfolder named 'count_tables' with the Step 4 quantification in CSV tables named as '&lt;step_name&gt;_(spectra|peak_area).csv'.</li>
+<li>A subfolder named 'count_tables' with the Step 4 quantification in CSV tables named as '&lt;step_name>_(spectra|peak_area).csv'.</li>
 <li>Another subfolder named 'clust' with the clusters membership files (which SCANS or msclusterID were joined)</li>
 <li>A third subfolder named 'mgf' with the resulting clusters consensus spectra in MGF files</li>
 <li>A text file named 'logClusteringOutput' with the NP3_MSCluster log output. </li>
 </ul>
 </li>
 </ul>
-<p>The clustering steps results folders are named (<em>step_name</em>) as 'B_&lt;DATA_COLLECTION_BATCH&gt;_&lt;X&gt;' where <em>DATA_COLLECTION_BATCH</em> 
+<p>The clustering steps results folders are named (<em>step_name</em>) as 'B_&lt;DATA_COLLECTION_BATCH>_&lt;X>' where <em>DATA_COLLECTION_BATCH</em> 
 is the data collection batch number in the metadata file of each group of samples and <em>X</em> is 0 if it is the result of a 
 <em>data clustering step</em> or 1 if it is the result of a <em>blank clustering step</em>. 
-The <em>data collection batch integration step</em> results are stored in folders named as 'B_&lt;DATA_COLLECTION_BATCH&gt;'.</p>
+The <em>data collection batch integration step</em> results are stored in folders named as 'B_&lt;DATA_COLLECTION_BATCH>'.</p>
 <p>The final integration step result is located inside the 'outs' directory in a folder named with the <em>output_name</em>. 
 This folder contains the final quantification and is where the user will find the final results. 
 It also contains the following data:</p>

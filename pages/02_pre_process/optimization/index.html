@@ -19,7 +19,7 @@
         <link rel="next" href="../../03_clustering/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -628,6 +628,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Optimization
@@ -644,6 +646,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -652,9 +656,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre_process-optimization-guide" class="md-nav__link">
-    pre_process Optimization Guide
+  <a href="#how-to-guides" class="md-nav__link">
+    How-to Guides
   </a>
+  
+    <nav class="md-nav" aria-label="How-to Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical-parameters" class="md-nav__link">
+    Critical Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-and-statistics" class="md-nav__link">
+    Diagnostic and Statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-suggestion-beta" class="md-nav__link">
+    Parameters Suggestion - BETA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1001,6 +1032,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1009,9 +1042,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre_process-optimization-guide" class="md-nav__link">
-    pre_process Optimization Guide
+  <a href="#how-to-guides" class="md-nav__link">
+    How-to Guides
   </a>
+  
+    <nav class="md-nav" aria-label="How-to Guides">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical-parameters" class="md-nav__link">
+    Critical Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-and-statistics" class="md-nav__link">
+    Diagnostic and Statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-suggestion-beta" class="md-nav__link">
+    Parameters Suggestion - BETA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1038,30 +1098,35 @@
   
 
 
-  <h1>Optimization</h1>
-
-<h2 id="pre_process-optimization-guide"><em>pre_process</em> Optimization Guide</h2>
-<p>The Pre-processing step performs the LC-MS data processing (feature finding) with XCMS. It extracts the list of MS¹ 
-peaks for each sample, and then, directly impact in the isomers separation and resolution. The LC-MS processing is 
+<h1 id="pre_process-optimization-guide"><em>pre_process</em> Optimization Guide</h1>
+<p>The Pre-processing step performs the LC-MS data processing with XCMS (feature finding). It extracts the list of MS¹ 
+peaks for each sample, and thus, directly impact in the isomers separation and resolution. The LC-MS processing is 
 highly dependent on the parameters setup. The optimization of these parameters depends on the mass spectrometer equipment, 
 the chromatographic method used and the data quality. With that pointed out, a diagnostic of Pre-process result and a 
 suggestion of values for the <strong>most critical parameters</strong> were implemented to help the user in this optimization. 
-The diagnostic and suggestion are still in a <strong>Beta version</strong>, and should be used as a guide and not as a rule.</p>
-<p>In order to optimize the Pre-processing step, the user could follow two strategies: (1) run pre-processing with the 
-default parameters and analyse the diagnostic result and suggestions; or (2) inspect the chromatograms of the dataset 
+The diagnostic and suggestion are still in a <strong>Beta version</strong>, and should be used as a <strong>guide and not as a rule</strong>.</p>
+<h2 id="how-to-guides">How-to Guides</h2>
+<p>In order to optimize the Pre-processing step, the user could follow two strategies: </p>
+<ol>
+<li>run pre-processing with the 
+default parameters and analyze the diagnostic result and suggestions; or </li>
+<li>inspect the chromatograms of the dataset 
 first (using a target m/z or randomly pick one) and run the pre-processing with a pre setup of parameters values that 
-best represent what you observed in the real data. <strong>The second option is more recommended</strong>, because the suggestion of 
+best represent what you observed in the real data. </li>
+</ol>
+<p><strong>The second option is more recommended</strong>, because the suggestion of 
 values for the most critical parameters will be biased by the parameters values used. The user can also choose to run 
 the entire workflow with this first pre-processing result to examine the final clean quantification tables and decide if 
 they are good enough for its purpose.</p>
-<p>The critical parameters for the pre-processing step are: </p>
+<h4 id="critical-parameters">Critical Parameters</h4>
+<p>The critical parameters for the pre-process step are: </p>
 <ol>
-<li><code>ppm_tolerance</code> - the maximal tolerated m/z deviation in consecutive MS1 scans in parts per million (ppm). 
+<li><code>ppm_tolerance</code> : the maximal tolerated m/z deviation in consecutive MS1 scans in parts per million (ppm). 
 Typically set to a generous multiple of the mass accuracy of the mass spectrometer; </li>
-<li><code>mz_tolerance</code> - the tolerance in Daltons for matching the m/z of a MS1 peak with the precursor m/z of a MS2 spectrum; </li>
-<li><code>rt_tolerance</code> - the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 
+<li><code>mz_tolerance</code>: the tolerance in Daltons for matching the m/z of a MS1 peak with the precursor m/z of a MS2 spectrum; </li>
+<li><code>rt_tolerance</code>: the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 
 ions that have a retention time value within a listed MS1 peak range;</li>
-<li><code>peak_width</code> - the expected approximate peak width in chromatographic space (MS1 peaks). Given as a range (min, max) 
+<li><code>peak_width</code>: the expected approximate peak width in chromatographic space (MS1 peaks). Given as a range (min, max) 
 in seconds.</li>
 </ol>
 <p>The first two critical parameters are more related to the mass spectrometrer equipment accuracy and the data resolution, 
@@ -1100,6 +1165,7 @@ the other critical parameters.</p>
 </ul>
 <p>As you can see by now, this optimization will be a balance between the amount of effort that the user is willing to 
 give and how good is the MS1 peaks definition across the different m/zs of a dataset. </p>
+<h4 id="diagnostic-and-statistics">Diagnostic and Statistics</h4>
 <p>At the end of the pre-processing step a diagnostic of its results is performed and stored in a log file that will be 
 named 'logPreProcessStatisticsWarning' if a problem is detected in the diagnostic, or will be simple named 
 'logPreProcessStatistics' if no problem is detected. This log is saved to the directory named with the 
@@ -1128,6 +1194,7 @@ indicating that real peaks could have being split into multiple smaller peaks. T
 expected for the dataset being used, and then choose to increase the maximum peak_width value to prevent this anomaly. 
 The distribution of the number of m/zs by the number of MS1 peaks is stored in the file 'log_number_mzs_by_number_peaks.png' 
 for further examination.</p>
+<h4 id="parameters-suggestion-beta">Parameters Suggestion - <em>BETA</em></h4>
 <p>Following the diagnostic, a Beta suggestion for the <code>peak_width</code> and the <code>rt_tolerance</code> parameters values will be 
 executed to help the user in this optimization. It starts by plotting the peak width distribution of the pre-process 
 result, for all the MS1 peaks that had a MS2 correspondence and excluding blank m/zs. These distribution will show the 

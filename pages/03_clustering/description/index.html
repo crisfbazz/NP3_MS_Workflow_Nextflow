@@ -19,7 +19,7 @@
         <link rel="next" href="../details_clustering/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -676,6 +676,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Description
@@ -692,19 +694,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-and-4-command-clustering" class="md-nav__link">
-    Step 3 and 4: Command clustering
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1022,19 +1019,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-and-4-command-clustering" class="md-nav__link">
-    Step 3 and 4: Command clustering
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
@@ -1080,14 +1072,13 @@
   
 
 
-  <h1>Description</h1>
-
-<h2 id="step-3-and-4-command-clustering">Step 3 and 4: Command <strong>clustering</strong></h2>
-<p>Runs the NP3_MSCluster algorithm to perform the clustering of pre-processed MS/MS data into a collection of consensus 
+<h1 id="step-3-and-4-command-clustering">Step 3 and 4: Command <strong>clustering</strong></h1>
+<p>Runs the NP3_MSCluster algorithm to perform the <strong>clustering</strong> of pre-processed MS/MS data into a collection of consensus 
 spectra. It relies on spectra similarity and chromatographic dimensions. </p>
-<p>Then, runs the consensus spectra quantification 
+<p>And then, runs the consensus spectra <strong>quantification</strong>
 (Step 4) to parse the clustering results and count the number of spectra and of peak area by sample. Finally, it computes 
-appropriate indicators based on the sample's types. This command can also run the library spectra identifications (Step 6), and if 
+appropriate indicators based on the sample's types. </p>
+<p>This command can also run the library spectra identifications (Step 6), and if 
 necessary, it runs Step 2.</p>
 <h2 id="parameters">Parameters</h2>
 <p>For the complete list of parameters run:</p>
@@ -1095,10 +1086,10 @@ necessary, it runs Step 2.</p>
 </span></code></pre></div>
 <p>Parameters for the command <em>clustering</em>:</p>
 <ul>
-<li><em>-n, --output_name</em> \&lt;name&gt;:       the job name. It will be used to name the output directory and the results from the final clustering integration step</li>
-<li><em>-m, --metadata</em> \&lt;file&gt;       :      path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> \&lt;path&gt;   :     path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
-<li><em>-o, --output_path</em> \&lt;path&gt;     :     path to where the output directory will be created</li>
+<li><em>-n, --output_name</em> \&lt;name>:       the job name. It will be used to name the output directory and the results from the final clustering integration step</li>
+<li><em>-m, --metadata</em> \&lt;file>       :      path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> \&lt;path>   :     path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
+<li><em>-o, --output_path</em> \&lt;path>     :     path to where the output directory will be created</li>
 <li><em>-f, --fragment_tolerance</em> [x]  :    the tolerance in Daltons for fragment peaks. Peaks in the original spectra that are closer than this get merged by the NP3_MSCluster algorithm (default: 0.05)</li>
 <li><em>-z, --mz_tolerance</em> [x]         :   this is the tolerance in Daltons for the m/z of the precursor that determines if two spectra will be compared and possibly joined. Used in the clustering job and in the library identifications (Step 6) (default: 0.025)</li>
 <li><em>-p, --ppm_tolerance</em> [x]        :   the maximal tolerated m/z deviation in parts per million (ppm) to be used in the pre-processing step if needed (default: 5)</li>
@@ -1135,10 +1126,10 @@ necessary, it runs Step 2.</p>
 </ul>
 </li>
 </ul>
-<p>The clustering steps results folders are named as 'B_\&lt;DATA_COLLECTION_BATCH&gt;_\&lt;X&gt;' where <em>DATA_COLLECTION_BATCH* 
+<p>The clustering steps results folders are named as 'B_\&lt;DATA_COLLECTION_BATCH>_\&lt;X>' where <em>DATA_COLLECTION_BATCH* 
 is the data collection batch number in the metadata file of each group of samples and </em>X<em> is 0 if it is the result of a 
 </em>data clustering step<em> or 1 if it is the result of a </em>blank clustering step<em>. 
-The </em>data collection batch integration step* results are stored in folders named as 'B_\&lt;DATA_COLLECTION_BATCH&gt;'.</p>
+The </em>data collection batch integration step* results are stored in folders named as 'B_\&lt;DATA_COLLECTION_BATCH>'.</p>
 <p>The final integration step result is located inside the 'outs' directory in a folder named with the <code>output_name</code>. 
 This folder contains the final counts and is where the user will find the final results. It also contains the tremolo 
 identification results inside the 'identifications' folder.</p>

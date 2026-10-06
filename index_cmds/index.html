@@ -19,7 +19,7 @@
         <link rel="next" href="../index_data/">
       
       <link rel="icon" href="../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -1133,7 +1133,7 @@ executed by this workflow offline using the command <strong>gnps_library_search<
 </span></code></pre></div>
 <p>From this point on, when NP³ MS Workflow commands are described, the following conventions will be used: </p>
 <ul>
-<li>Angled brackets (e.g., &lt;x&gt;) indicate a required input. </li>
+<li>Angled brackets (e.g., &lt;x>) indicate a required input. </li>
 <li>Square brackets (e.g. [y]) indicate an optional input. </li>
 <li>The brackets should not be typed while running the command, they are only used to indicate the type of the option (see the examples of the commands).</li>
 </ul>
@@ -1147,19 +1147,19 @@ Also executes the setup of the libraries used for spectral searching (UNPD and G
 <p><strong>run</strong> [options] : Steps 2 to 10: Runs the entire NP³ MS Workflow.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-n, --output_name</em> &lt;name&gt;      : the job name. It will be used to name the output directory and the results of the final clustering integration step</li>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> &lt;path&gt;     : path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to where the output directory will be created</li>
+<li><em>-n, --output_name</em> &lt;name>      : the job name. It will be used to name the output directory and the results of the final clustering integration step</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> &lt;path>     : path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to where the output directory will be created</li>
 </ul>
 </li>
 <li>
 <p><strong>pre_process</strong> [options] : Step 2: This command runs the pre-process of the LC-MS/MS raw data. It extracts the list of MS1 peaks with their dimension information (minimum and maximum retention times, the peak area and ID) in each sample, matches the MS2 spectra retention time and precursor m/z against this list and assign to each MS2 spectra a MS1 peak that encompasses it. Additionally, a table with the MS1 peaks without any MS2 spectrum m/z and retention time match are stored in a count table of non-fragmented MS1 peaks.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-n, --data_name</em> &lt;name&gt;  <x>      :   the data collection name for printting in the verbose messages</li>
-<li><em>-m, --metadata</em> &lt;file&gt; <x>         :    path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> &lt;path&gt; <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files</li>
+<li><em>-n, --data_name</em> &lt;name>  <x>      :   the data collection name for printting in the verbose messages</li>
+<li><em>-m, --metadata</em> &lt;file> <x>         :    path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> &lt;path> <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files</li>
 </ul>
 </li>
 <li>
@@ -1176,9 +1176,9 @@ Also executes the setup of the libraries used for spectral searching (UNPD and G
 <p><strong>clean</strong> [options] : Step 5: This command runs the pairwise comparisons of the collection of consensus spectra (if not done yet) and then runs the cleaning of the clustering counts. It also runs Step 7 to annotate possible ion variants using the new clean count tables and to create the molecular network of annotations, and runs Step 10 to overwrite any old computation of the molecular network of similarities. It can also run the library spectra identifications (Step 6) for the collection of clean consensus spectra.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the final output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'mgf' folder and the 'count_tables' folder with the peak area and spectra count tables in CSV files. The job name will be extracted from here</li>
-<li><em>-y, --processed_data_dir</em> &lt;path&gt;  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the final output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'mgf' folder and the 'count_tables' folder with the peak area and spectra count tables in CSV files. The job name will be extracted from here</li>
+<li><em>-y, --processed_data_dir</em> &lt;path>  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
 </ul>
 </li>
 <li>
@@ -1193,32 +1193,32 @@ Also executes the setup of the libraries used for spectral searching (UNPD and G
 <p><strong>annotate_protonated</strong> [options] : Step 7: (for positive ion mode only) This command runs the annotation of possible ionization variants in the clean count tables and creates the molecular network of annotations. It searches for adducts, neutral losses, multiple charges, dimers/trimers, isotopes and in-source fragmentation based on numerical equivalences and chemical rules. Finally, it runs a link analysis in the molecular network of annotations to assign some of the consensus spectra as putative [M+H]+ representatives.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The name of the output folder will be used as the job name.</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The name of the output folder will be used as the job name.</li>
 </ul>
 </li>
 <li>
 <p><strong>merge</strong> [options] : Step 8: (for positive ion mode only) This command runs the merge of the clean count tables based on the annotated variants. It creates new symbolic spectra candidates representing the union of each spectra with its annotated variants. By default the merge is only performed for the consensus spectra assigned as a [M+H]+ representative ion, to better account for the quantifications of the true metabolites.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The job name will be extracted from here</li>
-<li><em>-y, --processed_data_dir</em> &lt;path&gt;  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
-<li><em>-m, --metadata</em> &lt;file&gt;          : path to the metadata table CSV file</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The job name will be extracted from here</li>
+<li><em>-y, --processed_data_dir</em> &lt;path>  : the path to the folder inside the raw data folder where the pre-processed data (MGFs) were stored.</li>
+<li><em>-m, --metadata</em> &lt;file>          : path to the metadata table CSV file</li>
 </ul>
 </li>
 <li>
 <p><strong>corr</strong> [options] : Step 9: This command runs the bioactivity correlation to rank the consensus spectra based on the scores computed for the selection of samples and bioactivity values present in the metadata table.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-b, --metadata</em> &lt;file&gt;\     : path to the metadata table CSV file. Used to retrieve the biocorrelation groups</li>
-<li><em>-c, --count_file_path</em> &lt;file&gt;\ \ \ \ \ \ \ \ \ \ : path to the count table CSV file</li>
+<li><em>-b, --metadata</em> &lt;file>\     : path to the metadata table CSV file. Used to retrieve the biocorrelation groups</li>
+<li><em>-c, --count_file_path</em> &lt;file>\ \ \ \ \ \ \ \ \ \ : path to the count table CSV file</li>
 </ul>
 </li>
 <li>
 <p><strong>mn</strong> [options] : Step 10: This command runs the creation of a molecular network of similarity based on the pairwise spectra similarity value above the given similarity cut-off. Then, a filter is applied on this network to limit the number of neighbors of each node (number of links) to the top K most similar ones and to limit the size of the components to a maximum number of nodes. The final filtered network contains components that represent the most analogous spectra, possible connecting spectra from similar chemical classes.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-o, --output_path</em> &lt;path&gt;       : path to the output data folder, inside the outs directory of the clustering result folder. It should contain the 'molecular_networking' folder and inside it the 'similarity_tables' folder. The job name will be extracted from here</li>
+<li><em>-o, --output_path</em> &lt;path>       : path to the output data folder, inside the outs directory of the clustering result folder. It should contain the 'molecular_networking' folder and inside it the 'similarity_tables' folder. The job name will be extracted from here</li>
 </ul>
 </li>
 <li>
@@ -1228,29 +1228,29 @@ Concatenate different jobs without the need of running them all together again.
 Uses a different metadata, called <em>metadata_join</em>, defining the jobs to be joined.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-n, --output_name</em> &lt;name&gt;     :   the job name. It will be used to name the output directory and the results from joining the jobs. It must have less than 80 characters.</li>
-<li><em>-m, --metadata_join</em> &lt;file&gt;    :  path to the metadata_join table CSV file defining the jobs to be joined. Different format, see manual.</li>
-<li><em>-d, --jobs_data_path</em> &lt;path&gt;   :  path to the folder containing the input jobs result to be joined, this should contain their previous NP3 result, named accordingly to what is specified in the metadata_join. Their clean mgf and quantification tables will be used.</li>
-<li><em>-y, --pre_processed_dir_path</em> &lt;path&gt; :  path to the folder containing the input jobs pre processing result, this should contain all the original jobs previous NP3 pre processing result in separated folders named accordingly to what is specified in the metadata_join.</li>
-<li><em>-o, --output_path</em> &lt;path&gt;    :    path to where the output directory will be created</li>
+<li><em>-n, --output_name</em> &lt;name>     :   the job name. It will be used to name the output directory and the results from joining the jobs. It must have less than 80 characters.</li>
+<li><em>-m, --metadata_join</em> &lt;file>    :  path to the metadata_join table CSV file defining the jobs to be joined. Different format, see manual.</li>
+<li><em>-d, --jobs_data_path</em> &lt;path>   :  path to the folder containing the input jobs result to be joined, this should contain their previous NP3 result, named accordingly to what is specified in the metadata_join. Their clean mgf and quantification tables will be used.</li>
+<li><em>-y, --pre_processed_dir_path</em> &lt;path> :  path to the folder containing the input jobs pre processing result, this should contain all the original jobs previous NP3 pre processing result in separated folders named accordingly to what is specified in the metadata_join.</li>
+<li><em>-o, --output_path</em> &lt;path>    :    path to where the output directory will be created</li>
 </ul>
 </li>
 <li>
 <p><strong>gnps_library_search</strong> [options] : Step 6.1: This command runs the GNPS2 Library Search workflow (offline) to identify the informed spectra against the ALL_GNPS_NO_PROPAGATED library (default for LC data). </p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-g, --input_mgf_file</em> &lt;path&gt;      :  path to the input MGF file with the MS/MS spectra data to be searched and identified</li>
-<li><em>-o, --output_path</em> &lt;path&gt;         :  if the input is a NP3 result, the path to the final NP3 output data folder, inside the outs directory of the clustering result folder. It should contain the "identifications" folder, if not it will be created and the results will be stored in it. If the input is not a NP3 result, this should be a chosen result folder. The job name (output_name) will be extracted from here (basename).</li>
+<li><em>-g, --input_mgf_file</em> &lt;path>      :  path to the input MGF file with the MS/MS spectra data to be searched and identified</li>
+<li><em>-o, --output_path</em> &lt;path>         :  if the input is a NP3 result, the path to the final NP3 output data folder, inside the outs directory of the clustering result folder. It should contain the "identifications" folder, if not it will be created and the results will be stored in it. If the input is not a NP3 result, this should be a chosen result folder. The job name (output_name) will be extracted from here (basename).</li>
 </ul>
 </li>
 <li>
 <p><strong>gnps_result</strong> [options] : This command join the GNPS library identification result from the Molecular Networking (download 'clustered spectra') or the Library Search (download 'All identifications') workflows to the count tables of the NP³ clustering or clean steps. </p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-i, --cluster_info_path</em> &lt;path&gt;       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")</li>
-<li><em>-s, --result_specnets_DB_path</em> &lt;path&gt;       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder</li>
-<li><em>-c, --count_file_path</em> &lt;path&gt;       : Path to any of the count tables (peak_area or spectra) resulting from the NP³ MS Workflow clustering or clean steps. If the peak_area is informed and the spectra table file exists in the same path (or the opposite), it will merge the GNPS results to both files</li>
-<li><em>-o, --output_path</em> &lt;path&gt;    :          path to the final output data folder, inside the outs
+<li><em>-i, --cluster_info_path</em> &lt;path>       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")</li>
+<li><em>-s, --result_specnets_DB_path</em> &lt;path>       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder</li>
+<li><em>-c, --count_file_path</em> &lt;path>       : Path to any of the count tables (peak_area or spectra) resulting from the NP³ MS Workflow clustering or clean steps. If the peak_area is informed and the spectra table file exists in the same path (or the opposite), it will merge the GNPS results to both files</li>
+<li><em>-o, --output_path</em> &lt;path>    :          path to the final output data folder, inside the outs
                                     directory of the clustering result folder. It should contain
                                     the identifications folder, if not, it will be created. The job
                                     name (output_name) will be extracted from here.</li>
@@ -1260,11 +1260,11 @@ Uses a different metadata, called <em>metadata_join</em>, defining the jobs to b
 <p><strong>pca_plot</strong> [options] : This command creates a PCA plot of a new data in the NP³ reference chemical space, composed by UNPD+DrugBank+Allosteric. The procedure to create the PCA plots is to first compute the CDK descriptors of a provided list of SMILES and then to create the NP³ reference PCA and to transform these new data to the created chemical space.</p>
 <ul>
 <li>List of mandatory options:</li>
-<li><em>-t, --table_path</em> &lt;path&gt;       :  The path to a table in CSV format containing SMILES string in a
+<li><em>-t, --table_path</em> &lt;path>       :  The path to a table in CSV format containing SMILES string in a
                           column. Optionally, it may also contain the types/categories of
                           each SMILES entry in another column. It must be comma ","
                           separated.</li>
-<li><em>-s, --smiles_column</em> &lt;path&gt;       :  The name of the column in table_path containing the SMILES string.</li>
+<li><em>-s, --smiles_column</em> &lt;path>       :  The name of the column in table_path containing the SMILES string.</li>
 </ul>
 </li>
 <li>

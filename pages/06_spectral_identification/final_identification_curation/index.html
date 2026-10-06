@@ -19,7 +19,7 @@
         <link rel="next" href="../gnps_result/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -1062,26 +1062,26 @@ These scores are defined in Section 4.6.4 for UNPD and Section 4.12.4 for GNPS.<
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Quality Group</th>
-<th style="text-align: center;">Criteria</th>
-<th style="text-align: center;">Description</th>
+<th align="center">Quality Group</th>
+<th align="center">Criteria</th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">curated_lib_annotation_score &gt;= 50</td>
-<td style="text-align: center;">representing good/top quality library annotations</td>
+<td align="center">1</td>
+<td align="center">curated_lib_annotation_score &gt;= 50</td>
+<td align="center">representing good/top quality library annotations</td>
 </tr>
 <tr>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">curated_lib_annotation_score &gt; 0 and curated_lib_annotation_score &lt; 50</td>
-<td style="text-align: center;">less reliable library annotations, mostly analogs or low similarity score</td>
+<td align="center">2</td>
+<td align="center">curated_lib_annotation_score &gt; 0 and curated_lib_annotation_score &lt; 50</td>
+<td align="center">less reliable library annotations, mostly analogs or low similarity score</td>
 </tr>
 <tr>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">curated_lib_annotation_score == 0</td>
-<td style="text-align: center;">category 'out' - not annotated</td>
+<td align="center">0</td>
+<td align="center">curated_lib_annotation_score == 0</td>
+<td align="center">category 'out' - not annotated</td>
 </tr>
 </tbody>
 </table>
@@ -1096,7 +1096,7 @@ column "curated_lib_annotation_compoundName", which receives values from the col
 "tremolo_chemicalNames_best".</p>
 <p>Finally, using the values present in the superclass of the final curated library annotation, the columns with 
 the superclass grouping are created accordingly named "curated_lib_annotation_superclass_grouping" and 
-"curated_lib_annotation_superclass_GR_&lt;superclass_group&gt;", where superclass_group are the 10 superclass 
+"curated_lib_annotation_superclass_GR_&lt;superclass_group>", where superclass_group are the 10 superclass 
 groups defined in the previous section plus the not annotated group.</p>
 <p>The final curated identifications present in the columns "curated_lib_annotation_*" are defined as the more 
 reliable library annotations of each consensus spectra from a NP³ result.</p>

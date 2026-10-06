@@ -19,7 +19,7 @@
         <link rel="next" href="../../07_annotate_protonated/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -1109,10 +1109,10 @@ curation from UNPDxGNPS.</p>
 </span></code></pre></div>
 <p>Parameters for the command <em>gnps_result</em>:</p>
 <ul>
-<li><em>-i, --cluster_info_path</em> &lt;path&gt;       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")</li>
-<li><em>-s, --result_specnets_DB_path</em> &lt;path&gt;       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder. When using GNPS2, this should be the top 1 results.</li>
-<li><em>-c, --count_file_path</em> &lt;path&gt;       : Path to any of the count tables (peak_area or spectra) resulting from the NP³ MS workflow clustering or clean steps. If the peak_area is informed and the spectra table file exists in the same path (or the opposite), it will merge the GNPS results to both files</li>
-<li><em>-o, --job_output_path</em> &lt;path&gt;    :          path to the job final output data folder, inside the outs
+<li><em>-i, --cluster_info_path</em> &lt;path>       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")</li>
+<li><em>-s, --result_specnets_DB_path</em> &lt;path>       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder. When using GNPS2, this should be the top 1 results.</li>
+<li><em>-c, --count_file_path</em> &lt;path>       : Path to any of the count tables (peak_area or spectra) resulting from the NP³ MS workflow clustering or clean steps. If the peak_area is informed and the spectra table file exists in the same path (or the opposite), it will merge the GNPS results to both files</li>
+<li><em>-o, --job_output_path</em> &lt;path>    :          path to the job final output data folder, inside the outs
                                         directory of the clustering result folder. It should contain
                                         the identifications folder, if not it will be created. The job
                                         name (output_name) will be extracted from here.</li>
@@ -1161,7 +1161,7 @@ In this case, the join is directly performed.</p>
 job_output_path/identifications folder. It will be used to compute the CDK descriptors for the unique SMILES from the 
 GNPS result.</p>
 <p>At the end, the GNPS identification curation is also performed to classify the retrieved library annotations 
-(see respective <a href="../gnps_library_search/#gnps-identification-curation-and-unpdxgnps-final-curation-statistics">section</a> 
+(see respective <a href="gnps_library_search.md/#gnps-identification-curation-and-unpdxgnps-final-curation-statistics">section</a> 
 for more details). 
 It is followed by the final identification curation (best from UNPD and GNPS) which is described in another 
 <a href="../final_identification_curation/">section</a>.</p>

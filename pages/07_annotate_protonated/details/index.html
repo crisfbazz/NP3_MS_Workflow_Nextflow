@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
     
     
       
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ionization-annotation-algorithm" class="md-skip">
+        <a href="#step-7-annotate_protonated-details" class="md-skip">
           Skip to content
         </a>
       
@@ -930,6 +930,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Details
@@ -945,6 +947,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1039,6 +1043,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1116,8 +1122,7 @@
   
 
 
-  <h1>Details</h1>
-
+<h1 id="step-7-annotate_protonated-details">Step 7: <em>annotate_protonated</em> Details</h1>
 <h2 id="ionization-annotation-algorithm">Ionization Annotation Algorithm</h2>
 <p>During the detection of a given metabolite in a MS experiment some ionization variants can occur, what adds more 
 redundancy and ambiguity to the list of consensus spectra. To try to overcome this limitation of the technique a 
@@ -1159,33 +1164,33 @@ names, where <em>X</em>, <em>Y</em> and <em>Z</em> are values provided by the us
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">ion</th>
-<th style="text-align: center;">mzdiff</th>
-<th style="text-align: center;">charge</th>
-<th style="text-align: center;">neutral_loss_h2o</th>
-<th style="text-align: center;">neutral_loss_nh3</th>
-<th style="text-align: center;">neutral_loss</th>
-<th style="text-align: center;">sim_cutoff</th>
+<th align="center">ion</th>
+<th align="center">mzdiff</th>
+<th align="center">charge</th>
+<th align="center">neutral_loss_h2o</th>
+<th align="center">neutral_loss_nh3</th>
+<th align="center">neutral_loss</th>
+<th align="center">sim_cutoff</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">[<strong>Z</strong>M+<strong>X</strong>]<strong>Y</strong>+</td>
-<td style="text-align: center;">The m/z difference to the monoisotopic m/z ([M]+) after taking <em>Y</em> and <em>Z</em> into account</td>
-<td style="text-align: center;">+Y</td>
-<td style="text-align: center;">0 or 1, if 1 and the ion is an adduct or dimer/trimer variant also considerates it combined with a neutral loss of water (i.e., <em>X</em>-<em>H2O</em>), else nothing happen</td>
-<td style="text-align: center;">0 or 1, if 1 and the ion is an adduct or dimer/trimer variant also considerates it combined with a neutral loss of ammonia (i.e., <em>X</em>-<em>NH3</em>), else nothing happen</td>
-<td style="text-align: center;">0 or 1, if the ion modification is a neutral loss set it as 1, otherwise as 0 (if it is an adduct or dimer/trimer combined with a neutral loss set as 0)</td>
-<td style="text-align: center;">A numeric ranging from 0 to 1. The similarity cut-off value to accept the annotation, for adducts, neutral losses and isotopes. Multiple charge variants do not rely on the similarity value. The spectra must have a similarity value greater or equal to this value to be annotated \newline</td>
+<td align="center">[<strong>Z</strong>M+<strong>X</strong>]<strong>Y</strong>+</td>
+<td align="center">The m/z difference to the monoisotopic m/z ([M]+) after taking <em>Y</em> and <em>Z</em> into account</td>
+<td align="center">+Y</td>
+<td align="center">0 or 1, if 1 and the ion is an adduct or dimer/trimer variant also considerates it combined with a neutral loss of water (i.e., <em>X</em>-<em>H2O</em>), else nothing happen</td>
+<td align="center">0 or 1, if 1 and the ion is an adduct or dimer/trimer variant also considerates it combined with a neutral loss of ammonia (i.e., <em>X</em>-<em>NH3</em>), else nothing happen</td>
+<td align="center">0 or 1, if the ion modification is a neutral loss set it as 1, otherwise as 0 (if it is an adduct or dimer/trimer combined with a neutral loss set as 0)</td>
+<td align="center">A numeric ranging from 0 to 1. The similarity cut-off value to accept the annotation, for adducts, neutral losses and isotopes. Multiple charge variants do not rely on the similarity value. The spectra must have a similarity value greater or equal to this value to be annotated \newline</td>
 </tr>
 <tr>
-<td style="text-align: center;">[<strong>Z</strong>M-<strong>X</strong>]<strong>Y</strong>-</td>
-<td style="text-align: center;">The m/z difference to the the monoisotopic m/z ([M]-) after taking <em>Y</em> and <em>Z</em> into account</td>
-<td style="text-align: center;">-Y</td>
-<td style="text-align: center;">0 or 1</td>
-<td style="text-align: center;">0 or 1</td>
-<td style="text-align: center;">0 or 1</td>
-<td style="text-align: center;">A numeric ranging from 0 to 1</td>
+<td align="center">[<strong>Z</strong>M-<strong>X</strong>]<strong>Y</strong>-</td>
+<td align="center">The m/z difference to the the monoisotopic m/z ([M]-) after taking <em>Y</em> and <em>Z</em> into account</td>
+<td align="center">-Y</td>
+<td align="center">0 or 1</td>
+<td align="center">0 or 1</td>
+<td align="center">0 or 1</td>
+<td align="center">A numeric ranging from 0 to 1</td>
 </tr>
 </tbody>
 </table>
@@ -1219,54 +1224,54 @@ the positive value</li>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Variant Type</th>
-<th style="text-align: center;">Annotation Format</th>
-<th style="text-align: center;">Rules</th>
-<th style="text-align: center;">Description</th>
+<th align="center">Variant Type</th>
+<th align="center">Annotation Format</th>
+<th align="center">Rules</th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">Adduct</td>
-<td style="text-align: center;">[M+X]+ or [M+X-H2O]+ or [M+X-NH3]+</td>
-<td style="text-align: center;">abs(M-ion_mode-m-m_X) &lt;= mz_tol OR abs(M-ion_mode-m-m_X-m_H2O) &lt;= mz_tol OR abs(M-ion_mode-m-m_X-m_NH3) &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
-<td style="text-align: center;">m_X is the mass of the adduct X</td>
+<td align="center">Adduct</td>
+<td align="center">[M+X]+ or [M+X-H2O]+ or [M+X-NH3]+</td>
+<td align="center">abs(M-ion_mode-m-m_X) &lt;= mz_tol OR abs(M-ion_mode-m-m_X-m_H2O) &lt;= mz_tol OR abs(M-ion_mode-m-m_X-m_NH3) &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
+<td align="center">m_X is the mass of the adduct X</td>
 </tr>
 <tr>
-<td style="text-align: center;">Multiple Charge Isotopic Pattern</td>
-<td style="text-align: center;">[M+X]Y+ isotopic</td>
-<td style="text-align: center;">abs((M-ion_mode) - m) - 1/Y &lt;= fragment_tol AND the peak area of the greater m/z is less than 2/3 of the other spectra peak area</td>
-<td style="text-align: center;">Y is the charge of the multiple charge variant, only Y = 2 or 3 are considered. Multiple charge variants do not rely on the similarity value; This annotation is always considered \newline</td>
+<td align="center">Multiple Charge Isotopic Pattern</td>
+<td align="center">[M+X]Y+ isotopic</td>
+<td align="center">abs((M-ion_mode) - m) - 1/Y &lt;= fragment_tol AND the peak area of the greater m/z is less than 2/3 of the other spectra peak area</td>
+<td align="center">Y is the charge of the multiple charge variant, only Y = 2 or 3 are considered. Multiple charge variants do not rely on the similarity value; This annotation is always considered \newline</td>
 </tr>
 <tr>
-<td style="text-align: center;">Multiple Charge</td>
-<td style="text-align: center;">[M+X]Y+</td>
-<td style="text-align: center;">((M-ion_mode)/Y + m_X) - m &lt;= mz_tol AND the presence of the isotopic pattern where an m/z equals m+1/Y must be present in the count tables (the not fragmented MS1 peaks count table is also checked)</td>
-<td style="text-align: center;">m_X is the mass of the adduct X and Y is the charge of the multiple charge variant, only Y = 2 or 3 are considered. Multiple charge variants do not rely on the similarity value. \newline</td>
+<td align="center">Multiple Charge</td>
+<td align="center">[M+X]Y+</td>
+<td align="center">((M-ion_mode)/Y + m_X) - m &lt;= mz_tol AND the presence of the isotopic pattern where an m/z equals m+1/Y must be present in the count tables (the not fragmented MS1 peaks count table is also checked)</td>
+<td align="center">m_X is the mass of the adduct X and Y is the charge of the multiple charge variant, only Y = 2 or 3 are considered. Multiple charge variants do not rely on the similarity value. \newline</td>
 </tr>
 <tr>
-<td style="text-align: center;">Dimer or Trimer</td>
-<td style="text-align: center;">[Z*M+X]+ or [Z*M+X-H2O]+ or [Z*M+X-NH3]+</td>
-<td style="text-align: center;">(Z*(M-ion_mode) + m_X) - m &lt;= mz_tol AND the monomer must not have fragmented peaks greater than the precursor m/z plus a gap for neutral losses AND one of the following is true (1) the dimer or trimer do not have fragmented peaks between the m/z of the monomer and its precursor m/z plus a gap for neutral losses and it has no fragmented peaks greater than its precursor m/z plus a gap for neutral losses OR (2) the candidates have a spectra similarity greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
-<td style="text-align: center;">m_X is the mass of the adduct X (less m_h2o or m_nh3 when X-H2O or X-NH3) and Z is 2 if it is a dimer and 3 if it is a trimer; this annotation is only considered if no multiple charge variant was detected between spectra M and m</td>
+<td align="center">Dimer or Trimer</td>
+<td align="center">[Z*M+X]+ or [Z*M+X-H2O]+ or [Z*M+X-NH3]+</td>
+<td align="center">(Z*(M-ion_mode) + m_X) - m &lt;= mz_tol AND the monomer must not have fragmented peaks greater than the precursor m/z plus a gap for neutral losses AND one of the following is true (1) the dimer or trimer do not have fragmented peaks between the m/z of the monomer and its precursor m/z plus a gap for neutral losses and it has no fragmented peaks greater than its precursor m/z plus a gap for neutral losses OR (2) the candidates have a spectra similarity greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
+<td align="center">m_X is the mass of the adduct X (less m_h2o or m_nh3 when X-H2O or X-NH3) and Z is 2 if it is a dimer and 3 if it is a trimer; this annotation is only considered if no multiple charge variant was detected between spectra M and m</td>
 </tr>
 <tr>
-<td style="text-align: center;">In-source Fragmentation</td>
-<td style="text-align: center;">fragment</td>
-<td style="text-align: center;">m appears in the list of fragmented peaks of M, within a tolerance equals 'fragment_tol' AND m &lt; M - 2*iso_mass AND with an intensity greater than a MS2 baseline cut-off (15 is used by default) AND the spectra have a trimmed similarity value greater or equal than 0.2</td>
-<td style="text-align: center;">the fragmented peaks intensity are normalized from 0 to 1000 and then scaled. The scale is also applied to the baseline cut-off before using it; A trimmed similarity is computed by first trimming the fragmented peaks of both spectra using the smaller precursor m/z less 2*m_iso and then computing their cosine similarity, the maximum similarity value between the shifted cosine and the trimmed cosine is used; This annotation is always considered \newline</td>
+<td align="center">In-source Fragmentation</td>
+<td align="center">fragment</td>
+<td align="center">m appears in the list of fragmented peaks of M, within a tolerance equals 'fragment_tol' AND m &lt; M - 2*iso_mass AND with an intensity greater than a MS2 baseline cut-off (15 is used by default) AND the spectra have a trimmed similarity value greater or equal than 0.2</td>
+<td align="center">the fragmented peaks intensity are normalized from 0 to 1000 and then scaled. The scale is also applied to the baseline cut-off before using it; A trimmed similarity is computed by first trimming the fragmented peaks of both spectra using the smaller precursor m/z less 2*m_iso and then computing their cosine similarity, the maximum similarity value between the shifted cosine and the trimmed cosine is used; This annotation is always considered \newline</td>
 </tr>
 <tr>
-<td style="text-align: center;">Neutral Loss</td>
-<td style="text-align: center;">[M+H-X]+</td>
-<td style="text-align: center;">abs(M-m-m_X) &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
-<td style="text-align: center;">m_X is the mass of the neutral loss X, e.g. if X=H2O then m_X = m_h2o. The 'neutral_loss' column must be set to 1</td>
+<td align="center">Neutral Loss</td>
+<td align="center">[M+H-X]+</td>
+<td align="center">abs(M-m-m_X) &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation \newline</td>
+<td align="center">m_X is the mass of the neutral loss X, e.g. if X=H2O then m_X = m_h2o. The 'neutral_loss' column must be set to 1</td>
 </tr>
 <tr>
-<td style="text-align: center;">Isotope</td>
-<td style="text-align: center;">[M+X]+</td>
-<td style="text-align: center;">(M-m) - m_iso * X &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation</td>
-<td style="text-align: center;">X is an integer representing the carbon isotope deviation to be considered in the precursor m/z, e.g. X=1 for C13-C12 (m_iso difference) and X=2 for C14-C12 (2*m_iso difference). We recommend setting X &lt;= 2 and a high 'sim_cutoff'</td>
+<td align="center">Isotope</td>
+<td align="center">[M+X]+</td>
+<td align="center">(M-m) - m_iso * X &lt;= mz_tol AND the spectra have a similarity value greater or equal than the 'sim_cutoff' value of the respective annotation</td>
+<td align="center">X is an integer representing the carbon isotope deviation to be considered in the precursor m/z, e.g. X=1 for C13-C12 (m_iso difference) and X=2 for C14-C12 (2*m_iso difference). We recommend setting X &lt;= 2 and a high 'sim_cutoff'</td>
 </tr>
 </tbody>
 </table>
@@ -1274,7 +1279,7 @@ the positive value</li>
 <p>The annotations of ionization variants detected for each msclusterID (row) being considered as a [M+H]+ ion is stored in the count tables in 6 new columns, one for each type of annotation, except for neutral losses that are grouped with adducts, named as: 'adducts', 'isotopes', 'dimers', 'multiCharges', 'fragments' and 'analogs.' Where 'analogs' annotate the concurrent spectra that have a similarity value greater or equal than 0.7 and did not receive any annotation from the spectra of the respective row.  </p>
 <p>The annotations are stored in those columns in the following format:</p>
 <blockquote>
-<p><em>&lt;ann&gt;</em> (sim <em>&lt;sim_value&gt;</em> - mzE <em>&lt;mz_error&gt;</em> - rtE <em>&lt;rt_error&gt;</em>)[<em>&lt;variantID&gt;</em>]{<em>&lt;#samples&gt;</em>}</p>
+<p><em>&lt;ann></em> (sim <em>&lt;sim_value></em> - mzE <em>&lt;mz_error></em> - rtE <em>&lt;rt_error></em>)[<em>&lt;variantID></em>]{<em>&lt;#samples></em>}</p>
 </blockquote>
 <p>Where,</p>
 <blockquote>
@@ -1317,26 +1322,26 @@ trimmed spectra similarity.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Columns</th>
+<th align="left">Columns</th>
 <th>Description</th>
-<th style="text-align: center;">Value Type</th>
+<th align="center">Value Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">protonated_representative</td>
+<td align="left">protonated_representative</td>
 <td>1 if the respective spectrum was assigned as a [M+H]+ representative, 0 otherwise</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: left;">protonated_mzError_sum</td>
+<td align="left">protonated_mzError_sum</td>
 <td>if protonated_representative is 1, equals the sum of the numerical rules' errors of the annotations of all its ancestors in the molecular networking of annotations, NA otherwise</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 <tr>
-<td style="text-align: left;">protonated_rtError_sum</td>
+<td align="left">protonated_rtError_sum</td>
 <td>if protonated_representative is 1, equals the sum of the retention times errors of the annotations of all its ancestors in the molecular networking of annotations, NA otherwise</td>
-<td style="text-align: center;">numeric</td>
+<td align="center">numeric</td>
 </tr>
 </tbody>
 </table>
