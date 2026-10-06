@@ -1,5 +1,5 @@
 conda install -c conda-forge mkdocs
-
+conda install -c conda-forge mkdocs-material
 
 # to execute the docs locale:
 mkdocs serve --livereload
