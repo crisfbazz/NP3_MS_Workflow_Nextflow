@@ -1,3 +1,6 @@
+conda install -c conda-forge mkdocs
+
+
 # to execute the docs locale:
 mkdocs serve --livereload
 # to deploy the code automatically to the github:
