@@ -28,7 +28,7 @@ For the complete list of parameters run:
 node np3_workflow.js tremolo --help
 ```
 
-Parameters for the command *tremolo*:
+Parameters for the command **tremolo**:
  
 - *\-o, \-\-output_path <path>* :     path to where the spectral library search results will be stored. This is usually the 'identifications' folder present in the final result.
 - *\-g, \-\-mgf <file>*       :      path to the input MGF file with the MS/MS spectra data to be searched and identified

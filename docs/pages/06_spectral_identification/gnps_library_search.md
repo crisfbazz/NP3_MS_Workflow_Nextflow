@@ -14,7 +14,7 @@ For the complete list of parameters run:
 node np3_workflow.js gnps_library_search --help
 ```
 
-Parameters for the command *gnps_library_search*:
+Parameters for the command **gnps_library_search**:
 
 - *\-g, \-\-input\_mgf\_file* <path\> : path to the input MGF file with the MS/MS spectra data
                                      to be searched and identified

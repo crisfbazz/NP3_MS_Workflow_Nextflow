@@ -106,4 +106,17 @@ nav:
       - Annotation [M+H]+:
           - Description: pages/07_annotate_protonated/description.md
           - Details: pages/07_annotate_protonated/details.md
+      - Merging:
+          - Description: pages/08_merge/description.md
+          - Details: pages/08_merge/details.md
+      - Biocorrelation:
+          - Description: pages/09_corr/description.md
+          - Details: pages/09_corr/details.md
+      - Molecular Networking:
+          - Description: pages/10_mn/description.md
+          - Details: pages/10_mn/details.md
+      - Join Jobs:
+          - Description: pages/cmd_join_jobs/description.md
+          - Data and Metadata Join: pages/cmd_join_jobs/metadata_join.md
+          - Details: pages/cmd_join_jobs/details.md
 

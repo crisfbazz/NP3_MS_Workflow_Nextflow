@@ -23,7 +23,7 @@ For the complete list of parameters run:
 node np3_workflow.js pre_process --help
 ```
 
-Parameters for the command *pre\_process*:
+Parameters for the command **pre\_process**:
  
 -  *\-n, \-\-data\_name* \<name\>  <x>      :   the data collection name for verbosity
 -  *\-m, \-\-metadata* \<file\> <x>         :    path to the metadata table CSV file

@@ -20,7 +20,7 @@ For the complete list of parameters run:
 node np3_workflow.js annotate_protonated --help
 ```
 
-Parameters for the command *annotate_protonated*:
+Parameters for the command **annotate_protonated**:
  
 - *\-m, \-\-metadata* <file\>          : path to the metadata table CSV file
 - *\-o, \-\-output_path* <path\>       : path to the output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'counts_table' folder and inside it the 'clean' subfolder with the clean count tables in CSV files. The job name will be extracted from here

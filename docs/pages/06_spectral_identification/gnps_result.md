@@ -16,7 +16,7 @@ For the complete list of parameters run:
 node np3_workflow.js gnps_result --help
 ```
 
-Parameters for the command *gnps_result*:
+Parameters for the command **gnps_result**:
  
 - *\-i, \-\-cluster_info_path* <path\>       :  If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'clusterinfo\' of the downloaded output from GNPS. Not used for results coming from the Library Search workflow. (default: "")
 - *\-s, \-\-result_specnets_DB_path* <path\>       : If joining the result of a Molecular Networking job, this should be the path to the file inside the folder named \'result_specnets_DB\'; and if this is the result of a Library Search workflow, this should be the path to the file inside the downloaded folder. When using GNPS2, this should be the top 1 results.

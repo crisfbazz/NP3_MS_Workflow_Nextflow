@@ -18,7 +18,7 @@ For the complete list of parameters run:
 node np3_workflow.js clustering --help
 ```
 
-Parameters for the command *clustering*:
+Parameters for the command **clustering**:
  
 - *\-n, \-\-output_name* \<name\>:       the job name. It will be used to name the output directory and the results from the final clustering integration step
 - *\-m, \-\-metadata* \<file\>       :      path to the metadata table CSV file

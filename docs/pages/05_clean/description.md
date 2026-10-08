@@ -15,7 +15,7 @@ For the complete list of parameters run:
 node np3_workflow.js clean --help
 ```
 
-Parameters for the command *clean*:
+Parameters for the command **clean**:
  
 - *\-m, \-\-metadata* <file\>          : path to the metadata table CSV file
 - *\-o, \-\-output_path* <path\>       : path to the final output data folder, inside the 'outs' directory of the clustering result folder. It should contain the 'mgf' folder and the 'count_tables' folder with the peak area and spectra count tables in CSV files. The job name will be extracted from here
