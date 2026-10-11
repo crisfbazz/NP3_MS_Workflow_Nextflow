@@ -475,6 +475,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/installation_setup/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1267,6 +1281,110 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+          Visualization Commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Visualization Commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/post_dd_analysis/" class="md-nav__link">
+        Post Drug Discovery Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/chr_ms1_view/" class="md-nav__link">
+        Chromatograms MS1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/spectra_viewer/" class="md-nav__link">
+        Spectra MS2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/pca_plot/" class="md-nav__link">
+        PCA plot
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/cmd_run/issues/" class="md-nav__link">
+        Common Issues
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1362,18 +1480,18 @@
 the NP³ MS Workflow may be joined using the command <strong>join_jobs</strong>, which automatically execute Steps 3 to 10 with 
 adaptations for joining previous results in an incremental clustering approach.</p>
 <p><a href="../pages/cmd_run/final_reports/"><strong>Final reports</strong></a> are created at the end of the <strong>run</strong>, <strong>join_jobs</strong> and <strong>clean</strong> 
-commands. These reports are separated in quantification, chemical and network statistics and analysis of the results. 
-The PCA plotting can be executed separated using the <strong>pca_plot</strong> command.</p>
-<p>This workflow also contains two interactive commands for data visualization:</p>
+commands. These reports are separated in quantification, chemical and network statistics and analysis of the results.</p>
+<p>This workflow also contains two interactive commands for data visualization and one for PCA plotting:</p>
 <ul>
-<li><strong>chr</strong>: extracts chromatograms from raw MS1 data files and save the images to PNG files. <ul>
+<li><strong>chr</strong>: this command extracts chromatograms from raw MS1 data files and save the images to PNG files. <ul>
 <li>Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or 
   an extracted ion chromatogram (XIC), extracted from each sample/file with customized groups, 
   and m/z and retention time windows. </li>
 </ul>
 </li>
-<li><strong>spectra_viewer</strong>: visualizes and compares MS2 data from MGF files or peak lists. 
+<li><strong>spectra_viewer</strong>: this command creates a web interface to visualize and compare MS2 data from MGF files or peak lists. 
 It can also save the images to PNG or SVG files. Currently, it is only supported for Unix OS.</li>
+<li><strong>pca_plot</strong>: creates a PCA plot from a list of SMILES, which may be grouped by types/categories, and save the image in PNG.</li>
 </ul>
 <p>Furthermore, the user may manually identify the resulting consensus spectra against the GNPS<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or GNPS2 online 
 spectral libraries and use another separated command of this workflow called <strong>gnps_result</strong> to join the GNPS 
@@ -1396,7 +1514,7 @@ executed by this workflow offline using the command <strong>gnps_library_search<
 <p>From this point on, when NP³ MS Workflow commands are described, the following conventions will be used: </p>
 <ul>
 <li>Angled brackets (e.g., &lt;x>) indicate a required input. </li>
-<li>Square brackets (e.g. [y]) indicate an optional input. </li>
+<li>Square brackets (e.g. [y]) indicate an optional input. This will always have a default value. </li>
 <li>The brackets should not be typed while running the command, they are only used to indicate the type of the option (see the examples of the commands).</li>
 </ul>
 <h3 id="commands-list">Commands List</h3>

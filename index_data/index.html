@@ -368,6 +368,19 @@
     Input
   </a>
   
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equipment-resolution-for-parameters-default-value" class="md-nav__link">
+    Equipment Resolution for Parameters Default Value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -457,6 +470,20 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/installation_setup/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
     </li>
   
 
@@ -1254,6 +1281,110 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+          Visualization Commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Visualization Commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/post_dd_analysis/" class="md-nav__link">
+        Post Drug Discovery Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/chr_ms1_view/" class="md-nav__link">
+        Chromatograms MS1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/spectra_viewer/" class="md-nav__link">
+        Spectra MS2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/visualization_commands/pca_plot/" class="md-nav__link">
+        PCA plot
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/cmd_run/issues/" class="md-nav__link">
+        Common Issues
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1288,6 +1419,19 @@
   <a href="#input" class="md-nav__link">
     Input
   </a>
+  
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equipment-resolution-for-parameters-default-value" class="md-nav__link">
+    Equipment Resolution for Parameters Default Value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1331,10 +1475,17 @@
   <h1>Data Input and Output</h1>
 
 <h2 id="input">Input</h2>
-<p>The main input for the NP³ MS Workflow<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML formats (mzData format could also be used, but was not vastly tested). 
-It fully supports the positive ([M+H]+) ion mode; and the negative ([M-H]-) ion mode may also be used, but the Steps 7 and 8 were not vastly tested for it and may lead to undesired results. 
+<p>The main input for the NP³ MS Workflow<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML 
+formats (mzData format could also be used, but was not vastly tested). 
+It fully supports the positive ([M+H]+) ion mode; and the negative ([M-H]-) ion mode may also be used, but the Steps 
+7 and 8 were not vastly tested for it and may lead to undesired results. 
 The rest of the pipeline results can be used for the negative ion mode.</p>
 <p>The NP³ pre-processed data and the clean data from the NP³ results are the inputs for the join_jobs command.</p>
+<h5 id="equipment-resolution-for-parameters-default-value">Equipment Resolution for Parameters Default Value</h5>
+<p>The default parameters values were refined using data acquired from a UHPLC-MS/MS-qTOF equipment, 
+the UHPLC Acquity HClass Waters and the spectrometer ESI-QqTOF Impact II Bruker.</p>
+<p>When using this workflow with data from other instruments, mainly the ones that have different resolutions, 
+the tolerances and pre-processing filters should be reset accordingly.</p>
 <h2 id="output">Output</h2>
 <p>The workflow output is organized in folders and depending on the command can contain: </p>
 <ul>
