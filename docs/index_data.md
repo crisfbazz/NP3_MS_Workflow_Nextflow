@@ -1,10 +1,20 @@
 ## Input
  
-The main input for the NP³ MS Workflow[^1] (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML formats (mzData format could also be used, but was not vastly tested). 
-It fully supports the positive ([M+H]+) ion mode; and the negative ([M-H]-) ion mode may also be used, but the Steps 7 and 8 were not vastly tested for it and may lead to undesired results. 
+The main input for the NP³ MS Workflow[^1] (run command and major steps) are LC-MS/MS raw data files in mzXML or mzML 
+formats (mzData format could also be used, but was not vastly tested). 
+It fully supports the positive ([M+H]+) ion mode; and the negative ([M-H]-) ion mode may also be used, but the Steps 
+7 and 8 were not vastly tested for it and may lead to undesired results. 
 The rest of the pipeline results can be used for the negative ion mode.
 
 The NP³ pre-processed data and the clean data from the NP³ results are the inputs for the join_jobs command.
+
+##### Equipment Resolution for Parameters Default Value
+
+The default parameters values were refined using data acquired from a UHPLC-MS/MS-qTOF equipment, 
+the UHPLC Acquity HClass Waters and the spectrometer ESI-QqTOF Impact II Bruker.
+
+When using this workflow with data from other instruments, mainly the ones that have different resolutions, 
+the tolerances and pre-processing filters should be reset accordingly.
 
 ## Output 
 

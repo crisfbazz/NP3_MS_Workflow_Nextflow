@@ -7,17 +7,17 @@ the NP³ MS Workflow may be joined using the command **join_jobs**, which automa
 adaptations for joining previous results in an incremental clustering approach.
 
 [**Final reports**](pages/cmd_run/final_reports.md) are created at the end of the **run**, **join_jobs** and **clean** 
-commands. These reports are separated in quantification, chemical and network statistics and analysis of the results. 
-The PCA plotting can be executed separated using the **pca_plot** command.
+commands. These reports are separated in quantification, chemical and network statistics and analysis of the results.
  
-This workflow also contains two interactive commands for data visualization:
+This workflow also contains two interactive commands for data visualization and one for PCA plotting:
  
-* **chr**: extracts chromatograms from raw MS1 data files and save the images to PNG files. 
-    * Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or 
+- **chr**: this command extracts chromatograms from raw MS1 data files and save the images to PNG files. 
+    - Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or 
   an extracted ion chromatogram (XIC), extracted from each sample/file with customized groups, 
   and m/z and retention time windows. 
-* **spectra_viewer**: visualizes and compares MS2 data from MGF files or peak lists. 
+- **spectra_viewer**: this command creates a web interface to visualize and compare MS2 data from MGF files or peak lists. 
 It can also save the images to PNG or SVG files. Currently, it is only supported for Unix OS.
+- **pca_plot**: creates a PCA plot from a list of SMILES, which may be grouped by types/categories, and save the image in PNG.
  
 Furthermore, the user may manually identify the resulting consensus spectra against the GNPS[^2] or GNPS2 online 
 spectral libraries and use another separated command of this workflow called **gnps_result** to join the GNPS 
@@ -50,7 +50,7 @@ node np3_workflow -h
 From this point on, when NP³ MS Workflow commands are described, the following conventions will be used: 
 
 - Angled brackets (e.g., <x\>) indicate a required input. 
-- Square brackets (e.g. [y]) indicate an optional input. 
+- Square brackets (e.g. [y]) indicate an optional input. This will always have a default value. 
 - The brackets should not be typed while running the command, they are only used to indicate the type of the option (see the examples of the commands).
  
 ### Commands List
