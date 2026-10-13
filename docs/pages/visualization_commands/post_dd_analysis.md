@@ -1,31 +1,31 @@
 # Command *post_dd_analysis*
 
-This command perform a post-processing analysis of a NP3 result for drug discovery research. Six different 
+This command perform a post-processing analysis of a NP³ result for drug discovery research. Six different 
 visualizations and two data tables are created. The visualization focus on the superclass grouping distribution, 
 the novelty of the m/z (with or without a final curated library annotation within a quality group) and the novelty 
 across samples (with redundant and/or exclusive m/z). 
 
-The final curated library annotations that are considered for the plots depends on the `lib_annotation_quality_filter` 
-parameter which will select as annotated only the m/z with a final annotation in the provided quality group, default to 
-1 (only the good ones, with a high score in the curation). A distribution plot of the quality filter of the final 
-curated library annotations is also created.
+The final curated library annotations that are used for the plots depends on the `lib_annotation_quality_filter` 
+parameter value. This will filter as annotated only the m/z with a final identification annotation in the selected 
+quality group, default to 1 (only the good annotations, with a high score >= 50 in the final curation). 
+A distribution plot of the quality filter of the final curated library annotations is also created.
 
-The analysis may be filtered to show only a subset of the samples (using the provided *metadata* table) or the top 
-novelty samples distribution (*topk* parameter) and/or only the protonated m/z (*use\_protonated* parameter).
+The analysis may be filtered to show only a subset of the samples (using the provided `metadata` table) or the top 
+novelty samples distribution (`topk` parameter) and/or only the protonated m/z (`use\_protonated` parameter).
 
 ## Parameters
 
 For the complete list of parameters run:
  
 ```{ .text .copy }
-node np3_workflow.js pca_plot --help
+node np3_workflow.js post_dd_analysis --help
 ```
 
 Parameters for the command *post_dd_analysis*:
 
-- *\-c, \-\-clean\_counts\_path* <path\> : Path to the clean counts table file with peak area of the NP3 job to be post analysed, the same of the
+- *\-c, \-\-clean\_counts\_path* <path\> : Path to the clean counts table file with peak area of the NP³ job to be post analysed, the same of the
                                                 metadata. The prefix of its filename will be used to name the output files.
-- *\-m, \-\-metadata\_path* <path\> : Path to the metadata file of the same NP3 job to be post analysed, with its set of samples. It may contain
+- *\-m, \-\-metadata\_path* <path\> : Path to the metadata file of the same NP³ job to be post analysed, with its set of samples. It may contain
                                                 the complete metadata or just a selection of the original samples, which will be used to filter the final
                                                 plots and tables by sample. This filtering does not affect the metrics computations, its only for
                                                 visualization purposes. The metadata filename will be used to name the output files.
@@ -79,53 +79,77 @@ Parameters for the command *post_dd_analysis*:
    
 ## Results
 
-Six visualizations are created in the output_path directory: 
+Six visualizations are created in the `output_path` directory: 
 
-(1) A barplot with the samples composition in terms of the desired superclass grouping distribution across the final m/z by sample; 
-(2) A donut plot with the m/z final curated library identification novelty with the count of final curated library annotations by origin in the selected quality group;
-(3) A donut plot with the m/z final curated library identification quality group distribution;
-(4) A donut plot with the m/z samples novelty with the total count of redundant and exclusive m/z across valid samples; 
-(5) Another donut plot with the identified m/z samples novelty with the total count of redundant and exclusive m/z with final curated library annotation;
-(6) A barplot with the m/z samples novelty (redundant or exclusive) distribution with and without a final curated library annotation by sample. 
+1. A barplot with the samples composition in terms of the desired superclass grouping distribution across the final m/z 
+by sample; 
+![superclass composition](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_samples_composition_curated_lib_annotation_superclass_grouping_dist_top_11_samples_novelty.png){width=500}
+2. A donut plot with the m/z final curated library identification novelty with the count of final curated library 
+annotations by origin in the selected quality group; 
+![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_dist.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_dist.png){width=500}
+3. A donut plot with the m/z final curated library identification quality group distribution;  
+![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_quality_dist.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_quality_dist.png){width=500}
+4. A donut plot with the m/z samples novelty with the total count of redundant and exclusive m/z across valid samples; 
+![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_all_donutplot.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_all_donutplot.png){width=500}
+5. Another donut plot with the identified m/z samples novelty with the total count of redundant and exclusive m/z with a
+final curated library annotation within the selected quality; 
+![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_annotated_donutplot.png](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_annotated_donutplot.png){width=500}
+6. A barplot with the m/z samples novelty (redundant or exclusive) distribution with and without a final curated library
+annotation by sample. 
+![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_distribution_top_11_samples_novelty.png](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_distribution_top_11_samples_novelty.png){width=500}
  
- And two CSV tables are created with the count of m/z novelty by sample and the count of superclass grouping by sample.
+And two CSV tables are created with the count of m/z novelty by sample and the count of superclass grouping by sample.
  
-All the output plots and tables are named with a prefix equal the output_name (extracted from the clean table) concatenated with the metadata filename. The provided superclass\_grouping\_column parameter value is also used for naming plot (1).
+All the output plots and tables are named with a prefix equal the output_name (extracted from the clean table) 
+concatenated with the `metadata` filename. The provided `superclass_grouping_column` parameter value is also used for 
+naming plot (1).
 
 ## Examples
 
 Example to execute the post-processing drug discovery analysis command:
 
-```{r, eval=F} 
-   $ node np3_workflow.js post_dd_analysis -m /path/to/the/np3/job/metadata.csv 
+```{ .text .copy } 
+node np3_workflow.js post_dd_analysis -m /path/to/the/np3/job/metadata.csv 
 --clean_counts_path /path/to/np3/result/outs/count_tables/clean/clean_count_peak_area.csv 
 --output_path "/path/to/the/output/directory/"
 ```
 
 Example to create the analysis plots with the top 5 novelty samples and only [M+H]+ m/z:
 
-```{r, eval=F} 
-   $ node np3_workflow.js post_dd_analysis -m /path/to/the/np3/job/metadata.csv 
+```{ .text .copy }
+node np3_workflow.js post_dd_analysis -m /path/to/the/np3/job/metadata.csv 
 --clean_counts_path /path/to/np3/result/outs/count_tables/clean/clean_count_peak_area.csv 
 --output_path /path/to/the/output/directory/ --topk 5 -p True
 ```
 
 ## Details
 
-The provided metadata table may be used to filter the final plots and display only a subset of the original samples. This will not modify the metrics, only the visualization of the data is modified. This may be useful for middle to big datasets with more than 50 samples, for which the complete view is not clear.
+The provided `metadata` table may be used to filter the final plots and display only a subset of the original samples. 
+This will not modify the metrics, only the visualization of the data is modified. This may be useful for middle to big 
+datasets with more than 50 samples, for which the complete view is not clear.
 
-The top k parameter may also be used to filter the final view, in this case the most novelty samples - the ones with more exclusive and not library annotated m/z - are selected for the final plots. 
+The top k parameter may also be used to filter the final view, in this case the most novelty samples - the ones with 
+more exclusive and not library annotated m/z - are selected for the final plots. 
 
-The samples novelty here is measured by the amount of m/z that were not present/identified in any library search after the final curation and quality filter - not annotated - and the amount of m/z that were not detected in other samples - which are exclusive to a respective sample.
+The samples novelty here is measured by the amount of m/z that were not present/identified in any library search after 
+the final curation and quality filter - not annotated - and the amount of m/z that were not detected in other samples - 
+which are exclusive to a respective sample.
 
-This post-processing computes the m/z distribution occurrence by sample to create the plots (2),(3),(4),(5) and (6) of the results, it calculates the following metrics by sample:
+This post-processing computes the m/z distribution occurrence by sample to create the plots (2),(3),(4),(5) and (6) of 
+the results, it calculates the following metrics by sample:
 
   - number of exclusive m/z: only appear in one sample;
   - number of redundant m/z: appear in more than one sample;
-  - number of annotated m/z: received a library identification from GNPS or UNPD in the final curation (column curated_lib_annotation_origin) and passed the quality filter (parameter lib_annotation_quality_filter);
+  - number of annotated m/z: received a library identification from GNPS or UNPD in the final curation (column
+curated_lib_annotation_origin) and passed the quality filter (parameter lib_annotation_quality_filter);
   
   
-The plot (1) is created by computing the provided superclass grouping distribution by sample. For this, the groups present in the column provided in the parameter superclass\_grouping\_column are counted by sample by checking the presence of their respective m/z in the valid samples, grouping their occurrence by the superclass groups and summing their counts by sample, any missing group will receive a value equals to zero. This will result in the percentage of detected m/z by annotated superclass group in the superclass\_grouping\_column for each sample.
+The plot (1) is created by computing the provided superclass grouping distribution by sample. For this, the groups 
+present in the column provided in the parameter `superclass_grouping_column` are counted by sample by checking the 
+presence of their respective m/z in the valid samples, grouping their occurrence by the superclass groups and summing 
+their counts by sample, any missing group will receive a value equals to zero. This will result in the percentage of 
+detected m/z by annotated superclass group in the `superclass_grouping_column` for each sample.
 
-There are different parameters to personalize the final plots with different text sizing and legend organization and position, the users may change the default values according to their needs.
+There are different parameters to personalize the final plots with different text sizing and legend organization and 
+position, the users may change the default values according to their needs.
 
