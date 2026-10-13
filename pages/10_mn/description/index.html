@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1471,7 +1471,7 @@ and to limit the size of the components to a maximum number of nodes (<code>max_
 </span></code></pre></div>
 <p>Parameters for the command <strong>mn</strong>:</p>
 <ul>
-<li><em>-o, --output_path</em> &lt;path>       : path to the output data folder, inside the outs directory of the clustering result folder. It should contain the 'molecular_networking' folder and inside it the 'similarity_tables' folder. The job name will be extracted from here</li>
+<li><em>-o, --output_path</em> &lt;path&gt;       : path to the output data folder, inside the outs directory of the clustering result folder. It should contain the 'molecular_networking' folder and inside it the 'similarity_tables' folder. The job name will be extracted from here</li>
 <li><em>-w, --similarity_mn</em> [x]  : the minimum similarity score that must occur between a pair of consensus MS/MS spectra in order to create an edge in the molecular networking. Lower values will increase the component size of the clusters by inducing the connection of less related MS/MS spectra; and higher values will limit the components sizes to the opposite (default: 0.6)</li>
 <li><em>--min_matched_peaks</em> [x]           :  The minimum number of common peaks that two spectra must share to be connected by an edge in the filtered SSMN. Connections between spectra with less common peaks than this cutoff will be removed when filtering the SSMN. Except for when one of the spectra have a number of fragment peaks smaller than the given min_matched_peaks value, in this case the spectra must share at least 2 peaks. The fragment peaks count is performed after the spectra are normalized and cleaned. (default: 6)</li>
 <li><em>-k, --net_top_k</em> [x]          : the maximum number of connections for one single node in the similarity molecular networking. An edge between two nodes is kept only if both nodes are within each other's [x] most similar nodes. This restriction is applied to the spectra following the msclusterID's order, so smaller m/z's are limited first. Keeping this value low makes very large networks (many nodes) much easier to visualize (default: 10)</li>
@@ -1487,7 +1487,7 @@ and to limit the size of the components to a maximum number of nodes (<code>max_
                     (2 or greater) to remove nodes in a distance equal to 2 or greater from a blank node, 
                     or (-1) to remove all possible neighbours and ancestors of a blank node (remove blank clusters) from IVAMN  (default: 0)</li>
 <li><em>-b, --max_chunk_spectra</em> [name]           : Maximum number of spectra (rows) to be loaded and processed in a chunk at the same time. In case of memory issues this value should be decreased (default: 3000)</li>
-<li><em>-v, --verbose</em> [x]             : for values X>0 show the scripts output information. (default: 0)</li>
+<li><em>-v, --verbose</em> [x]             : for values X&gt;0 show the scripts output information. (default: 0)</li>
 <li><em>-h, --help</em>                    : output usage information</li>
 </ul>
 <h2 id="results">Results</h2>
@@ -1495,15 +1495,15 @@ and to limit the size of the components to a maximum number of nodes (<code>max_
 IVAMN and the protonated SSMN filtered:</p>
 <ul>
 <li>The complete spectra similarity molecular network named as : \newline
-'\&lt;<em>output_name</em>>_ssmn_w_\&lt;<em>similarity_mn</em>>.selfloops', which contains all links with a similarity value above the cut-off</li>
+'\&lt;<em>output_name</em>&gt;_ssmn_w_\&lt;<em>similarity_mn</em>&gt;.selfloops', which contains all links with a similarity value above the cut-off</li>
 <li>The filtered spectra similarity molecular network named as \newline
-  '\&lt;<em>output_name</em>>_ssmn_w_\&lt;<em>similarity_mn</em>>_k_\&lt;<em>net_top_k</em>>_x_ \newline
-   \&lt;<em>max_component_size</em>>.selfloops'</li>
+  '\&lt;<em>output_name</em>&gt;_ssmn_w_\&lt;<em>similarity_mn</em>&gt;_k_\&lt;<em>net_top_k</em>&gt;_x_ \newline
+   \&lt;<em>max_component_size</em>&gt;.selfloops'</li>
 <li>The IVAMN [M+H]+ named as: \newline
-  '\&lt;<em>output_name</em>>_ivamn_protonated.selfloops'</li>
+  '\&lt;<em>output_name</em>&gt;_ivamn_protonated.selfloops'</li>
 <li>The SSMN [M+H]+ filtered named as: \newline
-  '\&lt;<em>output_name</em>>_ssmn_protonated_w_\&lt;<em>similarity_mn</em>>_k_\&lt;<em>net_top_k</em>>_x_ \newline 
-  \&lt;<em>max_component_size</em>>.selfloops'</li>
+  '\&lt;<em>output_name</em>&gt;_ssmn_protonated_w_\&lt;<em>similarity_mn</em>&gt;_k_\&lt;<em>net_top_k</em>&gt;_x_ \newline 
+  \&lt;<em>max_component_size</em>&gt;.selfloops'</li>
 </ul>
 <p>Where the 'output_name' is extracted from the 'output_path';</p>
 <h2 id="examples">Examples</h2>

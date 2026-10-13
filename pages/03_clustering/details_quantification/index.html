@@ -19,7 +19,7 @@
         <link rel="next" href="../../05_clean/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1504,126 +1504,126 @@ obtained using the cluster members MS2 summed intensities as weights).</p>
 <table>
 <thead>
 <tr>
-<th align="center">Columns</th>
-<th align="center">Description</th>
-<th align="center">Value Type</th>
+<th style="text-align: center;">Columns</th>
+<th style="text-align: center;">Description</th>
+<th style="text-align: center;">Value Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">msclusterID</td>
-<td align="center">the consensus spectrum unique cluster ID</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">msclusterID</td>
+<td style="text-align: center;">the consensus spectrum unique cluster ID</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">numSpectra</td>
-<td align="center">total number of joined spectra (cluster members), cluster size</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">numSpectra</td>
+<td style="text-align: center;">total number of joined spectra (cluster members), cluster size</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">mzConsensus</td>
-<td align="center">weighted mean of the cluster members m/z</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">mzConsensus</td>
+<td style="text-align: center;">weighted mean of the cluster members m/z</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">rtMean</td>
-<td align="center">weighted mean of the cluster members retention time center</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">rtMean</td>
+<td style="text-align: center;">weighted mean of the cluster members retention time center</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">rtMin</td>
-<td align="center">weighted mean of the cluster members retention time minimum</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">rtMin</td>
+<td style="text-align: center;">weighted mean of the cluster members retention time minimum</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">rtMax</td>
-<td align="center">weighted mean of the cluster members retention time maximum</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">rtMax</td>
+<td style="text-align: center;">weighted mean of the cluster members retention time maximum</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">peakIds</td>
-<td align="center">the peak IDs of the cluster members concatenated without duplicates</td>
-<td align="center">string</td>
+<td style="text-align: center;">peakIds</td>
+<td style="text-align: center;">the peak IDs of the cluster members concatenated without duplicates</td>
+<td style="text-align: center;">string</td>
 </tr>
 <tr>
-<td align="center">scans</td>
-<td align="center">the MGF SCANS number with the sample of origin as suffix of the cluster members concatenated</td>
-<td align="center">string</td>
+<td style="text-align: center;">scans</td>
+<td style="text-align: center;">the MGF SCANS number with the sample of origin as suffix of the cluster members concatenated</td>
+<td style="text-align: center;">string</td>
 </tr>
 <tr>
-<td align="center">basePeakInt</td>
-<td align="center">the maximum base peak intensity value of the cluster members MS2</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">basePeakInt</td>
+<td style="text-align: center;">the maximum base peak intensity value of the cluster members MS2</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">sumInts</td>
-<td align="center">sum of the cluster members MS2 intensities</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">sumInts</td>
+<td style="text-align: center;">sum of the cluster members MS2 intensities</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">&lt;X_1>_&lt;area|spectra></td>
-<td align="center">the count of area or spectra in the sample X_1, where 'spectra' is the number of spectra or 'area' is the unique sum of peak areas in the sample with SAMPLE_CODE equals X_1 in the metadata table</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">&lt;X_1&gt;_&lt;area|spectra&gt;</td>
+<td style="text-align: center;">the count of area or spectra in the sample X_1, where 'spectra' is the number of spectra or 'area' is the unique sum of peak areas in the sample with SAMPLE_CODE equals X_1 in the metadata table</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">...</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
-<td align="center">&lt;X_<em>n</em>>_&lt;area|spectra></td>
-<td align="center">the other samples counts for this mslusterID</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">&lt;X_<em>n</em>&gt;_&lt;area|spectra&gt;</td>
+<td style="text-align: center;">the other samples counts for this mslusterID</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">BLANKS_TOTAL</td>
-<td align="center">total number of spectra or peak area that appeared in blank samples</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">BLANKS_TOTAL</td>
+<td style="text-align: center;">total number of spectra or peak area that appeared in blank samples</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">CONTROLS_TOTAL</td>
-<td align="center">total number of spectra or peak area that appeared in control samples</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">CONTROLS_TOTAL</td>
+<td style="text-align: center;">total number of spectra or peak area that appeared in control samples</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">BEDS_TOTAL</td>
-<td align="center">total number of spectra or peak area that appeared in bed samples</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">BEDS_TOTAL</td>
+<td style="text-align: center;">total number of spectra or peak area that appeared in bed samples</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="center">DESREPLICATION</td>
-<td align="center">concatenation of all the hit samples codes in which the spectra had a count greater than zero</td>
-<td align="center">string</td>
+<td style="text-align: center;">DESREPLICATION</td>
+<td style="text-align: center;">concatenation of all the hit samples codes in which the spectra had a count greater than zero</td>
+<td style="text-align: center;">string</td>
 </tr>
 <tr>
-<td align="center">BFLAG</td>
-<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any blank sample</td>
-<td align="center">boolean</td>
+<td style="text-align: center;">BFLAG</td>
+<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any blank sample</td>
+<td style="text-align: center;">boolean</td>
 </tr>
 <tr>
-<td align="center">CFLAG</td>
-<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any control sample</td>
-<td align="center">boolean</td>
+<td style="text-align: center;">CFLAG</td>
+<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any control sample</td>
+<td style="text-align: center;">boolean</td>
 </tr>
 <tr>
-<td align="center">BEDFLAG</td>
-<td align="center">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any bed sample</td>
-<td align="center">boolean</td>
+<td style="text-align: center;">BEDFLAG</td>
+<td style="text-align: center;">TRUE or FALSE indicating if there is a close m/z to the mzConsensus in any bed sample</td>
+<td style="text-align: center;">boolean</td>
 </tr>
 <tr>
-<td align="center">HFLAG</td>
-<td align="center">concatenation of all the hit samples codes that have a count greater than zero in any msclusterID with a mzConsensus within the given mass tolerance of the current cluster (contains the DESREPLICATION column results)</td>
-<td align="center">string</td>
+<td style="text-align: center;">HFLAG</td>
+<td style="text-align: center;">concatenation of all the hit samples codes that have a count greater than zero in any msclusterID with a mzConsensus within the given mass tolerance of the current cluster (contains the DESREPLICATION column results)</td>
+<td style="text-align: center;">string</td>
 </tr>
 <tr>
-<td align="center">peaksList</td>
-<td align="center">the concatenated list of the fragmented peaks m/z's of the msclusterID consensus spectrum</td>
-<td align="center">string</td>
+<td style="text-align: center;">peaksList</td>
+<td style="text-align: center;">the concatenated list of the fragmented peaks m/z's of the msclusterID consensus spectrum</td>
+<td style="text-align: center;">string</td>
 </tr>
 <tr>
-<td align="center">peaksInt</td>
-<td align="center">the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum</td>
-<td align="center">string</td>
+<td style="text-align: center;">peaksInt</td>
+<td style="text-align: center;">the concatenated list of the fragmented peaks intensities of the msclusterID consensus spectrum</td>
+<td style="text-align: center;">string</td>
 </tr>
 </tbody>
 </table>

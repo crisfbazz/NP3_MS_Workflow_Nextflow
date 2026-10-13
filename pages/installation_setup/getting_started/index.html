@@ -19,7 +19,7 @@
         <link rel="next" href="../../01_metadata/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -449,15 +449,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#run-example" class="md-nav__link">
+    Run example
+  </a>
+  
+    <nav class="md-nav" aria-label="Run example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#results-organization" class="md-nav__link">
     Results organization
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#recommendations-to-execute-np3-ms-workflow" class="md-nav__link">
     Recommendations to execute NP³ MS Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
   </a>
   
 </li>
@@ -1400,15 +1420,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#run-example" class="md-nav__link">
+    Run example
+  </a>
+  
+    <nav class="md-nav" aria-label="Run example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#results-organization" class="md-nav__link">
     Results organization
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#recommendations-to-execute-np3-ms-workflow" class="md-nav__link">
     Recommendations to execute NP³ MS Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
   </a>
   
 </li>
@@ -1437,21 +1477,22 @@
 
 
 <h1 id="getting-started-test-example">Getting Started - Test Example</h1>
-<p>Let's use the LC-MS/MS raw samples from the L754_bacs dataset present in the 'test' folder to check the installation 
-and run the NP³ MS workflow for the first time. </p>
+<p>Let's use the LC-MS/MS raw samples from deep-sea bacteria, the L754_bacs dataset<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, present in the 'test' folder to 
+check the installation and run the NP³ MS Workflow for the first time. </p>
 <p>A metadata table (Step 1) is already provided in the 'test' folder:
-'test/L754_bacs/marine_bacteria_library_L754_metadata.csv'. </p>
-<p>Start by activating the NP³ MS workflow environment. Run the following command in the terminal: </p>
+'<a href="https://github.com/danielatrivella/NP3_MS_Workflow/blob/master/test/L754_bacs/marine_bacteria_library_L754_metadata.csv">test/L754_bacs/marine_bacteria_library_L754_metadata.csv</a>'. </p>
+<h2 id="run-example">Run example</h2>
+<p>Start by activating the NP³ MS Workflow environment. Run the following command in the terminal: </p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mamba activate np3 
 </span></code></pre></div>
-<p>Now, we can run the NP³ MS workflow with the provided metadata table. </p>
+<p>Now, we can run the NP³ MS Workflow with the provided metadata table. </p>
 <p>The test dataset that we will use in this example gives good results with the pre-processing default parameters, 
 so we will run the entire workflow with a single command. </p>
 <p>In the repository root folder run the following command in the terminal to execute all the workflow steps, using the 
 provided metadata and data for the L754_bacs dataset: </p>
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>node np3_workflow.js run --output_name &quot;L754_bacs_test&quot; --output_path &quot;test/L754_bacs&quot; 
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--metadata &quot;test/L754_bacs/marine_bacteria_library_L754_metadata.csv&quot; --raw_data_path &quot;test/L754_bacs/mzxml&quot; 
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--tremolo_identification TRUE --verbose 1
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--verbose 1
 </span></code></pre></div>
 <p>If the workflow executed without any error message, the final results should be located in the folder 
 'test/L754_bacs/L754_bacs_test'. The pre-processing result will be located at "test/L754_bacs/mzxml/processed_data". </p>
@@ -1498,7 +1539,7 @@ provided metadata and data for the L754_bacs dataset: </p>
 </span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>└── logRunParms                               &lt;- the command line parameters values used in the run command, for reproducibility
 </span></code></pre></div>
 <p>For more details about what each file contains, its columns and values, and to better understand the results and how 
-they are obtained see each step section for more details! </p>
+they are obtained see each step section! </p>
 <h2 id="recommendations-to-execute-np3-ms-workflow">Recommendations to execute NP³ MS Workflow</h2>
 <p>The user can choose to run the entire workflow (Steps 2 to 10) with a single command 
 <strong><a href="../../cmd_run/description/">run</a></strong>, using the default parameters in 
@@ -1516,6 +1557,15 @@ adjacent peaks being joined, negatively impacting the final result. </p>
 <p>The users should <strong>follow the <a href="../../02_pre_process/optimization/">pre-processing 
 optimization guide</a></strong> present in this command section when executing the workflow 
 with a new dataset.</p>
+<h2 id="references">References</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>de Felício R, et al. Chemical Elicitors Induce Rare Bioactive Secondary Metabolites in Deep-Sea Bacteria under Laboratory Conditions. Metabolites. 2021 Feb 12;11(2):107. doi: 10.3390/metabo11020107.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

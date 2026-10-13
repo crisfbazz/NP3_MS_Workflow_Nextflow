@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1485,8 +1485,8 @@ as done in<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup
 </span></code></pre></div>
 <p>Parameters for the command <strong>corr</strong>:</p>
 <ul>
-<li><em>-b, --metadata</em> &lt;file>     : path to the metadata table CSV file. Used to retrieve the biocorrelation groups and quantification grouping. For a joined job, this must be the original samples metadata table.</li>
-<li><em>-c, --count_file_path</em> &lt;file>  : path to the count table CSV file</li>
+<li><em>-b, --metadata</em> &lt;file&gt;     : path to the metadata table CSV file. Used to retrieve the biocorrelation groups and quantification grouping. For a joined job, this must be the original samples metadata table.</li>
+<li><em>-c, --count_file_path</em> &lt;file&gt;  : path to the count table CSV file</li>
 <li><em>-e, --method</em> [name]  : a character string indicating which correlation coefficient is to be computed. One of “pearson”, “kendall”, or “spearman” (default: spearman)</li>
 <li><em>-b, --bio_cutoff</em> [name]  : a bioactivity cutoff value. Bioactivities in the metadata table that are less than the bio_cutoff value will be set to zero. (default: 0)</li>
 <li><em>-v, --verbose</em> [x] : for values X&gt;0 show the scripts output information (default: 0)</li>
@@ -1495,7 +1495,7 @@ as done in<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup
 <h2 id="results">Results</h2>
 <p>A CSV table in the count_file directory named as:</p>
 <ul>
-<li>'&lt;count_file_name>_corr_&lt;method>.csv' </li>
+<li>'&lt;count_file_name&gt;_corr_&lt;method&gt;.csv' </li>
 </ul>
 <p>Where the <em>count_file_name</em> is the name of the provided <code>count_file_path</code> 
   table. The new tables contain the original count tables data plus new columns with the correlation scores of each 
@@ -1503,7 +1503,7 @@ as done in<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup
   It may also contain new columns for the quantification grouping, if defined in the <code>metadata</code>.</p>
 <p>Another table is also created as a copy of the first table, named with the suffix 'bioAct' as:</p>
 <ul>
-<li>'&lt;count_file_name>_corr_<code>method</code>_bioAct.csv'</li>
+<li>'&lt;count_file_name&gt;_corr_<code>method</code>_bioAct.csv'</li>
 </ul>
 <p>Containing new rows at the beginning of the table with the bioactivities scores of each sample placed above the 
   original counts table header (first rows) - as provided in the <code>metadata</code> table. 

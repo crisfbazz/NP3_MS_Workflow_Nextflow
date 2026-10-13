@@ -19,7 +19,7 @@
         <link rel="next" href="../metadata_join/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1489,19 +1489,19 @@ memory footprint (divide and conquer strategy). </p>
 <p>Parameters for the command <strong>join_jobs</strong>:</p>
 <ul>
 <li>
-<p><em>-n, --output_name</em> &lt;name> : the job name. It will be used to name the output directory and 
+<p><em>-n, --output_name</em> &lt;name&gt; : the job name. It will be used to name the output directory and 
                     the results from joining the jobs. It must have less than 80 characters.</p>
 </li>
 <li>
-<p><em>-m, --metadata_join</em> &lt;file> : path to the metadata table CSV file defining the jobs to be joined. Different format, see manual.</p>
+<p><em>-m, --metadata_join</em> &lt;file&gt; : path to the metadata table CSV file defining the jobs to be joined. Different format, see manual.</p>
 </li>
-<li><em>-d, --jobs_data_path</em> &lt;path> : path to the folder containing the input jobs result to be joined, 
+<li><em>-d, --jobs_data_path</em> &lt;path&gt; : path to the folder containing the input jobs result to be joined, 
   this should contain their previous NP³ result, named accordingly to what is specified in the metadata_join. 
   Their clean mgf and quantification tables will be used.</li>
-<li><em>-y, --pre_processed_dir_path</em> &lt;path> : path to the folder containing the input jobs pre processing result, 
+<li><em>-y, --pre_processed_dir_path</em> &lt;path&gt; : path to the folder containing the input jobs pre processing result, 
   this should contain all the original jobs previous NP³ pre processing result in separated folders named 
   accordingly to what is specified in the metadata_join.</li>
-<li><em>-o, --output_path</em> &lt;path> : path to where the output directory will be created</li>
+<li><em>-o, --output_path</em> &lt;path&gt; : path to where the output directory will be created</li>
 <li><em>-f, --fragment_tolerance</em> [x] : the tolerance in Daltons for fragment peaks. Peaks in the
                     original spectra that are closer than this get merged by
                     the NP3_MSCluster algorithm. Also used in the pre process (Step 2)

@@ -19,7 +19,7 @@
         <link rel="next" href="../../06_spectral_identification/description/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1567,31 +1567,31 @@ are computed as the average of the joining clusters values weighted by their int
 <table>
 <thead>
 <tr>
-<th align="left">Columns</th>
+<th style="text-align: left;">Columns</th>
 <th>Description</th>
-<th align="center">Value Type</th>
+<th style="text-align: center;">Value Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">joinedIDs</td>
+<td style="text-align: left;">joinedIDs</td>
 <td>the msclusterIDs of the joined spectra in the cleaning step, separated by a ';'</td>
-<td align="center">character with concatenated numbers</td>
+<td style="text-align: center;">character with concatenated numbers</td>
 </tr>
 <tr>
-<td align="left">numJoins</td>
+<td style="text-align: left;">numJoins</td>
 <td>the number of spectra that were joined in the cleaning step</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="left">BLANK_DIST</td>
+<td style="text-align: left;">BLANK_DIST</td>
 <td>the distance in the molecular network of similarity from the current spectra to a spectrum of a blank sample. This distance ranges from 0 (if the current spectra appear in a blank sample) to 3 (if there are at least 3 links between the current spectra and a spectrum of a blank sample in the molecular network of similarity). If this value is NA it means that this distance is at least greater than 3, and thus was not computed.</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 <tr>
-<td align="left">fragmented_cluster</td>
+<td style="text-align: left;">fragmented_cluster</td>
 <td>the number of clean consensus spectra identified as a fragmented cluster of the current spectrum or -1 to indicate that the current spectrum is a fragmented cluster of another more intense spectrum. The clean consensus spectrum that receives a positive value greater or equal than one in this column is the candidate with the highest basePeakInt among the other spectra signalized as fragmented clusters within the same m/z and retention time interval, which receives a -1 value. The spectrum without fragmented clusters receives a value equals to 0.</td>
-<td align="center">numeric</td>
+<td style="text-align: center;">numeric</td>
 </tr>
 </tbody>
 </table>

@@ -19,7 +19,7 @@
         <link rel="next" href="../details/">
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1484,9 +1484,9 @@ to evaluate the pre-process result followed by a suggestion of values for the cr
 </span></code></pre></div>
 <p>Parameters for the command <strong>pre_process</strong>:</p>
 <ul>
-<li><em>-n, --data_name</em> \&lt;name>  <x>      :   the data collection name for verbosity</li>
-<li><em>-m, --metadata</em> \&lt;file> <x>         :    path to the metadata table CSV file</li>
-<li><em>-d, --raw_data_path</em> \&lt;path> <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
+<li><em>-n, --data_name</em> \&lt;name&gt;  <x>      :   the data collection name for verbosity</li>
+<li><em>-m, --metadata</em> \&lt;file&gt; <x>         :    path to the metadata table CSV file</li>
+<li><em>-d, --raw_data_path</em> \&lt;path&gt; <x>   :    path to the folder containing the input LC-MS/MS raw spectra data files (mzXML format is recommended)</li>
 <li><em>-y, --processed_data_name</em> [x]       :       The name of the output directory that should be created inside the <code>raw_data_path</code> to store the processed data. When not using the default directory, this value should be informed in the following <em>run</em> or <em>clustering</em> commands. (default: processed_data)</li>
 <li><em>-t, --rt_tolerance</em> [x]       :       the tolerance in seconds used to enlarge the MS1 peaks boundaries and accept as a match all MS2 ions that have a retention time value that is within a MS1 peak range. This value is applied to both sides of the MS1 peaks (RTmin - rt_tolerance and RTmax + rt_tolerance). Tries to overcome bad MS1 peak integrations. (default: 3)</li>
 <li><em>-z, --mz_tolerance</em> [x]       :      the tolerance in Daltons for matching a MS1 peak m/z with a MS2 spectrum precursor m/z. (default: 0.05)</li>
@@ -1515,7 +1515,7 @@ to evaluate the pre-process result followed by a suggestion of values for the cr
 <h2 id="results">Results</h2>
 <p>A folder named <code>processed_data_name</code> inside the <code>raw_data_path</code> containing:</p>
 <ul>
-<li>One MGF per sample of the metadata table with the MS2 spectra enriched with their matched MS1 peak chromatographic dimensions. Each pre-processed file is named as "\&lt;SAMPLE_CODE>_peak_info.mgf", where \&lt;SAMPLE_CODE> is as defined in the metadata file located in the <em>metadata_path</em>.</li>
+<li>One MGF per sample of the metadata table with the MS2 spectra enriched with their matched MS1 peak chromatographic dimensions. Each pre-processed file is named as "\&lt;SAMPLE_CODE&gt;_peak_info.mgf", where \&lt;SAMPLE_CODE&gt; is as defined in the metadata file located in the <em>metadata_path</em>.</li>
 <li>A count file named "MS1_list_with_MS2.csv" with the quantification by sample of all the MS1 peaks that were assigned to a MS2 ion.</li>
 <li>A count file named "MS1_list_no_MS2.csv" with the quantification by sample of all the MS1 peaks that were not assigned to a MS2 ion, e.g. probably not fragmented MS1 peaks, and thus these peaks will be missing in the final clustering counts. It will help to search for the ion's isotopic distributions.</li>
 <li>A log file named "logPreProcessStatisticsWarning" or "logPreProcessStatistics" with the statistics of the rate of MS2 spectra without a MS1 peak correspondence and guidelines to improve this step result.</li>
@@ -1524,11 +1524,11 @@ to evaluate the pre-process result followed by a suggestion of values for the cr
 <li>A file named "parameters.csv" with the parameter's values used, for reproducibility.</li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>Pre-processing with the default parameters values and compute the misalignment using at most 6 samples per data collection batch:</p>
+<p>Pre-processing with the default parameters values and changing the output result name:</p>
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>node np3_workflow pre_process --data_name &quot;data_UHPLC_qTOF&quot; --metadata &quot;/path/to/the/metadata/file/test_np3_metadata.csv&quot; 
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--raw_data_path &quot;/path/to/the/raw/data/dir&quot; --max_samples_batch_align 6 --verbose 1
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--raw_data_path &quot;/path/to/the/raw/data/dir&quot; -y pre_processed_default --verbose 1
 </span></code></pre></div>
-<p>Pre-processing without computing the misalignment and with a different m/z tolerance value:</p>
+<p>Pre-processing without computing the misalignment and with a different m/z tolerance value, using the default output name:</p>
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>node np3_workflow pre_process --data_name &quot;data_UHPLC_qTOF&quot; -m 
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>&quot;/path/to/the/metadata/file/test_np3_metadata.csv&quot; -d &quot;/path/to/the/raw/data/dir&quot; -j 0 -z 0.01
 </span></code></pre></div>

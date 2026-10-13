@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../../img/logo_np3ms.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -1354,19 +1354,6 @@
     In the Pre-process Step 2
   </a>
   
-    <nav class="md-nav" aria-label="In the Pre-process Step 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1422,19 +1409,6 @@
     In the Pre-process Step 2
   </a>
   
-    <nav class="md-nav" aria-label="In the Pre-process Step 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1467,8 +1441,8 @@
 <p>System requirements: Packages tzdata, zip, wget and which must be installed.</p>
 </blockquote>
 <p>Otherwise, an error with the related missing package may be raised.</p>
-<h2 id="in-the-pre-process-step-2">In the Pre-process Step 2</h2>
 <hr />
+<h2 id="in-the-pre-process-step-2">In the Pre-process Step 2</h2>
 <p>The following error without interruption:</p>
 <blockquote>
 <p>error self$finalize()? </p>
@@ -1482,7 +1456,7 @@ Error in pwizModule$open(filename): locale::facet::_S_create_c_locale name not v
 </blockquote>
 <p>Your system is trying to pass a locale that isn't generated or recognized. 
 You can force R to use a universal fallback configuration.</p>
-<h5 id="solution">Solution</h5>
+<p><strong>Solution:</strong></p>
 <p>For quick fix, in the terminal run: 
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>export LC_ALL=C.UTF-8
 </span></code></pre></div>
@@ -1493,6 +1467,30 @@ or</p>
 <div class="language-text copy highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>echo &#39;export LC_ALL=C.UTF-8&#39; &gt;&gt; ~/.bashrc
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>source ~/.bashrc
 </span></code></pre></div>
+<hr />
+<p>The following error before starting pre-processing:</p>
+<blockquote>
+<p>Error: package or namespace load failed for ‘utils’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command</p>
+<p>Error: package or namespace load failed for ‘stats’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command</p>
+<p>During startup - Warning messages:
+1: package ‘utils’ in options("defaultPackages") was not found<br />
+2: package ‘stats’ in options("defaultPackages") was not found<br />
+Error: package or namespace load failed for ‘dplyr’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command
+Execution halted</p>
+</blockquote>
+<p>Your unix system is missing the package <code>which</code>.</p>
+<p><strong>Solution:</strong></p>
+<p>Install package <code>which</code> in the terminal and try again. Google for installation instructions in your specific 
+unix system.</p>
 
 
 
