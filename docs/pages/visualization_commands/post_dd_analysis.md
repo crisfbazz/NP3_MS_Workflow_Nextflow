@@ -81,18 +81,18 @@ Parameters for the command *post_dd_analysis*:
 
 Six visualizations are created in the `output_path` directory: 
 
-1. A barplot with the samples composition in terms of the desired superclass grouping distribution across the final m/z 
-by sample; 
+1. A barplot with the samples composition in terms of the superclass grouping distribution across the detected m/z with 
+a final curated library annotation (`superclass_grouping_column`); 
 ![superclass composition](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_samples_composition_curated_lib_annotation_superclass_grouping_dist_top_11_samples_novelty.png){width=500}
-2. A donut plot with the m/z final curated library identification novelty with the count of final curated library 
-annotations by origin in the selected quality group; 
+2. A donut plot with the count of final curated library annotations by origin for the m/z in the selected quality group 
+(`lib_annotation_quality_filter`); 
 ![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_dist.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_dist.png){width=500}
-3. A donut plot with the m/z final curated library identification quality group distribution;  
+3. A donut plot with the quality group distribution of the final curated library annotations for the m/z;  
 ![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_quality_dist.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_final_curated_lib_annotation_quality_dist.png){width=500}
-4. A donut plot with the m/z samples novelty with the total count of redundant and exclusive m/z across valid samples; 
+4. A donut plot with the m/z novelty across all selected samples - total count of redundant and exclusive m/z; 
 ![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_all_donutplot.png |200x100](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_all_donutplot.png){width=500}
-5. Another donut plot with the identified m/z samples novelty with the total count of redundant and exclusive m/z with a
-final curated library annotation within the selected quality; 
+5. Another donut plot with the library annotated m/z novelty across all selected samples within the selected quality of 
+the final curated library annotations (`lib_annotation_quality_filter`); 
 ![L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_annotated_donutplot.png](../../img/post_dd_analysis/L754_bacs_all_marine_bacteria_library_L754_metadata_mz_presence_dist_annotated_donutplot.png){width=500}
 6. A barplot with the m/z samples novelty (redundant or exclusive) distribution with and without a final curated library
 annotation by sample. 
