@@ -61,14 +61,14 @@ created using the unique compounds (SMILES) of three reference datasets:
 These reference datasets will always be the background of the created PCA chemical space and 
 have a total of 178345 unique compounds, as shown below.
 
-![NP³ Chemical Space Background](../../chemical_space_reference/chemical_space_NP3_reference_biplot.png)
+![NP³ Chemical Space Background](../../img/chemical_space_reference/chemical_space_NP3_reference_biplot.png)
 
 The [CDK descriptors](https://cdk.github.io/)[^2] of these reference data was computed for each final SMILES and 
 the top 24 descriptors were selected based on their variance explanation of the final PCA and importance for 
 Drug Discovery (LipinskiFailures, MW and nAtom were fixed). Their circle plot with the quality of their representation 
 is shown below.
 
-![NP³ Chemical Space quality representation](../../chemical_space_reference/pca_quality_representation_cos2_NP3_reference.png)
+![NP³ Chemical Space quality representation](../../img/chemical_space_reference/pca_quality_representation_cos2_NP3_reference.png)
 
 The top 24 descriptors selected from CDK contains 18 topological and 6 constitutional descriptors and are named: 
 
@@ -84,7 +84,7 @@ The reference dataset used to create the PCA chemical space is deposited in the 
 
 The reference dataset contains all the SMILES from the three sources with their top 24 CDK descriptors calculated using R. Their PCA plot with the descriptions components is shown below.
 
-![NP³ Chemical Space Background components](../../chemical_space_reference/chemical_space_NP3_reference_biplot_components.png)
+![NP³ Chemical Space Background components](../../img/chemical_space_reference/chemical_space_NP3_reference_biplot_components.png)
 
 ##### PCA Chemical Space Creation
 
