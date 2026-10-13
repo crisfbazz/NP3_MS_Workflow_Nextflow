@@ -1609,12 +1609,12 @@ created using the unique compounds (SMILES) of three reference datasets: </p>
 </ul>
 <p>These reference datasets will always be the background of the created PCA chemical space and 
 have a total of 178345 unique compounds, as shown below.</p>
-<p><img alt="NP³ Chemical Space Background" src="../../../chemical_space_reference/chemical_space_NP3_reference_biplot.png" /></p>
+<p><img alt="NP³ Chemical Space Background" src="../../../img/chemical_space_reference/chemical_space_NP3_reference_biplot.png" /></p>
 <p>The <a href="https://cdk.github.io/">CDK descriptors</a><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> of these reference data was computed for each final SMILES and 
 the top 24 descriptors were selected based on their variance explanation of the final PCA and importance for 
 Drug Discovery (LipinskiFailures, MW and nAtom were fixed). Their circle plot with the quality of their representation 
 is shown below.</p>
-<p><img alt="NP³ Chemical Space quality representation" src="../../../chemical_space_reference/pca_quality_representation_cos2_NP3_reference.png" /></p>
+<p><img alt="NP³ Chemical Space quality representation" src="../../../img/chemical_space_reference/pca_quality_representation_cos2_NP3_reference.png" /></p>
 <p>The top 24 descriptors selected from CDK contains 18 topological and 6 constitutional descriptors and are named: </p>
 <ul>
 <li>'WPOL','ATSp1','ATSp2','SP.3','Zagreb','VP.3','naAromAtom','SP.2','ATSp3','VP.2','ATSm3','nB',
@@ -1628,7 +1628,7 @@ review<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. </li>
 <li>'<a href="https://github.com/danielatrivella/NP3_MS_Workflow/blob/master/src/final_report/Chemical_space_data/descriptors_reference_table.zip">NP3_MS_Workflow/src/final_report/Chemical_space_data/descriptors_reference_table.zip</a>'. </li>
 </ul>
 <p>The reference dataset contains all the SMILES from the three sources with their top 24 CDK descriptors calculated using R. Their PCA plot with the descriptions components is shown below.</p>
-<p><img alt="NP³ Chemical Space Background components" src="../../../chemical_space_reference/chemical_space_NP3_reference_biplot_components.png" /></p>
+<p><img alt="NP³ Chemical Space Background components" src="../../../img/chemical_space_reference/chemical_space_NP3_reference_biplot_components.png" /></p>
 <h5 id="pca-chemical-space-creation">PCA Chemical Space Creation</h5>
 <p>For each final NP³ result, in the chemical report creation, the clean consensus spectra identified against UNPD and 
 curated are used to create the PCA, blanks and beds are removed (BLANKS_TOTAL == 0 and BEDS_TOTAL == 0 are used). 
