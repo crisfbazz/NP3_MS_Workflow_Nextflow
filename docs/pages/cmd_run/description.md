@@ -115,7 +115,15 @@ counts in a PNG image file;
 chemical and network analysis.
 
 ## Examples
- 
+
+Example using the L754_bacs dataset provided in the test folder, changing the pre-processing output name:
+
+``` { .text .copy }
+node np3_workflow.js run --output_name "L754_bacs_test" --output_path "test/L754_bacs" 
+--metadata "test/L754_bacs/marine_bacteria_library_L754_metadata.csv" --raw_data_path "test/L754_bacs/mzxml"
+--verbose 1 -y pre_processed_L754_bacs
+``` 
+
 Fake examples using the *run* command:
 
 ```{ .text .copy }
@@ -123,7 +131,9 @@ node np3_workflow.js run --output_name "test_np3" --output_path "/path/where/the
 "/path/to/the/metadata/file/test_np3_metadata.csv" --raw_data_path "/path/to/the/raw/data/dir/" 
 --fragment_tolerance 0.01
 ```
- 
+
+Changing the retention time tolerance parameter: 
+
 ```{ .text .copy }
 node np3_workflow run -n "test_np3_rt_tol" -o "/path/where/the/output/will/be/stored"  
 -m "/path/to/the/metadata/file/test_np3_metadata.csv" -d "/path/to/the/raw/data/dir" 

@@ -8,9 +8,10 @@ Make sure that all system requirements are installed:
 
 Otherwise, an error with the related missing package may be raised.
 
+----------------------------------
+
 ## In the Pre-process Step 2
 
-----------------------------------
 
 The following error without interruption:
 
@@ -28,7 +29,7 @@ The following warning during the input file (.mzXML) reading followed by the err
 Your system is trying to pass a locale that isn't generated or recognized. 
 You can force R to use a universal fallback configuration.
 
-##### Solution
+**Solution:**
 
 For quick fix, in the terminal run: 
 ```{ .text .copy }
@@ -47,3 +48,32 @@ echo 'export LC_ALL=C.UTF-8' >> ~/.bashrc
 source ~/.bashrc
 ```
 
+---------------------------------------------
+
+The following error before starting pre-processing:
+
+> Error: package or namespace load failed for ‘utils’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command
+
+> Error: package or namespace load failed for ‘stats’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command
+
+> During startup - Warning messages:
+1: package ‘utils’ in options("defaultPackages") was not found  
+2: package ‘stats’ in options("defaultPackages") was not found  
+Error: package or namespace load failed for ‘dplyr’:
+.onLoad failed in loadNamespace() for 'utils', details:
+ call: system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE)
+error: error in running command
+Execution halted
+
+Your unix system is missing the package `which`.
+
+**Solution:**
+
+Install package `which` in the terminal and try again. Google for installation instructions in your specific 
+unix system.
