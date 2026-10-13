@@ -64,14 +64,14 @@ A folder named `processed_data_name` inside the `raw_data_path` containing:
  
 ## Examples
  
-Pre-processing with the default parameters values and compute the misalignment using at most 6 samples per data collection batch:
+Pre-processing with the default parameters values and changing the output result name:
  
 ```{ .text .copy }
 node np3_workflow pre_process --data_name "data_UHPLC_qTOF" --metadata "/path/to/the/metadata/file/test_np3_metadata.csv" 
---raw_data_path "/path/to/the/raw/data/dir" --max_samples_batch_align 6 --verbose 1
+--raw_data_path "/path/to/the/raw/data/dir" -y pre_processed_default --verbose 1
 ```
  
-Pre-processing without computing the misalignment and with a different m/z tolerance value:
+Pre-processing without computing the misalignment and with a different m/z tolerance value, using the default output name:
  
 ```{ .text .copy }
 node np3_workflow pre_process --data_name "data_UHPLC_qTOF" -m 

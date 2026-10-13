@@ -9,8 +9,12 @@ adaptations for joining previous results in an incremental clustering approach.
 [**Final reports**](pages/cmd_run/final_reports.md) are created at the end of the **run**, **join_jobs** and **clean** 
 commands. These reports are separated in quantification, chemical and network statistics and analysis of the results.
  
-This workflow also contains two interactive commands for data visualization and one for PCA plotting:
+This workflow also contains four [visualization commands](pages/visualization_commands/post_dd_analysis.md) - 
+one for a post analysis plotting, two interactive commands for MS1 and MS2 data visualization and another for PCA 
+plotting:
  
+- **post_dd_analysis**: this command perform a post-processing drug discovery analysis of a NP³ result. Six different 
+visualizations and two data tables are created.
 - **chr**: this command extracts chromatograms from raw MS1 data files and save the images to PNG files. 
     - Depending on the chosen parameters this can be a total ion chromatogram (TIC), a base peak chromatogram (BPC) or 
   an extracted ion chromatogram (XIC), extracted from each sample/file with customized groups, 

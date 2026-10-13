@@ -1,19 +1,21 @@
 # Getting Started - Test Example
 
-Let's use the LC-MS/MS raw samples from the L754_bacs dataset present in the 'test' folder to check the installation 
-and run the NP³ MS workflow for the first time. 
+Let's use the LC-MS/MS raw samples from deep-sea bacteria, the L754_bacs dataset[^1], present in the 'test' folder to 
+check the installation and run the NP³ MS Workflow for the first time. 
 
 A metadata table (Step 1) is already provided in the 'test' folder:
-'test/L754_bacs/marine_bacteria_library_L754_metadata.csv'. 
+'[test/L754_bacs/marine_bacteria_library_L754_metadata.csv](https://github.com/danielatrivella/NP3_MS_Workflow/blob/master/test/L754_bacs/marine_bacteria_library_L754_metadata.csv)'. 
 
-Start by activating the NP³ MS workflow environment. Run the following command in the terminal: 
+## Run example 
+
+Start by activating the NP³ MS Workflow environment. Run the following command in the terminal: 
 
  
 ```  
 mamba activate np3 
 ``` 
 
-Now, we can run the NP³ MS workflow with the provided metadata table. 
+Now, we can run the NP³ MS Workflow with the provided metadata table. 
 
 The test dataset that we will use in this example gives good results with the pre-processing default parameters, 
 so we will run the entire workflow with a single command. 
@@ -25,7 +27,7 @@ provided metadata and data for the L754_bacs dataset:
 ``` { .text .copy }
 node np3_workflow.js run --output_name "L754_bacs_test" --output_path "test/L754_bacs" 
 --metadata "test/L754_bacs/marine_bacteria_library_L754_metadata.csv" --raw_data_path "test/L754_bacs/mzxml" 
---tremolo_identification TRUE --verbose 1
+--verbose 1
 ``` 
 
 If the workflow executed without any error message, the final results should be located in the folder 
@@ -78,7 +80,7 @@ L754_bacs_test
 ~~~ 
 
 For more details about what each file contains, its columns and values, and to better understand the results and how 
-they are obtained see each step section for more details! 
+they are obtained see each step section! 
 
 ## Recommendations to execute NP³ MS Workflow
 
@@ -101,5 +103,7 @@ The users should **follow the [pre-processing
 optimization guide](../02_pre_process/optimization.md)** present in this command section when executing the workflow 
 with a new dataset.
   
+## References
 
+[^1]: de Felício R, et al. Chemical Elicitors Induce Rare Bioactive Secondary Metabolites in Deep-Sea Bacteria under Laboratory Conditions. Metabolites. 2021 Feb 12;11(2):107. doi: 10.3390/metabo11020107.
 
