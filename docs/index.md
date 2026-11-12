@@ -1,6 +1,6 @@
 # NP³ MS Workflow: A Pipeline for LC-MS/MS Metabolomics Data Process and Analysis  
 
-**Current Version 1.6.0**
+**Current Version 1.6.1**
 
 ## Pipeline Description
 

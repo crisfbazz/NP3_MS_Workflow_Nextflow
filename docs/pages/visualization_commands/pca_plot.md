@@ -39,6 +39,10 @@ Parameters for the command **pca_plot**:
                               "" (default), the output_path is set to the table_path base
                               directory. (default: "")
 - *\-n, \-\-output_name* [file]   : The name to be used to name the final plots, used as a prefix in the PCA plots naming. (default: "new_data")
+- *\-l, \-\-parallel_cores* [x]   :  the number of cores to be used for parallel
+                              processing in the rcdk descriptors computation.
+                              x = 1 for disabling parallelization and x > 2
+                              for enabling it. [x] >= 1 (default: 2)
 - *\-h, \-\-help* : output usage information
  
 ## Results

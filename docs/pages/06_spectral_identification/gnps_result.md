@@ -26,6 +26,10 @@ Parameters for the command **gnps_result**:
                                         the identifications folder, if not it will be created. The job
                                         name (output_name) will be extracted from here.
 - *\-m, \-\-metadata* [file]   : path to the samples metadata table CSV file of the NP³ job. This is necessary to plot the distribution of the superclasses grouping by sample, it may be missing if this plot is not desired (leave as empty string).  (default: "")
+- *\-l, \-\-parallel_cores* [x]   :  the number of cores to be used for parallel
+                              processing in the rcdk descriptors computation.
+                              x = 1 for disabling parallelization and x > 2
+                              for enabling it. [x] >= 1 (default: 2)
 - *\-h, \-\-help* : output usage information
  
 ## Results
